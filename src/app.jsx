@@ -1,6 +1,8 @@
 import React from 'react';
 import './fbConfig.js';
 
+console.log("app.jsx FB: ", FB);
+
 export default class App extends React.Component {
   render() {
     return (
