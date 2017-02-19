@@ -52,6 +52,7 @@ database.ref('test/').set(
 
 // Print fetched data from firebase
 database.ref('test/').on("value", function(snapshot) {
+  console.log("Fetch data from Firebase");
   console.log(snapshot.val());
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
