@@ -12,9 +12,25 @@ export default class App extends React.Component {
 
   componentDidMount() {
       console.log('I was triggered during componentDidMount');
-      const ACCESS_TOKEN = "1088733461254279|GdbN-PcmqQziufu3aVhYApPg9y0";
+      const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
+
+      // Recording Video
       FB.api(
           "/434261453572678?access_token=" + ACCESS_TOKEN,
+          function (response) {
+            if (response && !response.error) {
+              /* handle the result */
+              console.log("video response: ", response);
+            } else {
+              console.error("error loading facebook video");
+              console.log(response);
+            }
+          }
+      );
+
+      // Coding Video
+      FB.api(
+          "/434798750185615?access_token=" + ACCESS_TOKEN,
           function (response) {
             if (response && !response.error) {
               /* handle the result */
