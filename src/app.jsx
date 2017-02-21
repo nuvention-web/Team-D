@@ -20,18 +20,21 @@ export default class App extends React.Component {
       const CODING = "434798750185615";
       // Facebook Page Id
       const PAGE = "434259273572896";
+      const params = {
+          fields: "video_insights,title,picture",
+          access_token: ACCESS_TOKEN
+      }
 
       // Test Video # 1
       FB.api(
           '/' + RECORDING,
-          {
-            fields: "video_insights",
-            access_token: ACCESS_TOKEN
-          },
+          params,
           function (response) {
             if (response && !response.error) {
               /* handle the result */
               console.log("Recording video response: ", response);
+              document.getElementById("title1").innerHTML = response.title;
+              document.getElementById("content1").innerHTML = JSON.stringify(response.video_insights);
 
             } else {
               console.error("error loading facebook video");
@@ -42,14 +45,12 @@ export default class App extends React.Component {
       // Test Video #2
       FB.api(
           '/' + CODING,
-          {
-            fields: "video_insights",
-            access_token: ACCESS_TOKEN
-          },
+          params,
           function (response) {
             if (response && !response.error) {
               /* handle the result */
               console.log("Coding video response: ", response);
+              document.getElementById("title2").innerHTML = response.title;
             } else {
               console.error("error loading facebook video");
             }
