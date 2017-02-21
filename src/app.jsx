@@ -32,9 +32,9 @@ export default class App extends React.Component {
             if (response && !response.error) {
               /* handle the result */
               console.log("Recording video response: ", response);
+
             } else {
               console.error("error loading facebook video");
-              console.log(response);
             }
           }
       );
@@ -52,7 +52,6 @@ export default class App extends React.Component {
               console.log("Coding video response: ", response);
             } else {
               console.error("error loading facebook video");
-              console.log(response);
             }
           }
       );
@@ -62,11 +61,17 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>It Works!</h1>
-        <p>Open the console to see the fetched data from firebase :)</p>
-        <p>Let's work on this!</p>
+    <div>
+      <div id="test1">
+        <h1 id="title1"></h1>
+        <div id="content1"></div>
       </div>
+      <div id="test2">
+        <h1 id="title2"></h1>
+        <div id="content2"></div>
+      </div>
+    </div>
+
     )
   }
 }
