@@ -21,7 +21,7 @@ export default class App extends React.Component {
       // Facebook Page Id
       const PAGE = "434259273572896";
       const params = {
-          fields: "video_insights,title,picture",
+          fields: "video_insights{title,values},title,picture",
           access_token: ACCESS_TOKEN
       }
 
@@ -34,8 +34,20 @@ export default class App extends React.Component {
               /* handle the result */
               console.log("Recording video response: ", response);
               document.getElementById("title1").innerHTML = response.title;
-              document.getElementById("content1").innerHTML = JSON.stringify(response.video_insights);
+              document.getElementById("image1").src = response.picture;
 
+              var container1 = document.getElementById("content1");
+              var video_insights = response.video_insights.data;
+              for (var i = 0; i < video_insights.length; i++) {
+                let li = document.createElement('li');
+                let data = video_insights[i];
+                let title = data.title;
+                let value = data.values[0].value;
+
+                value = title + ": " + value;
+                li.innerHTML = value;
+                container1.appendChild(li);
+              }
             } else {
               console.error("error loading facebook video");
             }
@@ -51,6 +63,21 @@ export default class App extends React.Component {
               /* handle the result */
               console.log("Coding video response: ", response);
               document.getElementById("title2").innerHTML = response.title;
+              document.getElementById("image2").src = response.picture;
+
+
+              var container2 = document.getElementById("content2");
+              var video_insights = response.video_insights.data;
+              for (var i = 0; i < video_insights.length; i++) {
+                let li = document.createElement('li');
+                let data = video_insights[i];
+                let title = data.title;
+                let value = data.values[0].value;
+
+                value = title + ": " + value;
+                li.innerHTML = value;
+                container2.appendChild(li);
+              }
             } else {
               console.error("error loading facebook video");
             }
@@ -65,11 +92,13 @@ export default class App extends React.Component {
     <div>
       <div id="test1">
         <h1 id="title1"></h1>
-        <div id="content1"></div>
+        <img id="image1" />
+        <ul id="content1"></ul>
       </div>
       <div id="test2">
         <h1 id="title2"></h1>
-        <div id="content2"></div>
+        <img id="image2" />
+        <ul id="content2"></ul>
       </div>
     </div>
 
