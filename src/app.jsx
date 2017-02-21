@@ -13,13 +13,16 @@ export default class App extends React.Component {
   componentDidMount() {
       console.log('I was triggered during componentDidMount');
       const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
-      const ACCESS_TOKEN2 = "EAACEdEose0cBAMyspbXAnKqPGY4X3pP6DAv3kWWfnkcpxcbjGSYXcgH5RWFIyvGhdDwZA0z41AuZBit7mOrzNPtEeIZBlJbV0rH3ZBejJLMnE6VklJCxk2vM4OqiQq3WhYXTZCUmhArqWN0s38fGZAQlKHjoZCcUxpGeoByUMTFfvdUMt4qT3ZAQeAazTQjDIv4ZD";
+      const ACCESS_TOKEN2 = "EAACEdEose0cBAMAyMV8QPHrqxZCeMtOhDarbBXAPLrxTvvLWrH21wtPsD71Jk4kO0oePuH8coVYMOAcuFaLDyZCeqBioCdJ5FzDyOhBMkkKb8l9ZBJigzDV4ObRMXf2hkRgth3zCG33loZCaHPEbxWDeDkv6AvcCZAUSwrZCvJuS31Gk5kabRXrwNCnPcWgdsZD";
 
+      // Test Video # 1 ID
       const RECORDING = "434261453572678";
+      // Test Video #2 ID
       const CODING = "434798750185615";
+      // Facebook Page Id 
       const PAGE = "434259273572896";
 
-      // Recording Video
+      // Test Video # 1
       FB.api(
           '/' + RECORDING + "/video_insights",
           {
@@ -37,7 +40,7 @@ export default class App extends React.Component {
           }
       );
 
-      // Coding Video
+      // Test Video #2
       FB.api(
           '/' + CODING,
           {
