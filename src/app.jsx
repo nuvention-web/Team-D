@@ -21,7 +21,7 @@ export default class App extends React.Component {
       // Facebook Page Id
       const PAGE = "434259273572896";
       const params = {
-          fields: "video_insights{title,values},title,picture",
+          fields: "video_insights{title,values},title,picture,source",
           access_token: ACCESS_TOKEN
       }
 
@@ -34,7 +34,7 @@ export default class App extends React.Component {
               /* handle the result */
               console.log("Recording video response: ", response);
               document.getElementById("title1").innerHTML = response.title;
-              document.getElementById("image1").src = response.picture;
+              document.getElementById("image1").src = response.source;
 
               var container1 = document.getElementById("content1");
               var video_insights = response.video_insights.data;
@@ -63,7 +63,7 @@ export default class App extends React.Component {
               /* handle the result */
               console.log("Coding video response: ", response);
               document.getElementById("title2").innerHTML = response.title;
-              document.getElementById("image2").src = response.picture;
+              document.getElementById("image2").src = response.source +"&autoplay=0";
 
               var container2 = document.getElementById("content2");
               var video_insights = response.video_insights.data;
@@ -93,7 +93,7 @@ export default class App extends React.Component {
           <article>
             <h1 id="title1"></h1>
             <div id="img">
-              <img id="image1" />
+              <iframe id="image1"></iframe>
             </div>
 
             <ul id="content1"></ul>
@@ -103,7 +103,7 @@ export default class App extends React.Component {
           <article>
             <h1 id="title2"></h1>
             <div id="img">
-              <img id="image2" />
+              <iframe id="image2"></iframe>
             </div>
             <ul id="content2"></ul>
           </article>
