@@ -65,7 +65,6 @@ export default class App extends React.Component {
               document.getElementById("title2").innerHTML = response.title;
               document.getElementById("image2").src = response.picture;
 
-
               var container2 = document.getElementById("content2");
               var video_insights = response.video_insights.data;
               for (var i = 0; i < video_insights.length; i++) {
@@ -89,18 +88,40 @@ export default class App extends React.Component {
 
   render() {
     return (
-    <div>
-      <div id="test1">
-        <h1 id="title1"></h1>
-        <img id="image1" />
-        <ul id="content1"></ul>
-      </div>
-      <div id="test2">
-        <h1 id="title2"></h1>
-        <img id="image2" />
-        <ul id="content2"></ul>
-      </div>
-    </div>
+      <section className="container">
+        <div id="left-half">
+          <article>
+            <h1 id="title1"></h1>
+            <div id="img">
+              <img id="image1" />
+            </div>
+
+            <ul id="content1"></ul>
+          </article>
+        </div>
+        <div id="right-half">
+          <article>
+            <h1 id="title2"></h1>
+            <div id="img">
+              <img id="image2" />
+            </div>
+            <ul id="content2"></ul>
+          </article>
+        </div>
+      </section>
+
+    // <div>
+    //   <div id="left-half">
+    //     <h1 id="title1"></h1>
+    //     <img id="image1" />
+    //     <ul id="content1"></ul>
+    //   </div>
+    //   <div id="right-half">
+    //     <h1 id="title2"></h1>
+    //     <img id="image2" />
+    //     <ul id="content2"></ul>
+    //   </div>
+    // </div>
 
     )
   }
