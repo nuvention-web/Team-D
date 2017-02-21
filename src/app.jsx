@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
       // const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
-      const ACCESS_TOKEN2 = "EAACEdEose0cBAPLGyPrMgsqe1IvlJQZBWgLKdGVekSSjbIvPDHaOekXMVHxbJsI7vUY4BZBLSFdTZBHI15l0vdSmS5K0XoPTreOjNVPkvZCcpj5p9VhVhATXrAaUzR6jcTAKlH5kshmCOCF88BZA2DFAS0ZAQ9jxLVQ4nK7eN1EWG7hNJbZBZCrG9eDZABROx93AZD";
+      const ACCESS_TOKEN = "EAAPeMoM2kIcBAP2uvz06xJDZB8ZBIaX2I2A2bzAwOzpKKEBimwMGZAeZBfbcrv7WgZBsoNcZBt3ZAWCIroNi7C84OV0J2CRE7PWRFjrklmdu1XO4949xIqst4oJsSDXkkKK05M0i6vhJY9ATTcsSUVfh15qxX9icL371EeiiZA42CAZDZD";
 
       // Test Video # 1 ID
       const RECORDING = "434261453572678";
@@ -26,7 +26,7 @@ export default class App extends React.Component {
           '/' + RECORDING,
           {
             fields: "video_insights",
-            access_token: ACCESS_TOKEN2
+            access_token: ACCESS_TOKEN
           },
           function (response) {
             if (response && !response.error) {
@@ -44,7 +44,7 @@ export default class App extends React.Component {
           '/' + CODING,
           {
             fields: "video_insights",
-            access_token: ACCESS_TOKEN2
+            access_token: ACCESS_TOKEN
           },
           function (response) {
             if (response && !response.error) {
