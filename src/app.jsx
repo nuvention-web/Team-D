@@ -11,15 +11,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-      // const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
-      const ACCESS_TOKEN = "EAAPeMoM2kIcBAP2uvz06xJDZB8ZBIaX2I2A2bzAwOzpKKEBimwMGZAeZBfbcrv7WgZBsoNcZBt3ZAWCIroNi7C84OV0J2CRE7PWRFjrklmdu1XO4949xIqst4oJsSDXkkKK05M0i6vhJY9ATTcsSUVfh15qxX9icL371EeiiZA42CAZDZD";
+      const ACCESS_TOKEN = "EAAR6flJrG9wBAOUYlIqDAGRs4yZBU6fTUQJZC8dxOkqvnjZADkLExaD7RhGtPRbncEtwPdMclrSPUayvq3p3HzYomVrvvmjGRqC2hg794zZAjevjMudFsscoFbmV1FcSq8O1ZALVDPSTQkgKBgUsKpvpIsA7491sZD";
 
       // Test Video # 1 ID
-      const RECORDING = "434261453572678";
+      const TEST1 = "10154546043703533";
       // Test Video #2 ID
-      const CODING = "434798750185615";
+      const TEST2 = "10154564632168533";
       // Facebook Page Id
-      const PAGE = "434259273572896";
+      const PAGE = "8947243532";
       const params = {
           fields: "video_insights{title,values},title,picture,source",
           access_token: ACCESS_TOKEN
@@ -27,12 +26,12 @@ export default class App extends React.Component {
 
       // Test Video # 1
       FB.api(
-          '/' + RECORDING,
+          '/' + TEST1,
           params,
           function (response) {
             if (response && !response.error) {
               /* handle the result */
-              console.log("Recording video response: ", response);
+              console.log("Test video #1 response: ", response);
               document.getElementById("title1").innerHTML = response.title;
               document.getElementById("image1").src = response.source;
 
@@ -56,12 +55,12 @@ export default class App extends React.Component {
 
       // Test Video #2
       FB.api(
-          '/' + CODING,
+          '/' + TEST2,
           params,
           function (response) {
             if (response && !response.error) {
               /* handle the result */
-              console.log("Coding video response: ", response);
+              console.log("Test video #2 response: ", response);
               document.getElementById("title2").innerHTML = response.title;
               document.getElementById("image2").src = response.source +"&autoplay=0";
 
@@ -89,6 +88,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="container">
+      <div id = "top">TELIOS</div>
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
@@ -109,19 +109,6 @@ export default class App extends React.Component {
           </article>
         </div>
       </section>
-
-    // <div>
-    //   <div id="left-half">
-    //     <h1 id="title1"></h1>
-    //     <img id="image1" />
-    //     <ul id="content1"></ul>
-    //   </div>
-    //   <div id="right-half">
-    //     <h1 id="title2"></h1>
-    //     <img id="image2" />
-    //     <ul id="content2"></ul>
-    //   </div>
-    // </div>
 
     )
   }
