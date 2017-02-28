@@ -11,7 +11,6 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-      // const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
       const ACCESS_TOKEN = "EAAR6flJrG9wBAOUYlIqDAGRs4yZBU6fTUQJZC8dxOkqvnjZADkLExaD7RhGtPRbncEtwPdMclrSPUayvq3p3HzYomVrvvmjGRqC2hg794zZAjevjMudFsscoFbmV1FcSq8O1ZALVDPSTQkgKBgUsKpvpIsA7491sZD";
 
       // Test Video # 1 ID
@@ -89,6 +88,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="container">
+      <div id = "top">TELIOS</div>
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
@@ -109,19 +109,6 @@ export default class App extends React.Component {
           </article>
         </div>
       </section>
-
-    // <div>
-    //   <div id="left-half">
-    //     <h1 id="title1"></h1>
-    //     <img id="image1" />
-    //     <ul id="content1"></ul>
-    //   </div>
-    //   <div id="right-half">
-    //     <h1 id="title2"></h1>
-    //     <img id="image2" />
-    //     <ul id="content2"></ul>
-    //   </div>
-    // </div>
 
     )
   }
