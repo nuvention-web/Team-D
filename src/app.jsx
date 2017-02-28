@@ -32,7 +32,12 @@ export default class App extends React.Component {
             if (response && !response.error) {
               /* handle the result */
               console.log("Test video #1 response: ", response);
-              document.getElementById("title1").innerHTML = response.title;
+              if (response.title) {
+                document.getElementById("title1").innerHTML = response.title;
+              } else {
+                document.getElementById("title1").innerHTML = "Video 1";
+              }
+
               document.getElementById("image1").src = response.source;
 
               var container1 = document.getElementById("content1");
@@ -61,7 +66,11 @@ export default class App extends React.Component {
             if (response && !response.error) {
               /* handle the result */
               console.log("Test video #2 response: ", response);
-              document.getElementById("title2").innerHTML = response.title;
+              if (response.title) {
+                document.getElementById("title2").innerHTML = response.title;
+              } else {
+                document.getElementById("title2").innerHTML = "Video 2";
+              }
               document.getElementById("image2").src = response.source +"&autoplay=0";
 
               var container2 = document.getElementById("content2");
