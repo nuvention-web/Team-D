@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
       // const ACCESS_TOKEN = "EAAPeMoM2kIcBAP8EQokB9xWKJyXoXWyZBZAwgHRXS8EpgmjYFqXJpLQIvpctU5GkK2ACpUUrn0JAn1roSF5oExPd7KvTHzESrGx8jdEf1EpQffZAzzP2xuNzpDZCCZAFT3GeKJ6ZCspU38sxSlz6gGtggioFSZBTeYZD";
-      const ACCESS_TOKEN = "EAACEdEose0cBAJDub1wBVg9tMRV6ZB3iZBQvjtjZCApZBtrwZATu4tZBrtFYx7I5DnC31ix22yXzyqshFNY0aoppyGFiMua6PRCeZBOv33FpYliN0iFkYfKn7850WwhJ9FuNJ7QzqtXB9fjTkCivJ9WLqvqdZCWSCRYyhROwrGC1Sogo7oRYVfb3w81NUSKqTb8ZD";
+      const ACCESS_TOKEN = "EAAR6flJrG9wBAOUYlIqDAGRs4yZBU6fTUQJZC8dxOkqvnjZADkLExaD7RhGtPRbncEtwPdMclrSPUayvq3p3HzYomVrvvmjGRqC2hg794zZAjevjMudFsscoFbmV1FcSq8O1ZALVDPSTQkgKBgUsKpvpIsA7491sZD";
 
       // Test Video # 1 ID
       const TEST1 = "10154546043703533";
