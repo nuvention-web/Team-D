@@ -88,7 +88,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="container">
-      <div id = "top">TELIOS</div>
+      <div id = "top">TELEIOS</div>
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
