@@ -104,20 +104,21 @@ export default class App extends React.Component {
 
     return (
       <section className="container">
+        <div id = "top">TELEOS</div>
 
         {/* Visual Cue */}
-        <div id = "top">TELEOS</div>
         <ProgressLabel
           progress={progress}
           startDegree={0}
           progressWidth={8}
-          trackWidth={20}
+          trackWidth={30}
           cornersWidth={4}
           size={400}
           fillColor="black"
-          trackColor="red"
-          progressColor="green">
-          <text x="200" y="200" style={textStyle}>{`${progress}%`}</text>
+          trackColor="white"
+          progressColor="#3b5998">
+          {/*<text x="200" y="200" style={textStyle}>{'`${progress}%`'}</text>*/}
+          <text x="200" y="200" style={textStyle}>Magic Sauce</text>
         </ProgressLabel>
 
         {/* Left Video */}
