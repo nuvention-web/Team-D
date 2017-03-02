@@ -1,5 +1,6 @@
 import React from 'react';
 import './fbConfig.js';
+const ProgressLabel = require('react-progress-label');
 
 export default class App extends React.Component {
   constructor(props) {
@@ -95,9 +96,31 @@ export default class App extends React.Component {
 
 
   render() {
+    var progress = "80";
+    var textStyle = {
+      'fill': '#ffffff',
+      'textAnchor': 'middle'
+    };
+
     return (
       <section className="container">
-      <div id = "top">TELEOS</div>
+
+        {/* Visual Cue */}
+        <div id = "top">TELEOS</div>
+        <ProgressLabel
+          progress={progress}
+          startDegree={0}
+          progressWidth={8}
+          trackWidth={20}
+          cornersWidth={4}
+          size={400}
+          fillColor="black"
+          trackColor="red"
+          progressColor="green">
+          <text x="200" y="200" style={textStyle}>{`${progress}%`}</text>
+        </ProgressLabel>
+
+        {/* Left Video */}
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
@@ -108,6 +131,8 @@ export default class App extends React.Component {
             <ul id="content1"></ul>
           </article>
         </div>
+
+        {/* Right Video */}
         <div id="right-half">
           <article>
             <h1 id="title2"></h1>
