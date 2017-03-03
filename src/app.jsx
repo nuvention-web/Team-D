@@ -107,19 +107,34 @@ export default class App extends React.Component {
         <div id = "top">TELEOS</div>
 
         {/* Visual Cue */}
-        <ProgressLabel
-          progress={progress}
-          startDegree={0}
-          progressWidth={8}
-          trackWidth={30}
-          cornersWidth={4}
-          size={400}
-          fillColor="black"
-          trackColor="white"
-          progressColor="#3b5998">
-          {/*<text x="200" y="200" style={textStyle}>{'`${progress}%`'}</text>*/}
-          <text x="200" y="200" style={textStyle}>Magic Sauce</text>
-        </ProgressLabel>
+        <section id="labels">
+          <ProgressLabel
+            progress={progress}
+            startDegree={0}
+            progressWidth={8}
+            trackWidth={30}
+            cornersWidth={4}
+            size={400}
+            fillColor="white"
+            trackColor="white"
+            progressColor="#3b5998">
+            {/*<text x="200" y="200" style={textStyle}>{'`${progress}%`'}</text>*/}
+            <text x="200" y="200" style={textStyle}>Magic Sauce</text>
+          </ProgressLabel>
+          <ProgressLabel
+            progress={70}
+            startDegree={0}
+            progressWidth={8}
+            trackWidth={30}
+            cornersWidth={4}
+            size={340}
+            fillColor="black"
+            trackColor="white"
+            progressColor="#fbad50">
+            <text x="170" y="170" style={textStyle}>Magic Sauce</text>
+          </ProgressLabel>
+        </section>
+
 
         {/* Left Video */}
         <div id="left-half">
