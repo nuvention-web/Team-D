@@ -121,8 +121,6 @@ export default class App extends React.Component {
             fillColor="white"
             trackColor="white"
             progressColor="#3b5998">
-            {/*<text x="200" y="200" style={textStyle}>{'`${progress}%`'}</text>*/}
-            <text x="200" y="200" style={textStyle}>Magic Sauce</text>
           </ProgressLabel>
           <ProgressLabel
             data-tip
@@ -136,7 +134,7 @@ export default class App extends React.Component {
             fillColor="black"
             trackColor="white"
             progressColor="#fbad50">
-            <text x="170" y="170" style={textStyle}>Magic Sauce</text>
+            <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
           </ProgressLabel>
         </section>
 
@@ -147,7 +145,9 @@ export default class App extends React.Component {
         <ReactTooltip id="2" type='warning' effect='solid'>
           <span>instagram metrics</span>
         </ReactTooltip>
-
+        <ReactTooltip id="score" type='warning' effect='solid'>
+          <span>instagram metrics</span>
+        </ReactTooltip>
 
         {/* Left Video */}
         <div id="left-half">
