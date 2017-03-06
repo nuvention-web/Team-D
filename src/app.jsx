@@ -36,7 +36,7 @@ export default class App extends React.Component {
               if (response.title) {
                 document.getElementById("title1").innerHTML = response.title;
               } else {
-                document.getElementById("title1").innerHTML = "Video 1";
+                document.getElementById("title1").innerHTML = "Facebook";
               }
 
               document.getElementById("image1").src = response.source;
@@ -70,7 +70,7 @@ export default class App extends React.Component {
               if (response.title) {
                 document.getElementById("title2").innerHTML = response.title;
               } else {
-                document.getElementById("title2").innerHTML = "Video 2";
+                document.getElementById("title2").innerHTML = "Instagram";
               }
               document.getElementById("image2").src = response.source +"&autoplay=0";
 
