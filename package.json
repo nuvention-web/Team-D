@@ -21,6 +21,7 @@
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-progress-label": "^1.2.1",
+    "react-tooltip": "^3.2.7",
     "sass-loader": "^4.0.2"
   },
   "devDependencies": {

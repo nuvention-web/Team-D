@@ -1,5 +1,6 @@
 import React from 'react';
 import './fbConfig.js';
+import ReactTooltip from 'react-tooltip'
 const ProgressLabel = require('react-progress-label');
 
 export default class App extends React.Component {
@@ -109,6 +110,8 @@ export default class App extends React.Component {
         {/* Visual Cue */}
         <section id="labels">
           <ProgressLabel
+            data-tip
+            data-for="1"
             progress={progress}
             startDegree={0}
             progressWidth={8}
@@ -122,6 +125,8 @@ export default class App extends React.Component {
             <text x="200" y="200" style={textStyle}>Magic Sauce</text>
           </ProgressLabel>
           <ProgressLabel
+            data-tip
+            data-for="2"
             progress={70}
             startDegree={0}
             progressWidth={8}
@@ -134,6 +139,14 @@ export default class App extends React.Component {
             <text x="170" y="170" style={textStyle}>Magic Sauce</text>
           </ProgressLabel>
         </section>
+
+        {/* Hover Effect */}
+        <ReactTooltip id="1" type='warning' effect='solid'>
+          <span>facebook metrics</span>
+        </ReactTooltip>
+        <ReactTooltip id="2" type='warning' effect='solid'>
+          <span>instagram metrics</span>
+        </ReactTooltip>
 
 
         {/* Left Video */}
