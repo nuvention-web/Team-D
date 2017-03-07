@@ -134,6 +134,11 @@ export default class App extends React.Component {
       'fill': '#ffffff',
       'textAnchor': 'middle'
     };
+    var textStyle2 = {
+      'fill': '#FFDD57',
+      'textAnchor': 'middle',
+      'font-size': "50px"
+    };
 
 
 
@@ -153,7 +158,7 @@ export default class App extends React.Component {
                 style={{display: this.state.isFB ? 'block' : 'none', top: "120px"}}
                 data-tip
                 data-for="1"
-                progress={progress}
+                progress={100}
                 startDegree={0}
                 progressWidth={8}
                 trackWidth={30}
@@ -164,15 +169,20 @@ export default class App extends React.Component {
                 progressColor="#3b5998">
                 <text x="200" y="200" style={textStyle}>Magic Sauce</text>
           </ProgressLabel>
-          <ReactTooltip id="1" type='warning' effect='solid'>
-            <span>facebook metrics</span>
+          <ReactTooltip id="1" effect='solid'>
+            <span>Total Video Reach</span>
+            <ul>
+              <li>Facebook: 1711</li>
+              <li>Instagram: 291</li>
+            </ul>
+
           </ReactTooltip>
 
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
                 data-for="2"
-                progress={70}
+                progress={45.15}
                 startDegree={0}
                 progressWidth={8}
                 trackWidth={30}
@@ -181,10 +191,15 @@ export default class App extends React.Component {
                 fillColor="black"
                 trackColor="white"
                 progressColor="#fbad50">
-                <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
+                <text data-tip data-for="score" x="170" y="160" style={textStyle}>Nova Score:</text>
+                <text data-tip data-for="score" x="170" y="210" style={textStyle2}>45.15</text>
           </ProgressLabel>
-          <ReactTooltip id="2" type='warning' effect='solid'>
-            <span>instagram metrics</span>
+          <ReactTooltip id="2" effect='solid'>
+            <span>Total Video Views</span>
+            <ul>
+              <li>Facebook: 674</li>
+              <li>Instagram: 230</li>
+            </ul>
           </ReactTooltip>
         </section>
 
