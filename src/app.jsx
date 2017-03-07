@@ -80,16 +80,16 @@ export default class App extends React.Component {
 
               var container2 = document.getElementById("content2");
               var video_insights = response.video_insights.data;
-              for (var i = 0; i < video_insights.length; i++) {
-                let li = document.createElement('li');
-                let data = video_insights[i];
-                let title = data.title;
-                let value = data.values[0].value;
+              // for (var i = 0; i < video_insights.length; i++) {
+              //   let li = document.createElement('li');
+              //   let data = video_insights[i];
+              //   let title = data.title;
+              //   let value = data.values[0].value;
 
-                value = title + ": " + value;
-                li.innerHTML = value;
-                container2.appendChild(li);
-              }
+              //   value = title + ": " + value;
+              //   li.innerHTML = value;
+              //   container2.appendChild(li);
+              // }
             } else {
               console.error("error loading facebook video");
             }
@@ -127,12 +127,15 @@ export default class App extends React.Component {
   handleSubmit(e){
     e.preventDefault()
   }
+
   render() {
     var progress = "80";
     var textStyle = {
       'fill': '#ffffff',
       'textAnchor': 'middle'
     };
+
+
 
     return (
       <section className="container">
@@ -204,7 +207,14 @@ export default class App extends React.Component {
             <div id="img">
               <iframe id="image2"></iframe>
             </div>
-            <ul id="content2"></ul>
+            <ul id="content2">
+              <li>Total Views: 230</li>
+              <li>Engagement: 44</li>
+              <li>Total Reach: 291</li>
+              <li>Likes: 41</li>
+              <li>Comments: 2</li>
+              <li>Impressions: 450</li>
+            </ul>
           </article>
         </div>
       </section>
