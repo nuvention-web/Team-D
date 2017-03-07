@@ -176,11 +176,11 @@ export default class App extends React.Component {
         <img src={require("../images/logo.png")} id = "logo_img"/>
         <form onSubmit = {this.handleSubmit.bind(this)} id = "platforms">
         <div id= "fb_checkbox">
-            <input type="checkbox" className = "checkbox" value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
+            <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
             <label>Facebook</label>
         </div>
         <div id = "ig_checkbox">
-            <input type="checkbox" className = "checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+            <input type="checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
             <label>Instagram</label>
         </div>
         </form>
