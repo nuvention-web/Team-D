@@ -10,7 +10,9 @@ export default class App extends React.Component {
 
     this.state = {
       isFB: "",
-      isInsta:""
+      isInsta:"",
+      isFBMetrics:"",
+      isInstaMetrics:"",
     };
 
   }
@@ -31,7 +33,7 @@ export default class App extends React.Component {
 
       // Test Video # 1
       FB.api(
-          '/' + TEST1,
+          '/' + TEST2,
           params,
           function (response) {
             if (response && !response.error) {
@@ -98,11 +100,11 @@ export default class App extends React.Component {
 
     }
 
+
   handleFBChange(e){
   if(e.target.checked){
     this.setState({
       isFB:"Facebook",
-
     })
   }else{
 
@@ -128,7 +130,34 @@ export default class App extends React.Component {
     e.preventDefault()
   }
 
+  handleReadMoreFB(e){
+    if(e.target.checked){
+      this.setState({
+        isFBMetrics:"ShowMoreFBmetrics"
+
+      })
+    }else{
+      this.setState({
+        isFBMetrics:""
+      })
+    }
+    }
+
+  handleReadMoreInsta(e){
+    if(e.target.checked){
+      this.setState({
+        isInstaMetrics:""
+
+      })
+    }else{
+      this.setState({
+        isInstaMetrics:"ShowMoreInstametrics"
+      })
+      }
+  }
+
   render() {
+
     var progress = "80";
     var textStyle = {
       'fill': '#ffffff',
@@ -141,15 +170,19 @@ export default class App extends React.Component {
     };
 
 
-
     return (
       <section className="container">
         <div id = "top">TELEOS</div>
-        <form onSubmit = {this.handleSubmit.bind(this)} >
-          <label>Facebook</label>
-          <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} /><br />
-          <label>Instagram</label>
-          <input type="checkbox"  value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+        <img src={require("../images/logo.png")} id = "logo_img"/>
+        <form onSubmit = {this.handleSubmit.bind(this)} id = "platforms">
+        <div id= "fb_checkbox">
+            <input type="checkbox" className = "checkbox" value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
+            <label>Facebook</label>
+        </div>
+        <div id = "ig_checkbox">
+            <input type="checkbox" className = "checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+            <label>Instagram</label>
+        </div>
         </form>
 
         {/* Visual Cue */}
@@ -164,10 +197,11 @@ export default class App extends React.Component {
                 trackWidth={30}
                 cornersWidth={4}
                 size={400}
-                fillColor="white"
+                fillColor="black"
                 trackColor="white"
                 progressColor="#3b5998">
-                <text x="200" y="200" style={textStyle}>Magic Sauce</text>
+                <text data-tip data-for="score" x="200" y="170" style={textStyle}>Nova Score:</text>
+                <text data-tip data-for="score" x="200" y="230" style={textStyle2}>39.39</text>
           </ProgressLabel>
           <ReactTooltip id="1" effect='solid'>
             <span>Total Video Reach</span>
@@ -203,6 +237,7 @@ export default class App extends React.Component {
           </ReactTooltip>
         </section>
 
+
         {/* Left Video */}
         <div id="left-half">
           <article>
@@ -210,7 +245,7 @@ export default class App extends React.Component {
             <div id="img">
               <iframe id="image1"></iframe>
             </div>
-
+            <div  style={{display: this.state.isFBMetrics? 'block' : 'none', top: '120px'}}></div>
             <ul id="content1"></ul>
           </article>
         </div>
@@ -222,6 +257,7 @@ export default class App extends React.Component {
             <div id="img">
               <iframe id="image2"></iframe>
             </div>
+            <div style={{display: this.state.isInstaMetrics ? 'block' : 'none', top: '150px'}}></div>
             <ul id="content2">
               <li>Total Views: 230</li>
               <li>Engagement: 44</li>
