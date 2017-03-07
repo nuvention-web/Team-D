@@ -148,6 +148,12 @@ h1 {
   width: 50%;
 }
 
+/* Metrics List */
+#content1, #content2 {
+  position: relative;
+  left: 150px;
+}
+
 path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
