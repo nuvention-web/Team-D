@@ -1,12 +1,17 @@
 import React from 'react';
 import './fbConfig.js';
+import ReactTooltip from 'react-tooltip'
+const ProgressLabel = require('react-progress-label');
 
 export default class App extends React.Component {
   constructor(props) {
 
     super(props);
 
-    this.state = {};
+    this.state = {
+      isFB: "",
+      isInsta:""
+    };
 
   }
 
@@ -32,7 +37,12 @@ export default class App extends React.Component {
             if (response && !response.error) {
               /* handle the result */
               console.log("Test video #1 response: ", response);
-              document.getElementById("title1").innerHTML = response.title;
+              if (response.title) {
+                document.getElementById("title1").innerHTML = response.title;
+              } else {
+                document.getElementById("title1").innerHTML = "Facebook";
+              }
+
               document.getElementById("image1").src = response.source;
 
               var container1 = document.getElementById("content1");
@@ -61,7 +71,11 @@ export default class App extends React.Component {
             if (response && !response.error) {
               /* handle the result */
               console.log("Test video #2 response: ", response);
-              document.getElementById("title2").innerHTML = response.title;
+              if (response.title) {
+                document.getElementById("title2").innerHTML = response.title;
+              } else {
+                document.getElementById("title2").innerHTML = "Instagram";
+              }
               document.getElementById("image2").src = response.source +"&autoplay=0";
 
               var container2 = document.getElementById("content2");
@@ -81,14 +95,98 @@ export default class App extends React.Component {
             }
           }
       );
+
     }
 
+  handleFBChange(e){
+  if(e.target.checked){
+    this.setState({
+      isFB:"Facebook",
 
+    })
+  }else{
 
+    this.setState({
+      isFB: ""
+    })
+  }
+  }
+
+  handleInstaChange(e){
+  if(e.target.checked){
+    this.setState({
+      isInsta:"Instagram"
+
+    })
+  }else{
+    this.setState({
+      isInsta:""
+    })
+  }
+  }
+  handleSubmit(e){
+    e.preventDefault()
+  }
   render() {
+    var progress = "80";
+    var textStyle = {
+      'fill': '#ffffff',
+      'textAnchor': 'middle'
+    };
+
     return (
       <section className="container">
-      <div id = "top">TELIOS</div>
+        <div id = "top">TELEOS</div>
+        <form onSubmit = {this.handleSubmit.bind(this)} >
+          <label>Facebook</label>
+          <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} /><br />
+          <label>Instagram</label>
+          <input type="checkbox"  value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+        </form>
+        <img src = "../images/logo.png" id = "logo">
+
+        {/* Visual Cue */}
+        <section id="labels">
+          <ProgressLabel
+                style={{display: this.state.isFB ? 'block' : 'none', top: "120px"}}
+                data-tip
+                data-for="1"
+                progress={progress}
+                startDegree={0}
+                progressWidth={8}
+                trackWidth={30}
+                cornersWidth={4}
+                size={400}
+                fillColor="white"
+                trackColor="white"
+                progressColor="#3b5998">
+                <text x="200" y="200" style={textStyle}>Magic Sauce</text>
+          </ProgressLabel>
+          <ReactTooltip id="1" type='warning' effect='solid'>
+            <span>facebook metrics</span>
+          </ReactTooltip>
+
+          <ProgressLabel
+                style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
+                data-tip
+                data-for="2"
+                progress={70}
+                startDegree={0}
+                progressWidth={8}
+                trackWidth={30}
+                cornersWidth={4}
+                size={340}
+                fillColor="black"
+                trackColor="white"
+                progressColor="#fbad50">
+                <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
+          </ProgressLabel>
+          <ReactTooltip id="2" type='warning' effect='solid'>
+            <span>instagram metrics</span>
+          </ReactTooltip>
+        </section>
+
+        {/* Left Video */}
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
@@ -99,6 +197,8 @@ export default class App extends React.Component {
             <ul id="content1"></ul>
           </article>
         </div>
+
+        {/* Right Video */}
         <div id="right-half">
           <article>
             <h1 id="title2"></h1>
