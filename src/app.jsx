@@ -8,7 +8,10 @@ export default class App extends React.Component {
 
     super(props);
 
-    this.state = {};
+    this.state = {
+      isFB: "",
+      isInsta:""
+    };
 
   }
 
@@ -92,10 +95,38 @@ export default class App extends React.Component {
             }
           }
       );
+
     }
 
+  handleFBChange(e){
+  if(e.target.checked){
+    this.setState({
+      isFB:"Facebook",
 
+    })
+  }else{
 
+    this.setState({
+      isFB: ""
+    })
+  }
+  }
+
+  handleInstaChange(e){
+  if(e.target.checked){
+    this.setState({
+      isInsta:"Instagram"
+
+    })
+  }else{
+    this.setState({
+      isInsta:""
+    })
+  }
+  }
+  handleSubmit(e){
+    e.preventDefault()
+  }
   render() {
     var progress = "80";
     var textStyle = {
@@ -106,48 +137,53 @@ export default class App extends React.Component {
     return (
       <section className="container">
         <div id = "top">TELEOS</div>
+        <form onSubmit = {this.handleSubmit.bind(this)} >
+          <label>Facebook</label>
+          <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} /><br />
+          <label>Instagram</label>
+          <input type="checkbox"  value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+        </form>
 
         {/* Visual Cue */}
         <section id="labels">
           <ProgressLabel
-            data-tip
-            data-for="1"
-            progress={progress}
-            startDegree={0}
-            progressWidth={8}
-            trackWidth={30}
-            cornersWidth={4}
-            size={400}
-            fillColor="white"
-            trackColor="white"
-            progressColor="#3b5998">
+                style={{display: this.state.isFB ? 'block' : 'none'}}
+                data-tip
+                data-for="1"
+                progress={progress}
+                startDegree={0}
+                progressWidth={8}
+                trackWidth={30}
+                cornersWidth={4}
+                size={400}
+                fillColor="white"
+                trackColor="white"
+                progressColor="#3b5998">
+                <text x="200" y="200" style={textStyle}>Magic Sauce</text>
           </ProgressLabel>
-          <ProgressLabel
-            data-tip
-            data-for="2"
-            progress={70}
-            startDegree={0}
-            progressWidth={8}
-            trackWidth={30}
-            cornersWidth={4}
-            size={340}
-            fillColor="black"
-            trackColor="white"
-            progressColor="#fbad50">
-            <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
-          </ProgressLabel>
-        </section>
+          <ReactTooltip id="1" type='warning' effect='solid'>
+            <span>facebook metrics</span>
+          </ReactTooltip>
 
-        {/* Hover Effect */}
-        <ReactTooltip id="1" type='warning' effect='solid'>
-          <span>facebook metrics</span>
-        </ReactTooltip>
-        <ReactTooltip id="2" type='warning' effect='solid'>
-          <span>instagram metrics</span>
-        </ReactTooltip>
-        <ReactTooltip id="score" type='warning' effect='solid'>
-          <span>instagram metrics</span>
-        </ReactTooltip>
+          <ProgressLabel
+                style={{display: this.state.isInsta ? 'block' : 'none', marginTop: "60px" }}
+                data-tip
+                data-for="2"
+                progress={70}
+                startDegree={0}
+                progressWidth={8}
+                trackWidth={30}
+                cornersWidth={4}
+                size={340}
+                fillColor="black"
+                trackColor="white"
+                progressColor="#fbad50">
+                <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
+          </ProgressLabel>
+          <ReactTooltip id="2" type='warning' effect='solid'>
+            <span>instagram metrics</span>
+          </ReactTooltip>
+        </section>
 
         {/* Left Video */}
         <div id="left-half">
