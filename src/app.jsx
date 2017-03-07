@@ -140,11 +140,11 @@ export default class App extends React.Component {
         <img src={require("../images/logo.png")} id = "logo_img"/>
         <form onSubmit = {this.handleSubmit.bind(this)} id = "platforms">
         <div id= "fb_checkbox">
-            <input type="checkbox" id = "checkbox" value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
+            <input type="checkbox" class = "checkbox" value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
             <label>Facebook</label>
         </div>
         <div id = "ig_checkbox">
-            <input type="checkbox" id = "checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+            <input type="checkbox" class = "checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
             <label>Instagram</label>
         </div>
         </form>
@@ -161,10 +161,10 @@ export default class App extends React.Component {
                 trackWidth={30}
                 cornersWidth={4}
                 size={400}
-                fillColor="white"
+                fillColor="black"
                 trackColor="white"
                 progressColor="#3b5998">
-                <text x="200" y="200" style={textStyle}>Magic Sauce</text>
+                <text x="200" y="200" style={textStyle}>Nova Score:</text>
           </ProgressLabel>
           <ReactTooltip id="1" type='warning' effect='solid'>
             <span>facebook metrics</span>
@@ -183,7 +183,7 @@ export default class App extends React.Component {
                 fillColor="black"
                 trackColor="white"
                 progressColor="#fbad50">
-                <text data-tip data-for="score" x="170" y="170" style={textStyle}>Total Score: </text>
+                <text data-tip data-for="score" x="170" y="170" style={textStyle}>Nova Score: </text>
           </ProgressLabel>
           <ReactTooltip id="2" type='warning' effect='solid'>
             <span>instagram metrics</span>
