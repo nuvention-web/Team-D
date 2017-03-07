@@ -147,7 +147,7 @@ export default class App extends React.Component {
         {/* Visual Cue */}
         <section id="labels">
           <ProgressLabel
-                style={{display: this.state.isFB ? 'block' : 'none'}}
+                style={{display: this.state.isFB ? 'block' : 'none', top: "120px"}}
                 data-tip
                 data-for="1"
                 progress={progress}
@@ -166,7 +166,7 @@ export default class App extends React.Component {
           </ReactTooltip>
 
           <ProgressLabel
-                style={{display: this.state.isInsta ? 'block' : 'none', marginTop: "60px" }}
+                style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
                 data-for="2"
                 progress={70}
