@@ -137,12 +137,16 @@ export default class App extends React.Component {
     return (
       <section className="container">
         <div id = "top">TELEOS</div>
-        <img src={require("../images/logo.png")}/>
-        <form onSubmit = {this.handleSubmit.bind(this)} >
-          <label>Facebook</label>
-          <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} /><br />
-          <label>Instagram</label>
-          <input type="checkbox"  value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+        <img src={require("../images/logo.png")} id = "logo_img"/>
+        <form onSubmit = {this.handleSubmit.bind(this)} id = "platforms">
+        <div id= "fb_checkbox">
+            <input type="checkbox" id = "checkbox" value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
+            <label>Facebook</label>
+        </div>
+        <div id = "ig_checkbox">
+            <input type="checkbox" id = "checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+            <label>Instagram</label>
+        </div>
         </form>
 
         {/* Visual Cue */}
