@@ -8,7 +8,10 @@ export default class App extends React.Component {
 
     super(props);
 
-    this.state = {};
+    this.state = {
+      isFB: "",
+      isInsta:""
+    };
 
   }
 
@@ -92,10 +95,38 @@ export default class App extends React.Component {
             }
           }
       );
+
     }
 
+handleFBChange(e){
+if(e.target.checked){
+  this.setState({
+    isFB:"Facebook",
+    
+  })
+}else{
 
+  this.setState({
+    isFB: ""
+  })
+}
+}
 
+handleInstaChange(e){
+if(e.target.checked){
+  this.setState({
+    isInsta:"Instagram"
+
+  })
+}else{
+  this.setState({
+    isInsta:""
+  })
+}
+}
+handleSubmit(e){
+  e.preventDefault()
+}
   render() {
     var progress = "80";
     var textStyle = {
@@ -106,10 +137,16 @@ export default class App extends React.Component {
     return (
       <section className="container">
         <div id = "top">TELEOS</div>
-
+        <form onSubmit = {this.handleSubmit.bind(this)} >
+        <label>Facebook</label>
+        <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} /><br />
+        <label>Instagram</label>
+        <input type="checkbox"  value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
+        </form>
         {/* Visual Cue */}
         <section id="labels">
-          <ProgressLabel
+
+       {this.state.isFB == "Facebook"? <ProgressLabel
             data-tip
             data-for="1"
             progress={progress}
@@ -123,8 +160,9 @@ export default class App extends React.Component {
             progressColor="#3b5998">
             {/*<text x="200" y="200" style={textStyle}>{'`${progress}%`'}</text>*/}
             <text x="200" y="200" style={textStyle}>Magic Sauce</text>
-          </ProgressLabel>
-          <ProgressLabel
+          </ProgressLabel> : <p></p>}
+
+          {this.state.isInsta == "Instagram"? <ProgressLabel
             data-tip
             data-for="2"
             progress={70}
@@ -137,7 +175,7 @@ export default class App extends React.Component {
             trackColor="white"
             progressColor="#fbad50">
             <text x="170" y="170" style={textStyle}>Magic Sauce</text>
-          </ProgressLabel>
+          </ProgressLabel> : <p></p>}
         </section>
 
         {/* Hover Effect */}
