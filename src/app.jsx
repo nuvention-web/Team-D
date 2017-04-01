@@ -90,18 +90,6 @@ export default class App extends React.Component {
 
   render() {
 
-    var progress = "80";
-    var textStyle = {
-      'fill': '#ffffff',
-      'textAnchor': 'middle'
-    };
-    var textStyle2 = {
-      'fill': '#FFDD57',
-      'textAnchor': 'middle',
-      'font-size': "50px"
-    };
-
-
     return (
       <section className="container">
         <Title />
@@ -109,8 +97,7 @@ export default class App extends React.Component {
         {/* Platform Selection */}
         <Platform handleSubmit={this.handleSubmit}
                   handleFBChange={this.handleFBChange}
-                  handleInstaChange={this.handleInstaChange}
-        />
+                  handleInstaChange={this.handleInstaChange}/>
 
         {/* Visual Cue */}
         <section id="labels">
