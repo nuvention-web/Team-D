@@ -1,10 +1,10 @@
 import React from 'react';
-import './fbConfig.js';
-import ReactTooltip from 'react-tooltip'
-const ProgressLabel = require('react-progress-label');
+import './lib/fbConfig.js';
+import ReactTooltip from 'react-tooltip';
+import ProgressLabel from 'react-progress-label';
 
 // Add components inside curly brackets
-import {Platform} from './components';
+import {Platform, VisualCue, Title} from './components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -182,8 +182,7 @@ export default class App extends React.Component {
 
     return (
       <section className="container">
-        <div id = "top">TELEOS</div>
-        <img src={require("../images/logo.png")} id = "logo_img"/>
+        <Title />
 
         {/* Platform Selection */}
         <Platform handleSubmit={this.handleSubmit}
@@ -193,30 +192,7 @@ export default class App extends React.Component {
 
         {/* Visual Cue */}
         <section id="labels">
-          <ProgressLabel
-                style={{display: this.state.isFB ? 'block' : 'none', top: "120px"}}
-                data-tip
-                data-for="1"
-                progress={100}
-                startDegree={0}
-                progressWidth={8}
-                trackWidth={30}
-                cornersWidth={4}
-                size={400}
-                fillColor="black"
-                trackColor="white"
-                progressColor="#3b5998">
-                <text data-tip data-for="score" x="200" y="170" style={textStyle}>Nova Score:</text>
-                <text data-tip data-for="score" x="200" y="230" style={textStyle2}>39.39</text>
-          </ProgressLabel>
-          <ReactTooltip id="1" effect='solid'>
-            <span>Total Video Reach</span>
-            <ul>
-              <li>Facebook: 1711</li>
-              <li>Instagram: 291</li>
-            </ul>
-
-          </ReactTooltip>
+          <VisualCue isFB={this.state.isFB} />
 
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
