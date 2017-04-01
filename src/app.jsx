@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 
 // Add components inside curly brackets
-import {Platform, VisualCue, Title} from './components';
+import {Platform, VisualCue, Title, VideoDisplay} from './components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -143,6 +143,10 @@ export default class App extends React.Component {
 
 
         {/* Left Video */}
+        <VideoDisplay id="left-half" display={this.state.isFBMetrics}/>
+        <VideoDisplay id="right-half" display={this.state.isInstaMetrics} />
+
+        {/*
         <div id="left-half">
           <article>
             <h1 id="title1"></h1>
@@ -153,8 +157,9 @@ export default class App extends React.Component {
             <ul id="content1"></ul>
           </article>
         </div>
+        */}
 
-        {/* Right Video */}
+        {/* Right Video
         <div id="right-half">
           <article>
             <h1 id="title2"></h1>
@@ -172,6 +177,7 @@ export default class App extends React.Component {
             </ul>
           </article>
         </div>
+        */}
       </section>
     )
   }
