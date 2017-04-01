@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './app.jsx';
+import App from './App.jsx';
 
 export default class Landing extends React.Component {
 	constructor(){
@@ -21,7 +21,7 @@ export default class Landing extends React.Component {
 
 
 	render(){
-	if (!this.state.isValid) 	
+	if (!this.state.isValid)
 	return (
 
 
@@ -33,11 +33,11 @@ export default class Landing extends React.Component {
 				<App />
 				</div>
 				)
-		}	
+		}
 	}
 
 
-	
+
 
 }
 
