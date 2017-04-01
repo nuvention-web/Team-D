@@ -114,8 +114,10 @@ export default class App extends React.Component {
 
         {/* Visual Cue */}
         <section id="labels">
-          <VisualCue isFB={this.state.isFB} />
+          <VisualCue display={this.state.isFB} />
+          <VisualCue display={this.state.isInsta} />
 
+{/*
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
@@ -139,6 +141,7 @@ export default class App extends React.Component {
               <li>Instagram: 230</li>
             </ul>
           </ReactTooltip>
+*/}
         </section>
 
 
@@ -146,38 +149,6 @@ export default class App extends React.Component {
         <VideoDisplay id="left-half" display={this.state.isFBMetrics}/>
         <VideoDisplay id="right-half" display={this.state.isInstaMetrics} />
 
-        {/*
-        <div id="left-half">
-          <article>
-            <h1 id="title1"></h1>
-            <div id="img">
-              <iframe id="image1"></iframe>
-            </div>
-            <div  style={{display: this.state.isFBMetrics? 'block' : 'none', top: '120px'}}></div>
-            <ul id="content1"></ul>
-          </article>
-        </div>
-        */}
-
-        {/* Right Video
-        <div id="right-half">
-          <article>
-            <h1 id="title2"></h1>
-            <div id="img">
-              <iframe id="image2"></iframe>
-            </div>
-            <div style={{display: this.state.isInstaMetrics ? 'block' : 'none', top: '150px'}}></div>
-            <ul id="content2">
-              <li>Total Views: 230</li>
-              <li>Engagement: 44</li>
-              <li>Total Reach: 291</li>
-              <li>Likes: 41</li>
-              <li>Comments: 2</li>
-              <li>Impressions: 450</li>
-            </ul>
-          </article>
-        </div>
-        */}
       </section>
     )
   }

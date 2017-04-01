@@ -16,7 +16,7 @@ export const VisualCue = (props) => {
   return (
     <div className="visualCue">
       <ProgressLabel
-            style={{display: props.isFB ? 'block' : 'none', top: "120px"}}
+            style={{display: props.display ? 'block' : 'none', top: "120px"}}
             data-tip
             data-for="1"
             progress={100}
