@@ -9,8 +9,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
 
-loaders.push({ 
-	test: /\.scss$/, 
+loaders.push({
+	test: /\.scss$/,
 	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
 	exclude: ['node_modules']
 });
@@ -21,7 +21,8 @@ module.exports = {
 		'./src/index.jsx', // your app's entry point
 		'./styles/index.scss'
 	],
-	devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
+	debug: true,
+	devtool: '#eval-source-map',
 	output: {
 		publicPath: '/',
 		path: path.join(__dirname, 'public'),

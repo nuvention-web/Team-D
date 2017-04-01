@@ -3,6 +3,9 @@ import './fbConfig.js';
 import ReactTooltip from 'react-tooltip'
 const ProgressLabel = require('react-progress-label');
 
+// Add components inside curly brackets
+import {Platform} from './components';
+
 export default class App extends React.Component {
   constructor(props) {
 
@@ -14,6 +17,12 @@ export default class App extends React.Component {
       isFBMetrics:"",
       isInstaMetrics:"",
     };
+
+    this.handleFBChange = this.handleFBChange.bind(this);
+    this.handleInstaChange = this.handleInstaChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReadMoreFB = this.handleReadMoreFB.bind(this);
+    this.handleReadMoreInsta = this.handleReadMoreInsta.bind(this);
 
   }
 
@@ -98,62 +107,63 @@ export default class App extends React.Component {
           }
       );
 
+  }
+
+
+  handleFBChange(e) {
+    if(e.target.checked){
+      this.setState({
+        isFB:"Facebook",
+      })
+    } else{
+
+      this.setState({
+        isFB: ""
+      })
     }
-
-
-  handleFBChange(e){
-  if(e.target.checked){
-    this.setState({
-      isFB:"Facebook",
-    })
-  }else{
-
-    this.setState({
-      isFB: ""
-    })
-  }
   }
 
-  handleInstaChange(e){
-  if(e.target.checked){
-    this.setState({
-      isInsta:"Instagram"
+  handleInstaChange(e) {
+    if(e.target.checked){
+      this.setState({
+        isInsta:"Instagram"
 
-    })
-  }else{
-    this.setState({
-      isInsta:""
-    })
+      })
+    } else{
+      this.setState({
+        isInsta:""
+      })
+    }
   }
-  }
-  handleSubmit(e){
+
+  handleSubmit(e) {
     e.preventDefault()
   }
 
-  handleReadMoreFB(e){
+  handleReadMoreFB(e) {
     if(e.target.checked){
       this.setState({
         isFBMetrics:"ShowMoreFBmetrics"
 
       })
-    }else{
+    } else {
       this.setState({
         isFBMetrics:""
       })
     }
-    }
+  }
 
-  handleReadMoreInsta(e){
+  handleReadMoreInsta(e) {
     if(e.target.checked){
       this.setState({
         isInstaMetrics:""
 
       })
-    }else{
+    } else {
       this.setState({
-        isInstaMetrics:"ShowMoreInstametrics"
+      isInstaMetrics:"ShowMoreInstametrics"
       })
-      }
+    }
   }
 
   render() {
@@ -174,16 +184,12 @@ export default class App extends React.Component {
       <section className="container">
         <div id = "top">TELEOS</div>
         <img src={require("../images/logo.png")} id = "logo_img"/>
-        <form onSubmit = {this.handleSubmit.bind(this)} id = "platforms">
-        <div id= "fb_checkbox">
-            <input type="checkbox"  value = "Facebook" onChange = {this.handleFBChange.bind(this)} />
-            <label>Facebook</label>
-        </div>
-        <div id = "ig_checkbox">
-            <input type="checkbox" value = "Instagram" onChange = {this.handleInstaChange.bind(this)} />
-            <label>Instagram</label>
-        </div>
-        </form>
+
+        {/* Platform Selection */}
+        <Platform handleSubmit={this.handleSubmit}
+                  handleFBChange={this.handleFBChange}
+                  handleInstaChange={this.handleInstaChange}
+        />
 
         {/* Visual Cue */}
         <section id="labels">
