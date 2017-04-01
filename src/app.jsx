@@ -16,7 +16,7 @@ export default class App extends React.Component {
       isFB: "",
       isInsta:"",
       isFBMetrics:"",
-      isInstaMetrics:"",
+      isInstaMetrics:""
     };
 
     this.handleFBChange = this.handleFBChange.bind(this);
@@ -24,13 +24,24 @@ export default class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReadMoreFB = this.handleReadMoreFB.bind(this);
     this.handleReadMoreInsta = this.handleReadMoreInsta.bind(this);
+    this.handleFetchedData = this.handleFetchedData.bind(this);
 
   }
 
   componentDidMount() {
-    facebookAPI();
+    var promised = facebookAPI();
+    promised.then(res => {
+      this.setState({res: res.video_insights.data})
+      console.log("facebookData in App: ", this.state);
+    }).catch((err) => {
+      console.log(err);
+    });
+
   }
 
+  handleFetchedData(res) {
+    this.setState({res});
+  }
 
   handleFBChange(e) {
     if(e.target.checked){
@@ -101,8 +112,8 @@ export default class App extends React.Component {
 
         {/* Visual Cue */}
         <section id="labels">
-          <VisualCue display={this.state.isFB} />
-          <VisualCue display={this.state.isInsta} />
+          <VisualCue display={this.state.isFB} data={this.state.res} />
+          {/* <VisualCue display={this.state.isInsta} /> */}
 
 {/*
           <ProgressLabel
