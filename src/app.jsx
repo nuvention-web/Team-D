@@ -112,7 +112,9 @@ export default class App extends React.Component {
                   handleInstaChange={this.handleInstaChange}
         />
 
-        {/* Visual Cue */}
+
+
+        {/* Temporary
         <section id="labels">
           <VisualCue isFB={this.state.isFB} />
 
@@ -139,6 +141,7 @@ export default class App extends React.Component {
               <li>Instagram: 230</li>
             </ul>
           </ReactTooltip>
+        */}
         </section>
 
 
