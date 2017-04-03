@@ -13,6 +13,9 @@ const textStyle2 = {
 };
 
 export const VisualCue = (props) => {
+  const data = props.data;
+  // const NovaScore = (data[0].values[0].value / )
+
   return (
     <div className="visualCue">
       <ProgressLabel
