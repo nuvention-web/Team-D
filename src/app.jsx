@@ -141,9 +141,9 @@ export default class App extends React.Component {
               <li>Instagram: 230</li>
             </ul>
           </ReactTooltip>
-        */}
-        </section>
 
+        </section>
+        */}
 
         {/* Left Video */}
         <div id="left-half">
