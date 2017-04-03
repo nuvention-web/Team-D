@@ -115,9 +115,9 @@ export default class App extends React.Component {
 
         <section id="labels">
           <VisualCue display={this.state.isFB} data={this.state.res} />
-          {/* <VisualCue display={this.state.isInsta} /> */}
+{/*}
+          <VisualCue display={this.state.isInsta} />
 
-{/*
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
@@ -141,20 +141,16 @@ export default class App extends React.Component {
               <li>Instagram: 230</li>
             </ul>
           </ReactTooltip>
-<<<<<<< HEAD
-||||||| merged common ancestors
-        </section>
-=======
-
-        */}
+*/}
 
         </section>
 
 
         {/* Left Video */}
         <VideoDisplay id="left-half" display={this.state.isFBMetrics}/>
+{/*
         <VideoDisplay id="right-half" display={this.state.isInstaMetrics} />
-
+*/}
       </section>
     )
   }
