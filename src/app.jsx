@@ -110,12 +110,14 @@ export default class App extends React.Component {
                   handleFBChange={this.handleFBChange}
                   handleInstaChange={this.handleInstaChange}/>
 
-        {/* Visual Cue */}
+
+
+
         <section id="labels">
           <VisualCue display={this.state.isFB} data={this.state.res} />
-          {/* <VisualCue display={this.state.isInsta} /> */}
+{/*}
+          <VisualCue display={this.state.isInsta} />
 
-{/*
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
@@ -140,13 +142,15 @@ export default class App extends React.Component {
             </ul>
           </ReactTooltip>
 */}
+
         </section>
 
 
         {/* Left Video */}
         <VideoDisplay id="left-half" display={this.state.isFBMetrics}/>
+{/*
         <VideoDisplay id="right-half" display={this.state.isInstaMetrics} />
-
+*/}
       </section>
     )
   }
