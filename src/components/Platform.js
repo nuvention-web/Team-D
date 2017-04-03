@@ -9,7 +9,7 @@ export const Platform = (props) => {
       </div>
       <div id = "ig_checkbox">
           <input type="checkbox" value = "Instagram" onChange = {props.handleInstaChange} />
-          <label>Instagram</label>
+          <label>Instagram (not functional)</label>
       </div>
     </form>
   )
