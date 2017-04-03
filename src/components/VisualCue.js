@@ -16,7 +16,7 @@ export const VisualCue = (props) => {
   return (
     <div className="visualCue">
       <ProgressLabel
-            style={{display: props.isFB ? 'block' : 'none', top: "120px"}}
+            style={{display: props.display ? 'block' : 'none', top: "120px"}}
             data-tip
             data-for="1"
             progress={100}
@@ -35,8 +35,11 @@ export const VisualCue = (props) => {
       <ReactTooltip id="1" effect='solid'>
         <span>Total Video Reach</span>
         <ul>
-          <li>Facebook: 1711</li>
-          <li>Instagram: 291</li>
+          {props.data &&
+            <li>Facebook: {props.data[0].values[0].value}</li>
+          }
+
+          <li>Instagram: to be updated </li>
         </ul>
       </ReactTooltip>
     </div>

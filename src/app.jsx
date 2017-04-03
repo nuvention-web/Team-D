@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 
 // Add components inside curly brackets
-import {Platform, VisualCue, Title} from './components';
+import {Platform, VisualCue, Title, VideoDisplay} from './components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
       isFB: "",
       isInsta:"",
       isFBMetrics:"",
-      isInstaMetrics:"",
+      isInstaMetrics:""
     };
 
     this.handleFBChange = this.handleFBChange.bind(this);
@@ -24,13 +24,24 @@ export default class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReadMoreFB = this.handleReadMoreFB.bind(this);
     this.handleReadMoreInsta = this.handleReadMoreInsta.bind(this);
+    this.handleFetchedData = this.handleFetchedData.bind(this);
 
   }
 
   componentDidMount() {
-    facebookAPI();
+    var promised = facebookAPI();
+    promised.then(res => {
+      this.setState({res: res.video_insights.data})
+      console.log("facebookData in App: ", this.state);
+    }).catch((err) => {
+      console.log(err);
+    });
+
   }
 
+  handleFetchedData(res) {
+    this.setState({res});
+  }
 
   handleFBChange(e) {
     if(e.target.checked){
@@ -90,18 +101,6 @@ export default class App extends React.Component {
 
   render() {
 
-    var progress = "80";
-    var textStyle = {
-      'fill': '#ffffff',
-      'textAnchor': 'middle'
-    };
-    var textStyle2 = {
-      'fill': '#FFDD57',
-      'textAnchor': 'middle',
-      'font-size': "50px"
-    };
-
-
     return (
       <section className="container">
         <Title />
@@ -109,15 +108,16 @@ export default class App extends React.Component {
         {/* Platform Selection */}
         <Platform handleSubmit={this.handleSubmit}
                   handleFBChange={this.handleFBChange}
-                  handleInstaChange={this.handleInstaChange}
-        />
+                  handleInstaChange={this.handleInstaChange}/>
 
 
 
-        {/* Temporary
+
         <section id="labels">
-          <VisualCue isFB={this.state.isFB} />
+          <VisualCue display={this.state.isFB} data={this.state.res} />
+          {/* <VisualCue display={this.state.isInsta} /> */}
 
+{/*
           <ProgressLabel
                 style={{display: this.state.isInsta ? 'block' : 'none', top: "150px" }}
                 data-tip
@@ -141,40 +141,20 @@ export default class App extends React.Component {
               <li>Instagram: 230</li>
             </ul>
           </ReactTooltip>
-
+<<<<<<< HEAD
+||||||| merged common ancestors
         </section>
+=======
+
         */}
 
-        {/* Left Video */}
-        <div id="left-half">
-          <article>
-            <h1 id="title1"></h1>
-            <div id="img">
-              <iframe id="image1"></iframe>
-            </div>
-            <div  style={{display: this.state.isFBMetrics? 'block' : 'none', top: '120px'}}></div>
-            <ul id="content1"></ul>
-          </article>
-        </div>
+        </section>
 
-        {/* Right Video */}
-        <div id="right-half">
-          <article>
-            <h1 id="title2"></h1>
-            <div id="img">
-              <iframe id="image2"></iframe>
-            </div>
-            <div style={{display: this.state.isInstaMetrics ? 'block' : 'none', top: '150px'}}></div>
-            <ul id="content2">
-              <li>Total Views: 230</li>
-              <li>Engagement: 44</li>
-              <li>Total Reach: 291</li>
-              <li>Likes: 41</li>
-              <li>Comments: 2</li>
-              <li>Impressions: 450</li>
-            </ul>
-          </article>
-        </div>
+
+        {/* Left Video */}
+        <VideoDisplay id="left-half" display={this.state.isFBMetrics}/>
+        <VideoDisplay id="right-half" display={this.state.isInstaMetrics} />
+
       </section>
     )
   }
