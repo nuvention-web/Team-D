@@ -13,8 +13,6 @@ const textStyle2 = {
 };
 
 export const VisualCue = (props) => {
-  const data = props.data;
-  // const NovaScore = (data[0].values[0].value / )
 
   return (
     <div className="visualCue">
@@ -32,17 +30,19 @@ export const VisualCue = (props) => {
             trackColor="white"
             progressColor="#3b5998">
             <text data-tip data-for="score" x="200" y="170" style={textStyle}>Nova Score:</text>
-            <text data-tip data-for="score" x="200" y="230" style={textStyle2}>39.39</text>
+            <text data-tip data-for="score" x="200" y="230" style={textStyle2}>{props.data && (props.data[0].values[0].value / props.data[13].values[0].value * 100).toFixed(2)}</text>
       </ProgressLabel>
 
       <ReactTooltip id="1" effect='solid'>
-        <span>Total Video Reach</span>
+        <span>Facebook</span>
         <ul>
           {props.data &&
-            <li>Facebook: {props.data[0].values[0].value}</li>
+            <div>
+              <li>Total Video Count: {props.data[0].values[0].value}</li>
+              <li>Lifetime Play Count: {props.data[13].values[0].value}</li>
+            </div>
           }
 
-          <li>Instagram: to be updated </li>
         </ul>
       </ReactTooltip>
     </div>
