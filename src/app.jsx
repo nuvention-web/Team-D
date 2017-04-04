@@ -13,8 +13,8 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      isFB: "",
-      isInsta:"",
+      isFB: false,
+      isInsta: false,
       isFBMetrics:"",
       isInstaMetrics:""
     };
@@ -46,12 +46,12 @@ export default class App extends React.Component {
   handleFBChange(e) {
     if(e.target.checked){
       this.setState({
-        isFB:"Facebook",
+        isFB: true
       })
     } else{
 
       this.setState({
-        isFB: ""
+        isFB: false
       })
     }
   }
@@ -59,12 +59,12 @@ export default class App extends React.Component {
   handleInstaChange(e) {
     if(e.target.checked){
       this.setState({
-        isInsta:"Instagram"
+        isInsta: true
 
       })
     } else{
       this.setState({
-        isInsta:""
+        isInsta: false
       })
     }
   }
