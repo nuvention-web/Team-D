@@ -35,7 +35,7 @@ export class VisualCue extends React.Component {
               trackColor="white"
               progressColor="#3b5998">
               <text data-tip data-for="score" x="200" y="170" style={textStyle}>Nova Score:</text>
-              <text data-tip data-for="score" x="200" y="230" style={textStyle2}>{this.props.data && (this.props.data[0].values[0].value / this.props.data[13].values[0].value * 100).toFixed(2)}</text>
+              <text data-tip data-for="score" x="200" y="230" style={textStyle2}>{this.props.data && this.props.data[0].values[0].value}</text>
         </ProgressLabel>
 
         <ReactTooltip id="1" effect='solid'>
