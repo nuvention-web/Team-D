@@ -5,8 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-loaders.push({ 
-	test: /\.scss$/, 
+loaders.push({
+	test: /\.scss$/,
 	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
 	exclude: ['node_modules']
 });
@@ -19,7 +19,7 @@ module.exports = {
 	output: {
 		publicPath: '/',
 		path: path.join(__dirname, 'public'),
-		filename: '[chunkhash].js'
+		filename: 'bundle.js'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
