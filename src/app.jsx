@@ -1,5 +1,5 @@
 import React from 'react';
-import './lib/firebaseConfig.js';
+// import './lib/firebaseConfig.js';
 import {facebookAPI} from './lib/apiConfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
