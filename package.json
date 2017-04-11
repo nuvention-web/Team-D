@@ -7,6 +7,7 @@
   "description": "React Webpack Babel Starter Kit",
   "main": "''",
   "scripts": {
+    "postinstall": "webpack -p --config ./webpack.production.config.js --progress",
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
     "start": "webpack-dev-server --progress --profile --colors",
     "lint": "eslint --ext js --ext jsx src || exit 0",
