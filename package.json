@@ -1,6 +1,9 @@
 {
   "name": "teleos",
   "version": "0.0.3",
+  "engines": {
+    "node": "7.7.1"
+  }
   "description": "React Webpack Babel Starter Kit",
   "main": "''",
   "scripts": {
