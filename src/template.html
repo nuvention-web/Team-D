@@ -117,7 +117,7 @@
   <!-- <button onclick="trySampleRequest();">Try sample request</button> -->
   <script>
     var GoogleAuth;
-    var SCOPE = 'https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/youtube';
+    var SCOPE = 'https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/yt-analytics-monetary.readonly https://www.googleapis.com/auth/yt-analytics.readonly';
     function handleClientLoad() {
       // Load the API's client and auth2 modules.
       // Call the initClient function after the modules load.
@@ -154,6 +154,19 @@
         });
         $('#revoke-access-button').click(function() {
           revokeAccess();
+        });
+
+        // using Lenny's Youtube Channel
+
+
+        var request = gapi.client.request({
+          'method': 'GET',
+          'path': '/youtube/analytics/v1/reports',
+          'params': {'ids': 'channel==MINE', 'start-date': '2016-05-01', 'end-date': '2016-06-30', 'metrics': 'views'}
+        });
+        // Execute the API request.
+        request.execute(function(response) {
+          console.log(response);
         });
       });
     }
