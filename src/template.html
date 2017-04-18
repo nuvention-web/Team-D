@@ -157,16 +157,19 @@
         });
 
         // using Lenny's Youtube Channel
-        var params = {
+        var lenny_params = {
           "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
           "start-date": "2017-04-14",
           "end-date": "2017-04-17",
+          "metrics": "views,estimatedMinutesWatched",
+          "dimensions": "month",
+          "filters": "video==2V68FkClADc"
         }
 
         var request = gapi.client.request({
           'method': 'GET',
           'path': '/youtube/analytics/v1/reports',
-          'params': {'ids': 'channel==MINE', 'start-date': '2016-05-01', 'end-date': '2016-06-30', 'metrics': 'views'}
+          'params': lenny_params
         });
         // Execute the API request.
         request.execute(function(response) {
