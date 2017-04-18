@@ -24,7 +24,7 @@ body {
   padding: 0px;
   background: $dark-blue;
   // text-align: center;
-  text-shadow: 0 2px 2px #b6701e;
+  //text-shadow: 0 2px 2px #b6701e;
 
 
 }
@@ -36,31 +36,38 @@ height: 100%;
 }
 
 #top{
-  text-align: center;
-  font-size: 4rem;
   padding: 20px;
   width: 100%;
-  margin-top: 20px;
+  display: inline-block;
+  #title{
+    font-size: 1.5rem;
+    margin: 0 0.25rem 0;
+    text-align: left;
+    margin-top: 1%;
+    margin-left: 7%;
+    position: fixed;
+  }
+  #logo_img{
+  position: fixed;
+  }
+  #top_divider {
+    margin-top: 7%;
+  }
 }
 
-#logo_img{
-  position: absolute;
-  margin-left: 70%;
-  margin-top: 25%;
-}
-#platforms{
+#views{
+  display: inline-block;
+  h1{
+    font-size: 1.5rem;
+    text-align: left;
+    margin-left: 5%;
+  }
+  #platforms{
     font-size: 50px;
-    margin-left: 10%;
-    margin-top: 5%;
-    font-size: 2rem;
-    display: block
-}
-.checkbox{
-    display: block;
-    font-size: 50px;
-}
-h1 {
-  text-align: center;
+    //margin-left: 15%;
+    font-size: 1rem;
+    display: inline;
+  }
 }
 
 #img {
@@ -81,8 +88,8 @@ h1 {
 
 #labels svg {
   position: absolute;
-  width: 400px;
-  left: 50%;
+  width: 150px;
+  left: 25%;
   margin-left: -200px;
   margin-top: 5%;
 }
@@ -96,14 +103,14 @@ text:nth-child(2) {
 
 // Infographics
 #labels {
-  height: 500px;
+  height: 200px;
   width: 100%
 }
 
 #labels svg {
   position: absolute;
-  width: 400px;
-  left: 50%;
+  //width: 400px;
+  left: 25%;
   margin-left: -200px;
   margin-top: 5%;
 }
@@ -117,7 +124,7 @@ iframe {
   margin-left: -175px;
   position: relative;
   width: 350px;
-  height: 400px;
+  height: 200px;
 }
 
 section {
