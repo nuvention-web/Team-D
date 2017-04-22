@@ -3,6 +3,7 @@ import React from 'react';
 import {facebookAPI} from './lib/apiConfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
+import Sidebar from 'react-sidebar';
 
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
@@ -17,7 +18,8 @@ export default class App extends React.Component {
       isFB: false,
       isInsta: false,
       isFBMetrics:"",
-      isInstaMetrics:""
+      isInstaMetrics:"",
+      sidebarOpen: true
     };
 
     this.handleFBChange = this.handleFBChange.bind(this);
@@ -26,6 +28,7 @@ export default class App extends React.Component {
     this.handleReadMoreFB = this.handleReadMoreFB.bind(this);
     this.handleReadMoreInsta = this.handleReadMoreInsta.bind(this);
     this.handleFetchedData = this.handleFetchedData.bind(this);
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
 
   }
 
@@ -100,10 +103,21 @@ export default class App extends React.Component {
     }
   }
 
+  onSetSidebarOpen(open) {
+     this.setState({sidebarOpen: open});
+   }
+
   render() {
+    var sidebarContent = <b>Sidebar content</b>;
 
     return (
       <section className="container">
+        {/*<Sidebar sidebar={sidebarContent}
+                 open={this.state.sidebarOpen}
+                 onSetOpen={this.onSetSidebarOpen}>
+                 docked={true}
+          <b>Main content</b>
+        </Sidebar>*/}
         <Header />
         <Section />
         <Section />
