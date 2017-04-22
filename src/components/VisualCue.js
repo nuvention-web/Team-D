@@ -30,7 +30,7 @@ export class VisualCue extends React.Component {
               progressWidth={8}
               trackWidth={30}
               cornersWidth={4}
-              size={400}
+              size={150}
               fillColor="black"
               trackColor="white"
               progressColor="#3b5998">
