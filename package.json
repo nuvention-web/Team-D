@@ -26,6 +26,7 @@
     "node-sass": "^4.3.0",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
+    "react-chartjs": "^0.8.0",
     "react-dom": "^15.4.2",
     "react-progress-label": "^1.2.1",
     "react-sidebar": "^2.3.2",
