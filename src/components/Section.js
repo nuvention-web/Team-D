@@ -8,10 +8,14 @@ export class Section extends React.Component {
   }
 
   render() {
+    const title = this.props.title;
+
     return (
       <div>
-        <Title />
-        <StackedBars />
+        <Title title={title} />
+        <StackedBars title="DAILY" />
+        <StackedBars title="WEEKLY"/>
+        <StackedBars title="MONTHLY"/>
       </div>
     )
   }

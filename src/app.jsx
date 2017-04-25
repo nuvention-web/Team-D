@@ -119,10 +119,10 @@ export default class App extends React.Component {
           <b>Main content</b>
         </Sidebar>*/}
         <Header />
-        <Section />
-        <Section />
-        <Section />
-        <Section />
+        <Section title="Views" />
+        <Section title="Interactions"/>
+        <Section title="Top Performers"/>
+        <Section title="Sources"/>
       </section>
     )
   }
