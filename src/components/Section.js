@@ -9,14 +9,33 @@ export class Section extends React.Component {
 
   render() {
     const title = this.props.title;
+    const data = {};
 
-    return (
-      <div>
-        <Title title={title} />
-        <StackedBars title="DAILY" />
-        <StackedBars title="WEEKLY"/>
-        <StackedBars title="MONTHLY"/>
-      </div>
-    )
+    if (this.props.isTopPerformers) {
+      return (
+        <div>
+          <Title title={title} />
+          <StackedBars title="FACEBOOK" />
+          <StackedBars title="OOYALA" />
+          <StackedBars title="YOUTUBE" />
+        </div>
+      );
+    } else if (this.props.isSources) {
+      return (
+        <div>
+          <Title title={title} />
+          <StackedBars data={data} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Title title={title} />
+          <StackedBars title="DAILY" />
+          <StackedBars title="WEEKLY" />
+          <StackedBars title="MONTHLY" />
+        </div>
+      );
+    }
   }
 }

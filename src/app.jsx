@@ -121,8 +121,8 @@ export default class App extends React.Component {
         <Header />
         <Section title="Views" />
         <Section title="Interactions"/>
-        <Section title="Top Performers"/>
-        <Section title="Sources"/>
+        <Section title="Top Performers" isTopPerformers={true}/>
+        <Section title="Sources" isSources={true}/>
       </section>
     )
   }
