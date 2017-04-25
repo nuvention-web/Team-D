@@ -1,6 +1,9 @@
 import React from 'react';
 import {Title} from './Title';
 import {StackedBars} from './StackedBars';
+import {Doughnut} from 'react-chartjs-2';
+
+
 
 export class Section extends React.Component {
   constructor(props) {
@@ -9,7 +12,28 @@ export class Section extends React.Component {
 
   render() {
     const title = this.props.title;
-    const data = {};
+    let data = {};
+    let paid_or_organic = {
+        labels: [
+            "Red",
+            "Blue",
+            "Yellow"
+        ],
+        datasets: [
+            {
+                data: [300, 50, 100],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+    };
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
@@ -21,6 +45,7 @@ export class Section extends React.Component {
       return (
         <div>
           <Title title={title} />
+          <Doughnut data={paid_or_organic} />
         </div>
       );
     } else if (this.props.title == "DEVICES") {
