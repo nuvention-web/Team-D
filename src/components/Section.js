@@ -52,6 +52,7 @@ export class Section extends React.Component {
       return (
         <div className = "devices">
           <Title title={title} />
+          <Doughnut data={paid_or_organic} />
         </div>
       );
     }
