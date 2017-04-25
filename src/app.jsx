@@ -119,9 +119,11 @@ export default class App extends React.Component {
           <b>Main content</b>
         </Sidebar>*/}
         <Header />
-        <Section title="TOP PERFORMERS" isTopPerformers={true}/>
-        <Section title="PAID vs. ORGANIC" isSources={true}/>
-        <Section title="DEVICES" isSources={true}/>
+        <div className="top">
+          <Section title="TOP PERFORMERS"/>
+          <Section title="PAID vs. ORGANIC"/>
+          <Section title="DEVICES"/>
+        </div>
         <Section title="VIEWS" />
         <Section title="INTERACTIONS"/>
       </section>

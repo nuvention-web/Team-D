@@ -7,8 +7,10 @@ export class StackedBars extends React.Component {
 
   render() {
     return (
-      <h2>{this.props.title}</h2>
-
+    <div>
+      <div>{this.props.title}</div>
+      <div> hi!!</div>
+     </div>
     )
   }
 }

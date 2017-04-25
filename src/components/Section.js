@@ -13,13 +13,13 @@ export class Section extends React.Component {
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
-        <div className = "top_performers">
+        <div className="top_performers">
           <Title title={title} />
         </div>
       );
     } else if (this.props.title == "PAID vs. ORGANIC") {
       return (
-        <div>
+        <div className = "paid_vs_organic">
           <Title title={title} />
         </div>
       );
@@ -34,9 +34,11 @@ export class Section extends React.Component {
       return (
         <div className = "views_interactions">
           <Title title={title} />
-          <StackedBars title="DAILY" />
-          <StackedBars title="WEEKLY" />
-          <StackedBars title="MONTHLY" />
+          <div className="stacked_bars">
+            <StackedBars title="DAILY" />
+            <StackedBars title="WEEKLY" />
+            <StackedBars title="MONTHLY" />
+          </div>
         </div>
       );
     }
