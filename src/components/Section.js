@@ -11,25 +11,28 @@ export class Section extends React.Component {
     const title = this.props.title;
     const data = {};
 
-    if (this.props.isTopPerformers) {
+    if (this.props.title == "TOP PERFORMERS") {
+      return (
+        <div className = "top_performers">
+          <Title title={title} />
+        </div>
+      );
+    } else if (this.props.title == "PAID vs. ORGANIC") {
       return (
         <div>
           <Title title={title} />
-          <StackedBars title="FACEBOOK" />
-          <StackedBars title="OOYALA" />
-          <StackedBars title="YOUTUBE" />
         </div>
       );
-    } else if (this.props.isSources) {
+    } else if (this.props.title == "DEVICES") {
       return (
-        <div>
+        <div className = "devices">
           <Title title={title} />
-          <StackedBars data={data} />
         </div>
       );
-    } else {
+    }
+    else {
       return (
-        <div>
+        <div className = "views_interactions">
           <Title title={title} />
           <StackedBars title="DAILY" />
           <StackedBars title="WEEKLY" />
