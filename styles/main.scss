@@ -83,13 +83,18 @@ height: 100%;
   float: left;
   //display: inline;
 }
+.bar{
+  width: 30%;
+  float: left;
+}
 .stacked_bars{
-  //display: inline-block;
-  //float: left;
+  display: inline;
+  text-align: center;
 }
 .views_interactions{
   display: block;
   width: 100%;
+  margin-top: 15%;
 }
 
 //// old stuff
