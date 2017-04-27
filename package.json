@@ -31,6 +31,7 @@
     "react-chartjs-2": "^2.0.5",
     "react-dom": "^15.4.2",
     "react-progress-label": "^1.2.1",
+    "react-shapes": "^0.1.0",
     "react-sidebar": "^2.3.2",
     "react-tooltip": "^3.2.7",
     "sass-loader": "^4.0.2"

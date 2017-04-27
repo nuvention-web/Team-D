@@ -4,7 +4,6 @@ import {StackedBars} from './StackedBars';
 import {Doughnut} from 'react-chartjs-2';
 
 
-
 export class Section extends React.Component {
   constructor(props) {
     super(props);
@@ -15,22 +14,19 @@ export class Section extends React.Component {
     let data = {};
     let paid_or_organic = {
         labels: [
-            "Red",
-            "Blue",
-            "Yellow"
+            "Paid",
+            "Organic",
         ],
         datasets: [
             {
-                data: [300, 50, 100],
+                data: [300, 50],
                 backgroundColor: [
                     "#FF6384",
                     "#36A2EB",
-                    "#FFCE56"
                 ],
                 hoverBackgroundColor: [
                     "#FF6384",
                     "#36A2EB",
-                    "#FFCE56"
                 ]
             }]
     };
@@ -59,7 +55,7 @@ export class Section extends React.Component {
     else {
       return (
         <div className = "views_interactions">
-          <Title title={title} />
+          <Title title={title} />        
           <div className="stacked_bars">
             <StackedBars title="DAILY" />
             <StackedBars title="WEEKLY" />
