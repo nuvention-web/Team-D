@@ -1,13 +1,13 @@
-const ACCESS_TOKEN = "EAAR6flJrG9wBAOUYlIqDAGRs4yZBU6fTUQJZC8dxOkqvnjZADkLExaD7RhGtPRbncEtwPdMclrSPUayvq3p3HzYomVrvvmjGRqC2hg794zZAjevjMudFsscoFbmV1FcSq8O1ZALVDPSTQkgKBgUsKpvpIsA7491sZD";
+const ACCESS_TOKEN = "EAAaZArlfeNZAsBAFNNNecBvuarnxxuGBP9G2hDGxnUpPB9QGCIFve6i5ZAmaIH8g9ZCSNMSRldfWo9nVAXnCcQhR4sTUcq8SZCGgMwFoORi5JFCql8nnaPJkAaDU2vZBs3tERg1JKbizJhuk80fT084rjm6HjPrLAZD";
 
 // Test Video # 1 ID
-const TEST1 = "10154546043703533";
+//const TEST1 = "10154546043703533";
 // Test Video #2 ID
-const TEST2 = "10154564632168533";
+const TEST2 = "1446916112038085";
 // Facebook Page Id
-const PAGE = "8947243532";
+const PAGE = "141553642574345";
 const params = {
-    fields: "video_insights{title,values},title,picture,source",
+    fields: "id",
     access_token: ACCESS_TOKEN
 }
 
@@ -21,15 +21,15 @@ export var facebookAPI = () => {
           if (response && !response.error) {
             /* handle the result */
             console.log("Test video #1 response: ", response);
-            if (response.title) {
-              document.getElementById("title1").innerHTML = response.title;
+            if (response.id) {
+              document.getElementById("title1").innerHTML = response.id;
             } else {
               document.getElementById("title1").innerHTML = "Facebook";
             }
 
-            document.getElementById("image1").src = response.source;
+            document.getElementById("image1").src = response.id;
 
-            var container1 = document.getElementById("content1");
+            /*var container1 = document.getElementById("content1");
             var video_insights = response.video_insights.data;
             for (var i = 0; i < video_insights.length; i++) {
               let li = document.createElement('li');
@@ -41,7 +41,7 @@ export var facebookAPI = () => {
               li.innerHTML = value;
               container1.appendChild(li);
             }
-
+*/
           resolve(response);
 
           } else {
