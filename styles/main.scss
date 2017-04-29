@@ -24,15 +24,13 @@ body {
   padding: 0px;
   background: $dark-blue;
   width: 100%;
-  //display: inline-block;
-  // text-align: center;
-  //text-shadow: 0 2px 2px #b6701e;
 }
 h1 {
   font-size: 1.5rem;
 }
 h2{
-  font-size: 0.75rem;
+  font-size: 1rem;
+  font-weight: 100;
   display: inline-block;
 }
 
@@ -42,6 +40,7 @@ width: 100%;
 height: 100%;
 }
 
+// TOP SECTION
 #top{
   padding: 20px;
   width: 100%;
@@ -61,6 +60,7 @@ height: 100%;
   }
 }
 
+//SECTION COMPONENT
 .top{
   display: inline-block;
   width: 100%;
@@ -68,80 +68,65 @@ height: 100%;
 .top_performers{
   width: 50%;
   float: left;
-  //position: absolute;
-  //display: inline;
 }
 .paid_vs_organic{
-  //margin-left: 50%;
   width: 25%;
   float: left;
-  //display: inline;
 }
 .devices{
-  //margin-left: 75%;
   width: 25%;
   float: left;
-  //display: inline;
-}
-.bar{
-  width: 30%;
-  float: left;
-}
-.stacked_bars{
-  display: inline;
-  text-align: center;
 }
 .views_interactions{
   display: block;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 20%;
 }
-// Megan CSS 4.27.27
-.current_bar{
-    background-color: #a4e3ff;
-    height: 15px;
-    width: 80px;
-    margin-left: 10%;
-    margin-top: 10%;
-}
-.last_bar{
-    background-color: #83bff0;
-    height: 15px;
-    width: 120px;
-    margin-left: 10%;
-    margin-top: 2%;
-}
-.best_bar{
-    background-color: #5982a4;
-    height: 15px;
-    width: 160px;
-    margin-left: 10%;
-    margin-top: 2%;
+.views_interactions_content{
+  display: inline;
 }
 
+// DONUT CSS
+.donut{
+  width: 25%;
+  display: inline;
+  float: left;
+}
+.views_interactions_content > canvas{
+  display: inline;
+  float: left;
+}
 
-// Lenny's CSS (04.25.17)
+// STACKED BARS COMPONENT
+.stacked_bars{
+  margin-left: 25%;
+  margin-top: 5%;
+}
 .stacked_bars > div {
   float: left;
   width: 33%;
+  text-align: left;
+  line-height: 25%;
+}
+.bar_chart{
+  margin-left: 5%;
+}
+.bar_label{
+  width: 25%;
+  font-size: 1rem;
+  font-weight: 100;
+  display: inline-block;
+  text-align: right;
+}
+.bar{
+    height: 15px;
+    margin-left: 2%;
+    margin-top: 2%;
+    display:inline-block;
 }
 
-//// old stuff
-// #views{
-//   display: inline-block;
-//   h1{
-//     font-size: 1.5rem;
-//     text-align: left;
-//     margin-left: 5%;
-//   }
-//   #platforms{
-//     font-size: 50px;
-//     //margin-left: 15%;
-//     font-size: 1rem;
-//     display: inline;
-//   }
-// }
 
+// 
 #img {
   width: 100%;
   height: 400px;

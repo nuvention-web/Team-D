@@ -5,6 +5,7 @@ export class Title extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
       <h1>{this.props.title}</h1>

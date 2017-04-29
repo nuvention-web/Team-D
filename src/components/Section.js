@@ -31,6 +31,7 @@ export class Section extends React.Component {
             }]
     };
 
+
     if (this.props.title == "TOP PERFORMERS") {
       return (
         <div className="top_performers">
@@ -55,12 +56,18 @@ export class Section extends React.Component {
     else {
       return (
         <div className = "views_interactions">
-          <Title title={title} />        
-          <div className="stacked_bars">
-            <StackedBars title="DAILY" />
-            <StackedBars title="WEEKLY" />
-            <StackedBars title="MONTHLY" />
+          <Title title={title} />
+          <div className="views_interactions_content">
+            <div className="donut">
+              <Doughnut data={paid_or_organic} />  
+            </div>      
+            <div className="stacked_bars">
+              <StackedBars title="DAILY" id={title}/>
+              <StackedBars title="WEEKLY" id={title}/>
+              <StackedBars title="MONTHLY" id={title}/>
+            </div>
           </div>
+          <hr></hr>
         </div>
       );
     }
