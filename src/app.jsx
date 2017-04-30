@@ -4,7 +4,7 @@ import {facebookAPI} from './lib/apiConfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
-
+import './lib/YTconfig.js';
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
 import {Header, Section, Title, StackedBars} from './components';

@@ -19,6 +19,8 @@
 
   <!-- Youtube API Setup -->
   <script>
+  window.youtube = {};
+
   var YOUR_CLIENT_ID = '266495940695-t8tqr84adihae57irvgpj1bd8fsgsafm.apps.googleusercontent.com';
   var YOUR_REDIRECT_URI = 'http://localhost:8888';
   var queryString = location.hash.substring(1);
@@ -114,7 +116,6 @@
     }
   }
   </script>
-  <!-- <button onclick="trySampleRequest();">Try sample request</button> -->
   <script>
     var GoogleAuth;
     var SCOPE = 'https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/yt-analytics-monetary.readonly https://www.googleapis.com/auth/yt-analytics.readonly';
@@ -166,12 +167,12 @@
         month = month < 10 ? "0" + String(month) : month;
         date = date < 10 ? "0" + String(date) : date;
         today += year + "-" + month + "-" + date;
-        console.log("today ", today);
-        month_before = (month - 1 < 10) ? year + "-" + "0" + (month - 1) + "-" + date : year + "-" + (month - 1) + "-" + date;
 
-        // week_before = year + "-" + ()
+        const month_before = (month - 1 < 10) ? year + "-" + "0" + (month - 1) + "-" + date : year + "-" + (month - 1) + "-" + date;
+        const week_before = "2017-04-23" // should be done dynamically
+        const yesterday = "2017-04-25"
 
-        var lenny_params = {
+        let youtube_month = {
           "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
           "start-date": month_before,
           "end-date": today,
@@ -180,16 +181,76 @@
           // "filters": "video==2V68FkClADc"
         }
 
-        var request = gapi.client.request({
+        let youtube_week = {}
+        Object.assign(youtube_week, youtube_month, {
+          "start-date": week_before,
+          "dimensions": "7DayTotals"
+        });
+
+        let youtube_day = {}
+        Object.assign(youtube_day, youtube_month, {
+          "start-date": yesterday,
+          "dimensions": "day"
+        })
+
+        let month_req = gapi.client.request({
           'method': 'GET',
           'path': '/youtube/analytics/v1/reports',
-          'params': lenny_params
+          'params': youtube_month
         });
-        // Execute the API request.
-        request.execute(function(response) {
-          console.log("Please work. I need to write another essay!!!");
-          console.log(response);
+
+        let week_req = gapi.client.request({
+          'method': 'GET',
+          'path': '/youtube/analytics/v1/reports',
+          'params': youtube_week
         });
+
+        let day_req = gapi.client.request({
+          'method': 'GET',
+          'path': '/youtube/analytics/v1/reports',
+          'params': youtube_day
+        });
+
+        const youtube_promise = (month_req, week_req, day_req) => {
+          const month_promise = () => {
+            return new Promise((resolve, reject) => {
+              month_req.execute(function(response) {
+                console.log("youtube month!");
+                console.log("month: ", response);
+                resolve({monthly: response});
+              });
+            });
+          }
+          const week_promise = (res) => {
+            return new Promise((resolve, reject) => {
+              week_req.execute(function(response) {
+                console.log("youtube week!");
+                console.log("week: ", response);
+                resolve(Object.assign(res, {weekly: response}));
+              });
+            });
+          }
+          const day_promise = (res) => {
+            return new Promise((resolve, reject) => {
+              day_req.execute(function(response) {
+                console.log("youtube day!");
+                console.log("day: ", response);
+                resolve(Object.assign(res, {daily: response}));
+              });
+            });
+          }
+          month_promise()
+            .then(week_promise)
+            .then(day_promise)
+            .then((res) => {
+              window.youtube = res;
+              console.log("youtube load complete");
+              console.log(window.youtube);
+            });
+        }
+
+        youtube_promise(month_req, week_req, day_req);
+
       });
     }
 
