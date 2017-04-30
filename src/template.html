@@ -157,12 +157,26 @@
         });
 
         // using Lenny's Youtube Channel
+        var d = new Date();
+        var today = "";
+        var month = d.getMonth() + 1;
+        var date = d.getDate();
+        today = ""
+        year = d.getFullYear()
+        month = month < 10 ? "0" + String(month) : month;
+        date = date < 10 ? "0" + String(date) : date;
+        today += year + "-" + month + "-" + date;
+        console.log("today ", today);
+        month_before = (month - 1 < 10) ? year + "-" + "0" + (month - 1) + "-" + date : year + "-" + (month - 1) + "-" + date;
+
+        // week_before = year + "-" + ()
+
         var lenny_params = {
           "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
-          "start-date": "2017-04-01",
-          "end-date": "2017-04-07",
-          "metrics": "views,estimatedMinutesWatched",
-          "dimensions": "day"
+          "start-date": month_before,
+          "end-date": today,
+          "metrics": "views,likes,dislikes,shares,comments",
+          "dimensions": "30DayTotals"
           // "filters": "video==2V68FkClADc"
         }
 
