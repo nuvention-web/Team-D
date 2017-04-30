@@ -1,6 +1,7 @@
 $dosis: 'Dosis', sans-serif;
-$dark-blue: #335E77;
-$light-blue: #BBCBCB;
+$background: #20526f;
+$light-font: #e6e7e8;
+$dark-font: #404041;
 
 /* Pen-specific styles */
 * {
@@ -16,22 +17,21 @@ html, body, section, div {
 }
 
 body {
-  color: $light-blue;
+  color: $light-font;
   font-family: $dosis;
   font-size: 1.25rem;
+  font-weight: 100;
   line-height: 150%;
   margin: 0px;
   padding: 0px;
-  background: $dark-blue;
+  background: $background;
   width: 100%;
 }
 h1 {
   font-size: 1.5rem;
 }
 h2{
-  font-size: 1rem;
-  font-weight: 100;
-  display: inline-block;
+  font-size: 1rem
 }
 
 .Landing{
@@ -42,13 +42,13 @@ height: 100%;
 
 // TOP SECTION
 #top{
-  padding: 20px;
+  //padding-left: 20px;
   width: 100%;
   display: inline;
-  font: $dosis light;
   #title{
     font-size: 1rem;
     font-weight: 100;
+    color: $light-font;
     margin: 0 0.25rem 0;
     text-align: left;
     margin-top: 1%;

@@ -10,31 +10,30 @@ export class StackedBars extends React.Component {
 
     //VIEWS DATA
   	let views_daily_current = {
-  		background: "#a4e3ff",
+  		background: "#dce5ff",
       width: "80px"
-
   	}
     let views_daily_last = {
-      background: "#83bff0",
+      background: "#b2bbff",
       width: "120px"
     }
     let views_daily_best = {
-      background: "#5982a4",
+      background: "#8993d5",
       width: "140px"
     }
 
     //INTERACTIONS DATA
     let interactions_daily_current = {
-      background: "#dffff2",
+      background: "#bcfef3",
       width: "60px"
     }
     let interactions_daily_last = {
-      background: "#8ff7c2",
+      background: "#92d3c8",
       width: "100px"
 
     }
     let interactions_daily_best = {
-      background: "#67bb98",
+      background: "#6aa99f",
       width: "120px"
     }
 

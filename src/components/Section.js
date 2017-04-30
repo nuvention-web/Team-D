@@ -19,14 +19,14 @@ export class Section extends React.Component {
         ],
         datasets: [
             {
-                data: [300, 50],
+                data: [100, 50],
                 backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
+                    "#96d8ff",
+                    "#368bbb",
                 ],
                 hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
+                    "#96d8ff",
+                    "#368bbb",
                 ]
             }]
     };
