@@ -9,6 +9,7 @@ export class Section extends React.Component {
     super(props);
   }
 
+
   render() {
     const title = this.props.title;
     let data = {};
@@ -62,9 +63,9 @@ export class Section extends React.Component {
               <Doughnut data={paid_or_organic} />  
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title}/>
-              <StackedBars title="WEEKLY" id={title}/>
-              <StackedBars title="MONTHLY" id={title}/>
+              <StackedBars title="DAILY" id={title} />
+              <StackedBars title="WEEKLY" id={title} />
+              <StackedBars title="MONTHLY" id={title} />
             </div>
           </div>
           <hr></hr>

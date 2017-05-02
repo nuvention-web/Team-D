@@ -80,7 +80,7 @@ height: 100%;
 .views_interactions{
   display: block;
   width: 100%;
-  margin-top: 20%;
+  margin-bottom: 12%;
 }
 .views_interactions_content{
   display: inline;
@@ -119,12 +119,16 @@ height: 100%;
   text-align: right;
 }
 .bar{
-    height: 15px;
+    height: 1rem;
     margin-left: 2%;
     margin-top: 2%;
     display:inline-block;
-}
+    font-size: 1rem;
+    color: black;
+    text-align: right;
+    padding: 1.5%;
 
+}
 
 // 
 #img {
