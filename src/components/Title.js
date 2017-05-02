@@ -1,13 +1,14 @@
 import React from 'react';
 
-export const Title = (props) => {
-  return (
-    <section className="topTitle">
-      <div id = "top">
-      <img src={require("../../images/logo.png")} id = "logo_img"/>
-      <h1 id = "title">TELEOS</h1>
-      <hr id = "top_divider"></hr>
-      </div>
-    </section>
-  );
+export class Title extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+  render() {
+    return (
+      <h1>{this.props.title}</h1>
+    )
+  }
 }
