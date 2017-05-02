@@ -57,6 +57,7 @@ export class Section extends React.Component {
     else {
       return (
         <div className = "views_interactions">
+          <div className = "divider"></div>
           <Title title={title} />
           <div className="views_interactions_content">
             <div className="donut">
@@ -68,7 +69,6 @@ export class Section extends React.Component {
               <StackedBars title="MONTHLY" id={title} />
             </div>
           </div>
-          <hr></hr>
         </div>
       );
     }
