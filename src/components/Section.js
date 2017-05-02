@@ -9,6 +9,7 @@ export class Section extends React.Component {
     super(props);
   }
 
+
   render() {
     const title = this.props.title;
     let data = {};
@@ -19,17 +20,18 @@ export class Section extends React.Component {
         ],
         datasets: [
             {
-                data: [300, 50],
+                data: [100, 50],
                 backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
+                    "#96d8ff",
+                    "#368bbb",
                 ],
                 hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
+                    "#96d8ff",
+                    "#368bbb",
                 ]
             }]
     };
+
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
@@ -55,11 +57,17 @@ export class Section extends React.Component {
     else {
       return (
         <div className = "views_interactions">
-          <Title title={title} />        
-          <div className="stacked_bars">
-            <StackedBars title="DAILY" />
-            <StackedBars title="WEEKLY" />
-            <StackedBars title="MONTHLY" />
+          <div className = "divider"></div>
+          <Title title={title} />
+          <div className="views_interactions_content">
+            <div className="donut">
+              <Doughnut data={paid_or_organic} />  
+            </div>      
+            <div className="stacked_bars">
+              <StackedBars title="DAILY" id={title} />
+              <StackedBars title="WEEKLY" id={title} />
+              <StackedBars title="MONTHLY" id={title} />
+            </div>
           </div>
         </div>
       );
