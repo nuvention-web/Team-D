@@ -80,10 +80,14 @@ height: 100%;
 .views_interactions{
   display: block;
   width: 100%;
-  margin-bottom: 12%;
+  margin-bottom: 15%;
 }
 .views_interactions_content{
   display: inline;
+}
+.divider{
+  height: 2px;
+  background: $light-font;
 }
 
 // DONUT CSS
@@ -126,7 +130,7 @@ height: 100%;
     font-size: 1rem;
     color: black;
     text-align: right;
-    padding: 1.5%;
+    padding: 2%;
 
 }
 
