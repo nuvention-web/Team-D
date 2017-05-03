@@ -17,6 +17,7 @@ export class StackedBars extends React.Component {
 
     if(this.props.id == "VIEWS"){
       if(this.props.title == "DAILY") {
+        
         // pull # views here
         current_num = "111"
         last_num = "222"
@@ -33,7 +34,7 @@ export class StackedBars extends React.Component {
         }
         best = {
           background: "#8993d5", 
-          width: "100px"
+          width: "140px"
         }
       }
       if(this.props.title == "WEEKLY") {
@@ -50,7 +51,7 @@ export class StackedBars extends React.Component {
         }
         best = {
           background: "#8993d5", 
-          width: "84px"
+          width: "140px"
         }
       }
       if(this.props.title == "MONTHLY") {
@@ -67,7 +68,7 @@ export class StackedBars extends React.Component {
         }
         best = {
           background: "#8993d5", 
-          width: "120px"
+          width: "140px"
         }
       }
     }
@@ -80,15 +81,15 @@ export class StackedBars extends React.Component {
         current = {
           background: "#bcfef3",
           //pull data here and convert to size
-          width: "10px"
+          width: "40px"
         }
         last = {
           background: "#92d3c8",
-          width: "20px"
+          width: "80px"
         }
         best = {
           background: "#6aa99f",
-          width: "30px"
+          width: "140px"
         }
       }
       if(this.props.title == "WEEKLY") {
@@ -106,7 +107,7 @@ export class StackedBars extends React.Component {
         }
         best = {
           background: "#6aa99f",
-          width: "105px"
+          width: "140px"
         }
       }
       if(this.props.title == "MONTHLY") {
@@ -123,7 +124,7 @@ export class StackedBars extends React.Component {
         }
         best = {
           background: "#6aa99f",
-          width: "100px"
+          width: "140px"
         }
       }
     }
