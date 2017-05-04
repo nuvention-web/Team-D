@@ -20,27 +20,7 @@ export var facebookAPI = () => {
         function (response) {
           if (response && !response.error) {
             /* handle the result */
-            console.log("Test video #1 response: ", response);
-            if (response.title) {
-              document.getElementById("title1").innerHTML = response.title;
-            } else {
-              document.getElementById("title1").innerHTML = "Facebook";
-            }
-
-            document.getElementById("image1").src = response.source;
-
-            var container1 = document.getElementById("content1");
-            var video_insights = response.video_insights.data;
-            for (var i = 0; i < video_insights.length; i++) {
-              let li = document.createElement('li');
-              let data = video_insights[i];
-              let title = data.title;
-              let value = data.values[0].value;
-
-              value = title + ": " + value;
-              li.innerHTML = value;
-              container1.appendChild(li);
-            }
+            // console.log("Test video #1 response: ", response);
 
           resolve(response);
 
