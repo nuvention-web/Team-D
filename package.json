@@ -24,6 +24,7 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "express": "^4.15.2",
+    "google-client-api": "^1.0.4",
     "node-sass": "^4.3.0",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",

@@ -1,10 +1,11 @@
 import React from 'react';
 // import './lib/firebaseConfig.js';
 import {facebookAPI} from './lib/apiConfig.js';
+import {YTpromised} from './lib/YTconfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
-import './lib/YTconfig.js';
+
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
 import {Header, Section, Title, StackedBars} from './components';
@@ -33,14 +34,19 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    var promised = facebookAPI();
-    promised.then(res => {
+    var FBpromised = facebookAPI();
+    FBpromised.then(res => {
       this.setState({res: res.video_insights.data})
       console.log("facebookData in App: ", this.state);
     }).catch((err) => {
       console.log(err);
     });
 
+    require('google-client-api')().then((gapi) => {
+      YTpromised(gapi).then(res => {
+        console.log("Youtube in App: ", res);
+      })
+    })
   }
 
   handleFetchedData(res) {
