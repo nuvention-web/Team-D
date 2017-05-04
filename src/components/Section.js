@@ -18,9 +18,10 @@ export class Section extends React.Component {
     const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
     let paid_organic = [{name: 'Paid', value: 400}, {name: 'Organic', value: 300}];
     let devices = [{name: 'Web', value: 2400}, {name: 'Mobile', value: 4567}];
-    let views_interactions = [{name: 'Facebook', value: 2400}, {name: 'Youtube', value: 4567},
-                              {name: 'On-site', value: 4567}];
-
+    let views = [{name: 'Facebook', value: 2400}, {name: 'Youtube', value: 4567},
+                {name: 'On-site', value: 4567}];
+    let interactions = [{name: 'Facebook', value: 2400}, {name: 'Youtube', value: 4567},
+                        {name: 'On-site', value: 4567}];
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
@@ -60,8 +61,8 @@ export class Section extends React.Component {
           <div className="views_interactions_content">
             <div className="donut">
           <PieChart width={125} height={125} >
-            <Pie data={views_interactions} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
-            {views_interactions.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            <Pie data={views} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+            {views.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
           </PieChart>
@@ -83,8 +84,8 @@ export class Section extends React.Component {
           <div className="views_interactions_content">
             <div className="donut">
           <PieChart width={125} height={125} >
-            <Pie data={views_interactions} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
-            {views_interactions.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            <Pie data={interactions} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+            {interactions.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
           </PieChart>
