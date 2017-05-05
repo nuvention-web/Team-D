@@ -42,6 +42,7 @@ export default class App extends React.Component {
       console.log(err);
     });
 
+    window.lennykim = "";
     require('google-client-api')().then((gapi) => {
       YTpromised(gapi).then(res => {
         console.log("Youtube in App: ", res);
