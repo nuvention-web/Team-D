@@ -45,6 +45,16 @@ export const YTpromised = (gapi) => {
     "metrics": "views"
   })
 
+  let youtube_popular_helper = {}
+  Object.assign(youtube_popular_helper, youtube_month, {
+    "metrics": "views,likes,shares,comments",
+    "dimensions": "video",
+    "max-results": 10,
+    "sort": "-views"
+  })
+
+  /************************************************************/
+
   let month_req = gapi.client.request({
     'method': 'GET',
     'path': '/youtube/analytics/v1/reports',
@@ -68,6 +78,26 @@ export const YTpromised = (gapi) => {
     'path': '/youtube/analytics/v1/reports',
     'params': youtube_device
   });
+
+
+  let popular_helper_req = gapi.client.request({
+    'method': 'GET',
+    'path': '/youtube/analytics/v1/reports',
+    'params': youtube_popular_helper
+  });
+
+
+  /************************************************************/
+
+  const fetchId = (obj) => {
+    const rows = obj.rows;
+    let output = [];
+    for (let i = 0; i < rows.length; i++) {
+      let row = rows[i];
+      output.push(row[0]);
+    }
+    return output.join(",");
+  }
 
   const youtube_promise = (month_req, week_req, day_req) => {
     const month_promise = () => {
@@ -107,11 +137,32 @@ export const YTpromised = (gapi) => {
       });
     }
 
+    const popular_promise = (res) => {
+          return new Promise((resolve, reject) => {
+            popular_helper_req.execute((response) => {
+              const list = fetchId(response); // return String
+              let popular_req = gapi.client.request({
+                'method': 'GET',
+                'path': '/youtube/v3/videos',
+                'params': {
+                  "part": "snippet",
+                  "id": list,
+                  "fields": "items(id,snippet)"
+                }
+              });
+              popular_req.execute(response => {
+                resolve(Object.assign(res, {popular: response}));
+              })
+            })
+          })
+        }
+
     return new Promise((resolve, reject) => {
       month_promise()
         .then(week_promise)
         .then(day_promise)
         .then(device_promise)
+        .then(popular_promise)
         .then((res) => {
           console.log("youtube load complete");
           resolve(res);
