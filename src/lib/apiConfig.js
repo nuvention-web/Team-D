@@ -1,11 +1,11 @@
-const ACCESS_TOKEN = "EAACEdEose0cBACUXgG8nbIs8DIXZB1HvZASMnZCYIn1mfjk8KIDaS1f3KMoR7EsAcS9O9PlUOUYuEsqGmRTtBI8CScssT2mqJKgDHIocJz3dOg4IFqM2skgp6vQfGqUVXyjjFl28nDjsiRT1hXORuJd2hVdYRMrWEheisqWP5O21BHMTlZA6tzVnsbkryDQZD";
+const ACCESS_TOKEN = "EAAC5CYP7ZBm4BABujYSuzIepf1k8eatr7kWLbHZB4jp3nmZBcmYxwlk6w5X6RO3sfu1NYMHSldKy4G1M5UDUC5HcEZBJRUigdWMxxjyt1ZB9iKOzuTNMGQYZAalQAnnN2H8ogsKQRkkfZAPZCNsjqkPLPvxLvcmIqi1IqshKhe4XhgZDZD";
 
 // Test Video # 1 ID
 //const TEST1 = "10154546043703533";
 // Test Video #2 ID
 const TEST2 = "1446916112038085";
 // Facebook Page Id
-const PAGE = "141553642574345";
+const PAGE = "14516439825";
 const params1 = {
   since: "2017-01-01",
   until:"2017-01-05",
@@ -57,7 +57,7 @@ return new Promise((resolve, reject) => {
     const videointeractions_promise = (res) =>{
     return new Promise((resolve, reject) =>{
     FB.api(
-        PAGE + "/insights/page_video_views_click_to_play", 
+        PAGE + "/insights/page_video_views", 
         params1,
         function (response) {
           if (response && !response.error) {
