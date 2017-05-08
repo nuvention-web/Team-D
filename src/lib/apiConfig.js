@@ -21,6 +21,21 @@ export var facebookAPI = () => {
           if (response && !response.error) {
             /* handle the result */
             console.log("Test video #1 response: ", response);
+           // if(videos.paging.cursors.after != videos.paging.cursors.before){
+           // console.log("Next returns ", response.videos.paging.next);
+          //}
+           var request = $.ajax({
+              type: "GET",
+              url: response.videos.paging.next,
+              dataType:"json"
+            });
+            request.done(function(msg){
+              console.log("ajax response:" ,msg);
+            });
+            /*request.fail(function(jqXHR, textStatus) {
+              console.log( "Request failed: " + textStatus );
+              });*/
+
             if (response.id) {
               document.getElementById("title1").innerHTML = response.id;
             } else {
