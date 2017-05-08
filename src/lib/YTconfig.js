@@ -21,7 +21,7 @@ export const YTpromised = (gapi) => {
     "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
     "start-date": month_before,
     "end-date": today,
-    "metrics": "views,likes,dislikes,shares,comments",
+    "metrics": "views,likes,shares,comments",
     "dimensions": "30DayTotals"
     // "filters": "video==2V68FkClADc"
   }
@@ -140,6 +140,17 @@ export const YTpromised = (gapi) => {
     const popular_promise = (res) => {
           return new Promise((resolve, reject) => {
             popular_helper_req.execute((response) => {
+              console.log("before: ", response);
+              let data = {};
+              const rows = response.rows;
+              for (let i = 0; i < rows.length; i++) {
+                let id = rows[i][0];
+                let views = rows[i][1];
+                let interactions = rows[i][2] + rows[i][3] + rows[i][4];
+                data[id] = {};
+                data[id].views= views;
+                data[id].interactions = interactions;
+              }
               const list = fetchId(response); // return String
               let popular_req = gapi.client.request({
                 'method': 'GET',
@@ -151,7 +162,16 @@ export const YTpromised = (gapi) => {
                 }
               });
               popular_req.execute(response => {
-                resolve(Object.assign(res, {popular: response}));
+                const items = response.items;
+                for (let i = 0; i < items.length; i++) {
+                  const item = items[i];
+                  const id = item.id;
+                  const snippet = item.snippet;
+                  data[id].title = snippet.title;
+                  data[id].publishDate = snippet.publishedAt.slice(0, 9);
+                  data[id].platform = "Youtube";
+                }
+                resolve(Object.assign(res, {popular: data}));
               })
             })
           })
