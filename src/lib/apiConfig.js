@@ -7,6 +7,8 @@ const TEST2 = "1446916112038085";
 // Facebook Page Id
 const PAGE = "141553642574345";
 const params = {
+  since: "2017-01-01",
+  until:"2017-01-05",
    access_token: ACCESS_TOKEN
 }
 
@@ -14,7 +16,7 @@ export var facebookAPI = () => {
   return new Promise((resolve, reject) => {
     // Test Video # 1
     FB.api(
-        PAGE + "/insights/page_video_views_click_to_play?since=2017-01-01&until=2017-01-05",
+        PAGE + "/insights/page_video_views_click_to_play", 
         params,
         function (response) {
           if (response && !response.error) {
