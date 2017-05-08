@@ -53,7 +53,7 @@ return new Promise((resolve, reject) => {
         }
       );
     }
-  }
+ ) }
     const videointeractions_promise = (res) =>{
     return new Promise((resolve, reject) =>{
     FB.api(
@@ -88,7 +88,7 @@ return new Promise((resolve, reject) => {
 
   }
 
- }
+ )}
 
 
 
