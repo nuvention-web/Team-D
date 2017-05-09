@@ -15,13 +15,16 @@ export class StackedBars extends React.Component {
   let last_num;
   let best_num;
 
-    if(this.props.id == "VIEWS"){
-      if(this.props.title == "DAILY") {
+  let title = this.props.title;
+  let data = this.props.data;
+  let id = this.props.id;
+
+    if(id == "VIEWS"){
+      if(title == "DAILY") {
         
-        // pull # views here
-        current_num = "111"
-        last_num = "222"
-        best_num = "333"
+        current_num = data.overall_views_sb.daily.current;
+        last_num = data.overall_views_sb.daily.last;
+        best_num = data.overall_views_sb.daily.best;
 
         current = {
           background: "#dce5ff",          
@@ -37,10 +40,12 @@ export class StackedBars extends React.Component {
           width: "140px"
         }
       }
-      if(this.props.title == "WEEKLY") {
-        current_num = "112"
-        last_num = "223"
-        best_num = "334"
+      if(title == "WEEKLY") {
+
+        current_num = data.overall_views_sb.weekly.current;
+        last_num = data.overall_views_sb.weekly.last;
+        best_num = data.overall_views_sb.weekly.best;
+
         current = {
           background: "#dce5ff", 
           width: "80px"
@@ -54,10 +59,12 @@ export class StackedBars extends React.Component {
           width: "140px"
         }
       }
-      if(this.props.title == "MONTHLY") {
-        current_num = "113"
-        last_num = "224"
-        best_num = "335"
+      if(title == "MONTHLY") {
+
+        current_num = data.overall_views_sb.monthly.current;
+        last_num = data.overall_views_sb.monthly.last;
+        best_num = data.overall_views_sb.monthly.best;
+
         current = {
           background: "#dce5ff", 
           width: "80px"
@@ -73,11 +80,11 @@ export class StackedBars extends React.Component {
       }
     }
     
-    if(this.props.id == "INTERACTIONS"){
-      if(this.props.title == "DAILY") {
-        current_num = "121"
-        last_num = "232"
-        best_num = "343"
+    if(id == "INTERACTIONS"){
+      if(title == "DAILY") {
+        current_num = data.overall_interactions_sb.daily.current;
+        last_num = data.overall_interactions_sb.daily.last;
+        best_num = data.overall_interactions_sb.daily.best;
         current = {
           background: "#bcfef3",
           //pull data here and convert to size
@@ -92,10 +99,10 @@ export class StackedBars extends React.Component {
           width: "140px"
         }
       }
-      if(this.props.title == "WEEKLY") {
-        current_num = "3149580"
-        last_num = "2390938"
-        best_num = "239408901"
+      if(title == "WEEKLY") {
+        current_num = data.overall_interactions_sb.weekly.current;
+        last_num = data.overall_interactions_sb.weekly.last;
+        best_num = data.overall_interactions_sb.weekly.best;
 
         current = {
           background: "#bcfef3",
@@ -110,10 +117,10 @@ export class StackedBars extends React.Component {
           width: "140px"
         }
       }
-      if(this.props.title == "MONTHLY") {
-        current_num = "99999"
-        last_num = "8888"
-        best_num = "77777"
+      if(title == "MONTHLY") {
+        current_num = data.overall_interactions_sb.monthly.current;
+        last_num = data.overall_interactions_sb.monthly.last;
+        best_num = data.overall_interactions_sb.monthly.best;
         current = {
           background: "#bcfef3",
           width: "80px"

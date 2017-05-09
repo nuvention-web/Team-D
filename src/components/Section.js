@@ -12,42 +12,74 @@ export class Section extends React.Component {
 
   render() {
 
-    let test_columns = [
-        { key: 'video', name: 'VIDEO' },
-        { key: 'platform', name: 'PLATFORM' },
-        { key: 'publish_date', name: 'DATE' },
-        { key: 'views', name: 'VIEWS' },
-        { key: 'interactions', name: 'INTERACTIONS' }];
-    let test_data = [
-        { video: 'Video 1', platform: "Facebook", publish_date: "03/10/17", views: "####", interactions: "####"},
-        { video: 'Video 2', platform: "Youtube", publish_date: "05/05/17", views: "####", interactions: "####"},
-        { video: 'Video 3', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 4', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 5', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 6', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 8', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 9', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
-        { video: 'Video 10', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"} ];
-
-    const rowGetter = rowNumber => test_data[rowNumber];
-
+    const data = this.props.data;
     const title = this.props.title;
     const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
-    let paid_organic = [{name: 'Paid', value: 400}, {name: 'Organic', value: 300}];
-    let devices = [{name: 'Web', value: 2400}, {name: 'Mobile', value: 4567}];
-    let views = [{name: 'Facebook', value: 2400}, {name: 'Youtube', value: 4567},
-                {name: 'On-site', value: 4567}];
-    let interactions = [{name: 'Facebook', value: 2400}, {name: 'Youtube', value: 4567},
-                        {name: 'On-site', value: 4567}];
+
+    let top_performers_columns;
+    let top_performers_data;
+    const rowGetter = rowNumber => top_performers_data[rowNumber];
+
+    if (title == "TOP PERFORMERS"){
+      top_performers_columns = [
+          { key: 'video', name: 'VIDEO' },
+          { key: 'platform', name: 'PLATFORM' },
+          { key: 'publish_date', name: 'DATE' },
+          { key: 'views', name: 'VIEWS' },
+          { key: 'interactions', name: 'INTERACTIONS' }]
+
+      top_performers_data = [
+        { video: data[1].video, platform: data[1].platform, publish_date: data[1].publish_date, views: data[1].views, interactions: data[1].interactions},
+        { video: data[2].video, platform: data[2].platform, publish_date: data[2].publish_date, views: data[2].views, interactions: data[2].interactions},
+        { video: data[3].video, platform: data[3].platform, publish_date: data[3].publish_date, views: data[3].views, interactions: data[3].interactions},
+        { video: data[4].video, platform: data[4].platform, publish_date: data[4].publish_date, views: data[4].views, interactions: data[4].interactions},
+        { video: data[5].video, platform: data[5].platform, publish_date: data[5].publish_date, views: data[5].views, interactions: data[5].interactions},
+        { video: data[6].video, platform: data[6].platform, publish_date: data[6].publish_date, views: data[6].views, interactions: data[6].interactions},
+        { video: data[7].video, platform: data[7].platform, publish_date: data[7].publish_date, views: data[7].views, interactions: data[7].interactions},
+        { video: data[8].video, platform: data[8].platform, publish_date: data[8].publish_date, views: data[8].views, interactions: data[8].interactions},
+        { video: data[9].video, platform: data[9].platform, publish_date: data[9].publish_date, views: data[9].views, interactions: data[9].interactions},
+        { video: data[10].video, platform: data[10].platform, publish_date: data[10].publish_date, views: data[10].views, interactions: data[10].interactions}
+        ];
+    }
+
+
+    let paid_organic;
+    if (title == "PAID vs. ORGANIC")
+    {
+      paid_organic = [{name: 'Paid', value: data.paid}, 
+                      {name: 'Organic', value: data.organic}];
+    }
+
+    let devices;
+    if(title == "DEVICES"){
+      devices = [{name: 'Web', value: data.web}, 
+                 {name: 'Mobile', value: data.mobile}];
+    } 
+
+
+    let views;
+    if(title == "VIEWS"){
+      views = [{name: 'Facebook', value: data.overall_views.facebook}, 
+               {name: 'Youtube', value: data.overall_views.youtube},
+              {name: 'On-site', value: data.overall_views.onsite}];
+    }
+
+    let interactions;
+    if(title == "INTERACTIONS"){
+      interactions = [{name: 'Facebook', value: data.overall_interactions.facebook}, 
+               {name: 'Youtube', value: data.overall_interactions.youtube},
+              {name: 'On-site', value: data.overall_interactions.onsite}];
+    }
+
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
         <div className="top_performers">
           <Title title={title} />
           <ReactDataGrid id="top_performers_chart"
-            columns={test_columns}
+            columns={top_performers_columns}
             rowGetter={rowGetter}
-            rowsCount={test_data.length}
+            rowsCount={top_performers_data.length}
             minHeight={200} />
         </div>
       );
@@ -55,8 +87,8 @@ export class Section extends React.Component {
       return (
         <div className = "paid_vs_organic">
           <Title title={title} />
-          <PieChart width={125} height={125} >
-            <Pie data={paid_organic} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+          <PieChart width={200} height={200} >
+            <Pie data={paid_organic} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
             {paid_organic.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
@@ -67,8 +99,8 @@ export class Section extends React.Component {
       return (
         <div className = "devices">
           <Title title={title} />
-          <PieChart width={125} height={125} >
-            <Pie data={devices} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+          <PieChart width={200} height={200} >
+            <Pie data={devices} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
             {devices.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
@@ -90,9 +122,9 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} />
-              <StackedBars title="WEEKLY" id={title} />
-              <StackedBars title="MONTHLY" id={title} />
+              <StackedBars title="DAILY" id={title} data={data} />
+              <StackedBars title="WEEKLY" id={title} data={data} />
+              <StackedBars title="MONTHLY" id={title} data={data} />
             </div>
           </div>
         </div>
@@ -113,9 +145,9 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} />
-              <StackedBars title="WEEKLY" id={title} />
-              <StackedBars title="MONTHLY" id={title} />
+              <StackedBars title="DAILY" id={title} data={data} />
+              <StackedBars title="WEEKLY" id={title} data={data}/>
+              <StackedBars title="MONTHLY" id={title} data={data}/>
             </div>
           </div>
         </div>
