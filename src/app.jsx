@@ -200,6 +200,14 @@ export default class App extends React.Component {
         // Lenny
 
         // Prithvi
+         overall_paid_organic.paid = this.state.dataChunk.FB.paid.views
+         overall_paid_organic.organic = this.state.dataChunk.FB.organic.views
+         overall_devices.devices_web = this.state.dataChunk.YT.desktop
+         overall_devices.devices_mobile = this.state.dataChunk.YT.mobile
+         overall_views.facebook = this.state.dataChunk.FB.monthly.views
+         overall_views.youtube = this.state.dataChunk.YT.monthly.views
+         overall_views.onsite = this.setState.dataChunk.Ooyala.weekly.views
+
       }
     }
 
