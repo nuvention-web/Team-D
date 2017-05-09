@@ -18,9 +18,9 @@ const Pages = {
 // const PAGEGD = "8947243532";
 
 const params = {
-    access_token: Tokens.NYM
+    access_token: Tokens.DC
 }
-const PAGE = Pages.NYM;
+const PAGE = Pages.DC;
 
 export var facebookAPI = () => {
 
