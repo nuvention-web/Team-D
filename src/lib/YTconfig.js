@@ -12,8 +12,8 @@ export const YTpromised = (gapi) => {
   today += year + "-" + month + "-" + date;
 
   const month_before = (month - 1 < 10) ? year + "-" + "0" + (month - 1) + "-" + date : year + "-" + (month - 1) + "-" + date;
-  const week_before = "2017-04-23" // should be done dynamically
-  const yesterday = "2017-04-25"
+  const week_before = "2017-04-01" // should be done dynamically
+  const yesterday = "2017-05-06"
 
   // console.log(month_before, today);
 

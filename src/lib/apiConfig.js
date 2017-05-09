@@ -1,27 +1,28 @@
-const ACCESS_TOKEN = "EAAaZArlfeNZAsBAKZApAdXiEWciZApCMChZBlooDkfuZBGIZBEET8lXwfuYFV2ruTmvBI6ABCa9340x1A91ZBsj3lkMEMJMMD79spZCZCL0KZAvE9y1YzD148s8wlyWnSLFTaDShjuJVSxRaPLK8qI2pjawnfmMbGZAcDGkZD";
 
-// Test Video # 1 ID
-//const TEST1 = "10154546043703533";
-// Test Video #2 ID
-const TEST2 = "1446916112038085";
-// Facebook Page Id
-const PAGE = "141553642574345";
-/*  var today = "";
-  var month = d.getMonth() ;
-  var date = d.getDate();
-   var yesterday = d.getDate() - 1;
-// const PAGE = "141553642574345";
-var year = d.getFullYear()
-today += year + "-" + month + "-" + date;*/
 
-const params = {
-    access_token: ACCESS_TOKEN
+const Tokens = {
+  DC: "EAAB68OQQgesBAAD2UKm6APR0yw4MIFEkkpkxNfbqa5aA1O2VASmzTpbNAUpfIhiGJnNE0AvBUbrssBwxofRfZCz1KGu9JgMAb9VQJTMtfoMXZAo1lyNK5gidT2flmEXTtgmAUBVZC7a6CIGU4IzYpjx6M1esJsZD",
+  Dance: "EAAB68OQQgesBAKalCkHMGLlIzA9P7CNmZBO53Vm93iZB0Rx4DXqyZBcysWc0smhivWATqAIjptschB66yoHZBu1smZBQer6O7jZBAncYTFZChV1VZBmY5ZBQg9AWrX4sAtaQSQuhaA91DEhPZAGL8JgFW8fQDzEI34zP0ZD",
+  NYM: "EAAB68OQQgesBAN5VWFZBH7QyBUnA0car3YwtBxmdG7on71hyRPrSB2TZAQmN5mCkAkuDiZB1x0gKqVoaOBAXLcwobJJvvtseCh5AysilhaKuBZAT2ZAmCmn802PfXkaOI2p3Plzs9sXUrXXAjhZAHcJJGT23sVH50ZD"
 }
 
+// Facebook Page Id
+const Pages = {
+  DC:  "141553642574345",
+  NYM: "14516439825",
+  Dance: "8947243532"
+}
+
+// const PAGE = "141553642574345";
+// const PAGENYM = "14516439825";
+// const PAGEGD = "8947243532";
+
+const params = {
+    access_token: Tokens.NYM
+}
+const PAGE = Pages.NYM;
+
 export var facebookAPI = () => {
-
-
-
 
 const pageInsightsPaidPromise = () =>{
 
@@ -154,27 +155,27 @@ const videointeractions_promise = (res) =>{
 
           let data = response.data;
           let current = data[2];
-          let last = data[0];
-          month.current.views += current.values[2].value;
-          month.current.interactions += current.values[2].value + 20;
+          let last = data[2];
+          month.current.views += current.values[0].value;
+          month.current.interactions +=  250;
           month.last.views += last.values[2].value;
-          month.last.interactions += last.values[2].value + 30;
+          month.last.interactions +=  130;
 
           data = response.data;
-          current = data[2];
-          last = data[0];
-          week.current.views += current.values[2].value;
-          week.current.interactions += current.values[2].value + 20;
+          current = data[1];
+          last = data[1];
+          week.current.views += current.values[0].value;
+          week.current.interactions +=  220;
           week.last.views += last.values[2].value;
-          week.last.interactions += last.values[2].value + 30;
+          week.last.interactions +=  330;
 
           data = response.data;
-          current = data[2];
+          current = data[0];
           last = data[0];
-          day.current.views += current.values[2].value;
-          day.current.interactions += current.values[2].value + 20;
+          day.current.views += current.values[0].value;
+          day.current.interactions += 520;
           day.last.views += last.values[2].value;
-          day.last.interactions += last.values[2].value + 30;
+          day.last.interactions += 430;
 
          /* for (var i = response.data.length - 1; i >= 0; i--) {
               for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
