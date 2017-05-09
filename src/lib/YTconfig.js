@@ -204,7 +204,7 @@ export const YTpromised = (gapi) => {
     const popular_promise = (res) => {
           return new Promise((resolve, reject) => {
             popular_helper_req.execute((response) => {
-              console.log("before: ", response);
+              // console.log("before: ", response);
               let data = {};
               const rows = response.rows;
               for (let i = 0; i < rows.length; i++) {

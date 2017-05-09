@@ -23,7 +23,7 @@ export var facebookAPI = () => {
 
 
 
-const pageInsightsPaidPromise = (res) =>{
+const pageInsightsPaidPromise = () =>{
 
   return new Promise((resolve, reject) => {
     // Test Video # 1
@@ -34,36 +34,29 @@ const pageInsightsPaidPromise = (res) =>{
         params,
         function (response) {
           if (response && !response.error) {
-             console.log("Test video #1 response: ", response);
-                let month = {
-            current: {
-              views: 0,
-              interactions: 0
-            },
-            last: {
-              views: 0,
-              interactions: 0
-            }
-          }
-
-          console.log("first again", response)
-               /*for (var i = response.data.length - 1 ; i >= 0; i--) {
-                console.log(response.data[i]);
-              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
-                    if (response.data[i].values[j].end_time == today){
-                           month.current.views = response.data[i].values[j].value  
-                            month.current.interactions = response.data[i].values[j].value + 23 
-
-                    }
-                    if(response.data[i].values[j].end_time == yesterday){
-                        month.last.views = response.data[i].values[j].value 
-                         month.current.interactions = response.data[i].values[j].value + 20
-                    }
-                     
+             // console.log("Test video #1 response: ", response);
+             let month = {
+              current: {
+                views: 0,
+                interactions: 0
+              },
+              last: {
+                views: 0,
+                interactions: 0
               }
-             }*/
-             console.log("first: ", month)
-             resolve({paid: month});
+            }
+
+          // console.log("first again", response);
+          const data = response.data;
+          const current = data[2];
+          const last = data[0];
+          month.current.views += current.values[2].value;
+          month.current.interactions += current.values[2].value + 20;
+          month.last.views += last.values[2].value;
+          month.last.interactions += last.values[2].value + 30;
+
+           // console.log("first: ", month)
+           resolve({paid: month});
 
           } else {
             console.error("error loading facebook video");
@@ -73,6 +66,7 @@ const pageInsightsPaidPromise = (res) =>{
       );
     }
 )}
+
 const pageInsightsOrganicPromise = (res) =>{
 return new Promise((resolve, reject) => {
     // Test Video # 1
@@ -84,7 +78,7 @@ return new Promise((resolve, reject) => {
         function (response) {
           if (response && !response.error) {
              console.log("Test video #2 response: ", response);
-       
+
                let month = {
             current: {
               views: 0,
@@ -95,22 +89,18 @@ return new Promise((resolve, reject) => {
               interactions: 0
             }
           }
-            /* for (var i = response.data.length - 1; i >= 0; i--) {
-              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
-                    if (response.data[i].values[j].end_time.slice(0,9) == today){
-                           month.current.views = response.data[i].values[j].value   
-                           month.current.interactions = response.data[i].values[j].value + 31
+          const data = response.data;
+          const current = data[2];
+          const last = data[0];
+          month.current.views += current.values[2].value;
+          month.current.interactions += current.values[2].value + 20;
+          month.last.views += last.values[2].value;
+          month.last.interactions += last.values[2].value + 30;
 
-                    }
-                    if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
-                        month.last.views = response.data[i].values[j].value 
-                        month.current.interactions = response.data[i].values[j].value + 43 
-                    }
-                     
-              }
-             }*/
-             console.log("second: ", month)
-             resolve(Object.assign(res, organic: month));
+          console.log("second: ", month)
+          console.log("second again: ", res);
+          resolve(Object.assign(res, {organic: month}));
+
 
           } else {
             console.error("error loading facebook video");
@@ -120,7 +110,9 @@ return new Promise((resolve, reject) => {
       );
     }
  ) }
-    const videointeractions_promise = (res) =>{
+
+const videointeractions_promise = (res) =>{
+  // console.log("third: ", res);
     return new Promise((resolve, reject) =>{
     FB.api(
         PAGE + "/insights/page_video_views",
@@ -128,7 +120,7 @@ return new Promise((resolve, reject) => {
         function (response) {
           if (response && !response.error) {
             /* handle the result */
-            console.log("Test video #3 response: ", response);
+
              let month = {
             current: {
               views: 0,
@@ -160,18 +152,42 @@ return new Promise((resolve, reject) => {
             }
           }
 
+          let data = response.data;
+          let current = data[2];
+          let last = data[0];
+          month.current.views += current.values[2].value;
+          month.current.interactions += current.values[2].value + 20;
+          month.last.views += last.values[2].value;
+          month.last.interactions += last.values[2].value + 30;
+
+          data = response.data;
+          current = data[2];
+          last = data[0];
+          week.current.views += current.values[2].value;
+          week.current.interactions += current.values[2].value + 20;
+          week.last.views += last.values[2].value;
+          week.last.interactions += last.values[2].value + 30;
+
+          data = response.data;
+          current = data[2];
+          last = data[0];
+          day.current.views += current.values[2].value;
+          day.current.interactions += current.values[2].value + 20;
+          day.last.views += last.values[2].value;
+          day.last.interactions += last.values[2].value + 30;
+
          /* for (var i = response.data.length - 1; i >= 0; i--) {
               for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
                     if (response.data[i].values[j].end_time.slice(0,9) == today){
-                           month.current.views = response.data[i].values[j].value 
-                           month.current.interactions = response.data[i].values[j].value  + 6 
+                           month.current.views = response.data[i].values[j].value
+                           month.current.interactions = response.data[i].values[j].value  + 6
 
                     }
                     if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
-                        month.last.views = response.data[i].values[j].value 
-                        month.current.interactions = response.data[i].values[j].value + 43 
+                        month.last.views = response.data[i].values[j].value
+                        month.current.interactions = response.data[i].values[j].value + 43
                     }
-                     
+
               }
              }
 
@@ -179,21 +195,21 @@ return new Promise((resolve, reject) => {
               for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
                     if (response.data[i].values[j].end_time.slice(0,9) == today){
                            week.current.views = response.data[i].values[j].value
-                           week.current.interactions = response.data[i].values[j].value  + 39 
+                           week.current.interactions = response.data[i].values[j].value  + 39
 
                     }
                     if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
-                        week.last.views = response.data[i].values[j].value 
+                        week.last.views = response.data[i].values[j].value
                         week.last.interactions= response.data[i].values[j].value + 16
                     }
-                     
+
               }
              }
 
                for (var i = response.data.length - 1; i >= 0; i--) {
               for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
                     if (response.data[i].values[j].end_time.slice(0,9) == today){
-                           day.current.views = response.data[i].values[j].value   
+                           day.current.views = response.data[i].values[j].value
                             day.current.interactions = response.data[i].values[j].value + 14
 
                     }
@@ -201,12 +217,12 @@ return new Promise((resolve, reject) => {
                         day.last.views = response.data[i].values[j].value
                         day.current.interactions = response.data[i].values[j].value  + 12
                     }
-                     
+
               }
              }
            */
-         
-         
+
+
 
             resolve(Object.assign(res, {
               monthly: month,
@@ -228,7 +244,7 @@ return new Promise((resolve, reject) => {
         .then(pageInsightsOrganicPromise)
         .then(videointeractions_promise)
         .then((res) => {
-          console.log("fb load complete");
+          console.log("fb load complete", res);
           resolve(res);
         });
 
