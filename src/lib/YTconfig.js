@@ -130,9 +130,22 @@ export const YTpromised = (gapi) => {
 
     const device_promise = (res) => {
       return new Promise((resolve, reject) => {
-        device_req.execute(function(response) {
-          console.log("youtube device!");
-          resolve(Object.assign(res, {device: response}));
+        device_req.execute((response) => {
+          let devices = {
+            desktop: 0,
+            mobile: 0
+          };
+          const rows = response.rows;
+          for (let i = 0; i < rows.length; i++) {
+            let row = rows[i];
+            let type = row[0];
+            if (type === 'DESKTOP') {
+              devices.desktop += row[1];
+            } else if (type === 'TABLET' || type === 'MOBILE') {
+              devices.mobile += row[1];
+            }
+          }
+          resolve(Object.assign(res, {device: devices}));
         });
       });
     }
