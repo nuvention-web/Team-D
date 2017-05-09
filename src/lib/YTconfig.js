@@ -18,7 +18,8 @@ export const YTpromised = (gapi) => {
   // console.log(month_before, today);
 
   let youtube_month = {
-    "ids": 'channel==UCGME_LjZasuldi_EOz7GdBg', // Dance
+    // "ids": 'channel==UCGME_LjZasuldi_EOz7GdBg', // Dance
+    "ids": 'channel==UCMjCEOsKu2qAhy5e8By4S8w', // DC
     "start-date": month_before,
     "end-date": today,
     "metrics": "views,likes,shares,comments",
