@@ -57,6 +57,7 @@ export class StackedBars extends React.Component {
         }
       }
       }
+    }
       if(title == "WEEKLY") {
 
         current_num = data.overall_views_sb.weekly.current;
@@ -138,8 +139,8 @@ export class StackedBars extends React.Component {
         last_num = data.overall_interactions_sb.daily.last;
         best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
             if (current_num < last_num){
-        current = {
-          background: "#dce5ff",          
+            current = {
+              background: "#dce5ff",          
           //convert num to size
           width: "80px"
         }
@@ -156,7 +157,7 @@ export class StackedBars extends React.Component {
           current = {
           background: "#dce5ff",          
           //convert num to size
-          width: "95px"
+          width: "90px"
         }
         last = {
           background: "#b2bbff", 
@@ -168,6 +169,7 @@ export class StackedBars extends React.Component {
         }
       }
       }
+    }
       if(title == "WEEKLY") {
         current_num = data.overall_interactions_sb.weekly.current;
         last_num = data.overall_interactions_sb.weekly.last;
@@ -240,7 +242,7 @@ export class StackedBars extends React.Component {
         }
       }
       }
-    }
+    
 
     return (
       <div>
