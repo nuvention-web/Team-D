@@ -5,6 +5,7 @@ import {YTpromised} from './lib/YTconfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
+import {BigQuery} from './lib/bigquery.js';
 
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
@@ -28,6 +29,35 @@ export default class App extends React.Component {
     require('google-client-api')().then((gapi) => {
       YTpromised(gapi).then(res => {
         console.log("Youtube in App: ", res);
+        const bigQuery = BigQuery[0];
+        let dataChunk = {};
+        Object.assign(dataChunk, {
+          YT: res,
+          Ooyala: {
+            weekly: {
+              current: {
+                views: +bigQuery.results_data_metrics_uniq_plays_requested,
+                interactions: +bigQuery.results_data_metrics_embeds_copied +
+                              +bigQuery.results_data_metrics_emails_sent,
+              }, last: {
+                views: +bigQuery.results_data_metrics_uniq_plays_requested - 110,
+                interactions: +bigQuery.results_data_metrics_embeds_copied +
+                              +bigQuery.results_data_metrics_emails_sent
+              }
+            },
+            popular: {
+              id: {
+                interactions: +bigQuery.results_data_metrics_embeds_copied +
+                              +bigQuery.results_data_metrics_emails_sent,
+                platform: "Ooyala",
+                publishDate: bigQuery.results_end_date.slice(0,9),
+                title: bigQuery.results_data_group_name,
+                views: +bigQuery.results_data_metrics_uniq_plays_requested
+              }
+            }
+          }
+        });
+        console.log("final: ", dataChunk);
       })
     })
   }
