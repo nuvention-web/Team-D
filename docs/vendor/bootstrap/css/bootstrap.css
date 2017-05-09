@@ -1409,9 +1409,8 @@ a.bg-danger:focus {
 }
 .page-header {
   padding-bottom: 9px;
-  margin: 0px;
+  margin: 40px 0 20px;
   border-bottom: 1px solid #eee;
-  background: url("../images/lightbulbs.jpg");
 }
 ul,
 ol {
@@ -4961,11 +4960,11 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: transparent;
+  background-color: #eee;
 }
 .jumbotron h1,
 .jumbotron .h1 {
-  color: blackp;
+  color: inherit;
 }
 .jumbotron p {
   margin-bottom: 15px;
@@ -5235,7 +5234,7 @@ a.thumbnail.active {
   vertical-align: bottom;
 }
 .media-heading {
-  margin-top: 5px;
+  margin-top: 0;
   margin-bottom: 5px;
 }
 .media-list {
