@@ -69,21 +69,21 @@ height: 100%;
   width: 100%;
 }
 .top_performers{
-  width: 50%;
+  width: 60%;
   float: left;
 }
 .paid_vs_organic{
-  width: 25%;
+  width: 20%;
   float: left;
 }
 .devices{
-  width: 25%;
+  width: 20%;
   float: left;
 }
 .views{
   display: block;
   width: 100%;
-  padding-bottom: 12%;
+  padding-bottom: 15%;
 }
 .interactions{
   display: block;
@@ -95,6 +95,20 @@ height: 100%;
 .divider{
   height: 2px;
   background: $light-font;
+}
+
+//TOP PERFORMERS CHART CSS
+.react-grid-Container{
+  color: black;
+  margin: 2%;
+  .react-grid-HeaderCell{
+    background-color: $background;
+    color: $light-font;
+  }
+  .react-grid-Cell{
+    color: $light-font;
+    background-color: $background;
+  }
 }
 
 // DONUT CSS

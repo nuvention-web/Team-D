@@ -3,16 +3,33 @@ import {Title} from './Title';
 import {StackedBars} from './StackedBars';
 import {Doughnut} from 'react-chartjs-2';
 import {PieChart, Pie, Legend, Tooltip, Sector, Cell} from 'recharts';
-
+import ReactDataGrid from 'react-data-grid';
 
 export class Section extends React.Component {
   constructor(props) {
     super(props);
   }
 
-
-
   render() {
+
+    let test_columns = [
+        { key: 'video', name: 'VIDEO' },
+        { key: 'platform', name: 'PLATFORM' },
+        { key: 'publish_date', name: 'DATE' },
+        { key: 'views', name: 'VIEWS' },
+        { key: 'interactions', name: 'INTERACTIONS' }];
+    let test_data = [
+        { video: 'Video 1', platform: "Facebook", publish_date: "03/10/17", views: "####", interactions: "####"},
+        { video: 'Video 2', platform: "Youtube", publish_date: "05/05/17", views: "####", interactions: "####"},
+        { video: 'Video 3', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 4', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 5', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 6', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 8', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 9', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"},
+        { video: 'Video 10', platform: "Facebook", publish_date: "04/28/17", views: "####", interactions: "####"} ];
+
+    const rowGetter = rowNumber => test_data[rowNumber];
 
     const title = this.props.title;
     const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
@@ -27,6 +44,11 @@ export class Section extends React.Component {
       return (
         <div className="top_performers">
           <Title title={title} />
+          <ReactDataGrid id="top_performers_chart"
+            columns={test_columns}
+            rowGetter={rowGetter}
+            rowsCount={test_data.length}
+            minHeight={200} />
         </div>
       );
     } else if (this.props.title == "PAID vs. ORGANIC") {
