@@ -49,7 +49,7 @@ export default class App extends React.Component {
             }
           }
         });
-        // console.log("final: ", dataChunk);
+        console.log("final: ", dataChunk);
         var FBpromised = facebookAPI();
         FBpromised.then(res => {
           Object.assign(dataChunk, {FB: res});
@@ -118,7 +118,6 @@ export default class App extends React.Component {
   }
 
   render() {
-
     var all_data_object = {
     // in Section.js
       top_performers_data: {
@@ -193,6 +192,19 @@ export default class App extends React.Component {
         }
       }
     }
+
+    // console.log(this.state);
+    if (this.state) {
+      if (this.state.dataChunk) {
+        console.log("inside render: ", this.state.dataChunk);
+        // Lenny
+
+        // Prithvi
+      }
+    }
+
+
+
 
 
     var sidebarContent = <b>Sidebar content</b>;
