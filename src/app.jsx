@@ -18,13 +18,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    var FBpromised = facebookAPI();
-    FBpromised.then(res => {
-      this.setState({res: res.video_insights.data})
-      console.log("facebookData in App: ", this.state);
-    }).catch((err) => {
-      console.log(err);
-    });
+    // var FBpromised = facebookAPI();
+    // FBpromised.then(res => {
+    //   console.log("facebook in app gaaaaian", res);
+    //   this.setState({"res": res});
+    //   console.log("facebookData in App: ", this.state);
+    // }).catch((err) => {
+    //   console.log(err);
+    // });
 
     require('google-client-api')().then((gapi) => {
       YTpromised(gapi).then(res => {
@@ -58,6 +59,16 @@ export default class App extends React.Component {
           }
         });
         console.log("final: ", dataChunk);
+        var FBpromised = facebookAPI();
+        FBpromised.then(res => {
+          console.log("facebook in app gaaaaian", res);
+          // this.setState({"res": res});
+          Object.assign(dataChunk, {FB: res});
+          console.log("done? ", dataChunk);
+          // console.log("facebookData in App: ", this.state);
+        }).catch((err) => {
+          console.log(err);
+        });
       })
     })
   }
