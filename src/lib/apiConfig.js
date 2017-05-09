@@ -1,4 +1,4 @@
-const ACCESS_TOKEN = "EAAC5CYP7ZBm4BABujYSuzIepf1k8eatr7kWLbHZB4jp3nmZBcmYxwlk6w5X6RO3sfu1NYMHSldKy4G1M5UDUC5HcEZBJRUigdWMxxjyt1ZB9iKOzuTNMGQYZAalQAnnN2H8ogsKQRkkfZAPZCNsjqkPLPvxLvcmIqi1IqshKhe4XhgZDZD";
+const ACCESS_TOKEN = "EAACEdEose0cBACBgKyYS2VPoamdCcriVGDeH7QmKDGXhZA8Y8L8YpBdKAUzykZAEumHrO6CHi1sKjKKvyjRfUmJ2SSmWW0zk6KZBX0CfArokBqT6UhItvaW7txtIO8GTGgxPr3bfUSzngmGIyBeNLxY8ZAEZAcseO7HDIXJCP2IcIqziSzECYeE8oqdL0ZBiUZD";
 
 // Test Video # 1 ID
 //const TEST1 = "10154546043703533";
@@ -6,6 +6,8 @@ const ACCESS_TOKEN = "EAAC5CYP7ZBm4BABujYSuzIepf1k8eatr7kWLbHZB4jp3nmZBcmYxwlk6w
 const TEST2 = "1446916112038085";
 // Facebook Page Id
 const PAGE = "14516439825";
+
+// const PAGE = "141553642574345";
 const params1 = {
   since: "2017-01-01",
   until:"2017-01-05",
@@ -28,7 +30,7 @@ return new Promise((resolve, reject) => {
         function (response) {
           if (response && !response.error) {
             /* handle the result */
-            console.log("Test video #1 response: ", response);
+            // console.log("Test video #1 response: ", response);
            // if(videos.paging.cursors.after != videos.paging.cursors.before){
            // console.log("Next returns ", response.videos.paging.next);
           //}
@@ -62,7 +64,7 @@ return new Promise((resolve, reject) => {
         function (response) {
           if (response && !response.error) {
             /* handle the result */
-            console.log("Test video #1 response: ", response);
+            console.log("Test video #3 response: ", response);
 
 
 

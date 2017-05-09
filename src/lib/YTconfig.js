@@ -15,10 +15,10 @@ export const YTpromised = (gapi) => {
   const week_before = "2017-04-23" // should be done dynamically
   const yesterday = "2017-04-25"
 
-  console.log(month_before, today);
+  // console.log(month_before, today);
 
   let youtube_month = {
-    "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
+    "ids": 'channel==UCGME_LjZasuldi_EOz7GdBg',
     "start-date": month_before,
     "end-date": today,
     "metrics": "views,likes,shares,comments",
@@ -103,7 +103,7 @@ export const YTpromised = (gapi) => {
     const month_promise = () => {
       return new Promise((resolve, reject) => {
         month_req.execute(function(response) {
-          console.log("youtube month!");
+          // console.log("youtube month!");
           // console.log("month: ", response);
           resolve({monthly: response});
         });
@@ -112,7 +112,7 @@ export const YTpromised = (gapi) => {
     const week_promise = (res) => {
       return new Promise((resolve, reject) => {
         week_req.execute(function(response) {
-          console.log("youtube week!");
+          // console.log("youtube week!");
           // console.log("week: ", response);
           resolve(Object.assign(res, {weekly: response}));
         });
@@ -121,7 +121,7 @@ export const YTpromised = (gapi) => {
     const day_promise = (res) => {
       return new Promise((resolve, reject) => {
         day_req.execute(function(response) {
-          console.log("youtube day!");
+          // console.log("youtube day!");
           // console.log("day: ", response);
           resolve(Object.assign(res, {daily: response}));
         });
