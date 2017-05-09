@@ -231,8 +231,8 @@ export const YTpromised = (gapi) => {
                   const item = items[i];
                   const id = item.id;
                   const snippet = item.snippet;
-                  data[id].title = snippet.title;
-                  data[id].publishDate = snippet.publishedAt.slice(0, 9);
+                  data[id].video = snippet.title;
+                  data[id].publish_date = snippet.publishedAt.slice(0, 9);
                   data[id].platform = "Youtube";
                 }
                 resolve(Object.assign(res, {popular: data}));

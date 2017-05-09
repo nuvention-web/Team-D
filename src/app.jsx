@@ -198,6 +198,56 @@ export default class App extends React.Component {
       if (this.state.dataChunk) {
         console.log("inside render: ", this.state.dataChunk);
         // Lenny
+        const data = this.state.dataChunk;
+        const popular = data.YT.popular;
+        let sorted = [];
+        for (var i in popular) {
+          sorted.push(popular[i]);
+          sorted.sort((prev, next) => {
+            if (prev.views > next.views) return -1;
+            else return 1;
+          })
+        }
+
+        for (let i = 1; i <= 10; i++) {
+          all_data_object.top_performers_data[i] = sorted[i - 1];
+        }
+
+        all_data_object.overall_views_sb.daily = {
+          current: data.FB.daily.current.views + data.YT.daily.current.views,
+          last: data.FB.daily.last.views + data.YT.daily.last.views,
+          best: data.FB.daily.last.views + data.YT.daily.last.views + 50
+        }
+
+        all_data_object.overall_views_sb.weekly = {
+          current: data.FB.weekly.current.views + data.YT.weekly.current.views + data.Ooyala.weekly.current.views,
+          last: data.FB.weekly.last.views + data.YT.weekly.last.views + data.Ooyala.weekly.last.views,
+          best: data.FB.weekly.last.views + data.YT.weekly.last.views
+        }
+
+        all_data_object.overall_views_sb.monthly = {
+          current: data.FB.monthly.current.views + data.YT.monthly.current.views,
+          last: data.FB.monthly.last.views + data.YT.monthly.last.views,
+          best: data.FB.monthly.last.views + data.YT.monthly.last.views + 50
+        }
+
+        all_data_object.overall_interactions_sb.daily = {
+          current: data.FB.daily.current.interactions + data.YT.daily.current.interactions,
+          last: data.FB.daily.last.interactions + data.YT.daily.last.interactions,
+          best: data.FB.daily.last.interactions + data.YT.daily.last.interactions + 50
+        }
+
+        all_data_object.overall_interactions_sb.weekly = {
+          current: data.FB.weekly.current.interactions + data.YT.weekly.current.interactions + data.Ooyala.weekly.current.interactions,
+          last: data.FB.weekly.last.interactions + data.YT.weekly.last.interactions + data.Ooyala.weekly.last.interactions,
+          best: data.FB.weekly.last.interactions + data.YT.weekly.last.interactions
+        }
+
+        all_data_object.overall_interactions_sb.monthly = {
+          current: data.FB.monthly.current.interactions + data.YT.monthly.current.interactions,
+          last: data.FB.monthly.last.interactions + data.YT.monthly.last.interactions,
+          best: data.FB.monthly.last.interactions + data.YT.monthly.last.interactions + 50
+        }
 
         // Prithvi
       }

@@ -21,22 +21,22 @@ export class StackedBars extends React.Component {
 
     if(id == "VIEWS"){
       if(title == "DAILY") {
-        
+
         current_num = data.overall_views_sb.daily.current;
         last_num = data.overall_views_sb.daily.last;
-        best_num = data.overall_views_sb.daily.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
 
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -44,18 +44,18 @@ export class StackedBars extends React.Component {
 
         current_num = data.overall_views_sb.weekly.current;
         last_num = data.overall_views_sb.weekly.last;
-        best_num = data.overall_views_sb.weekly.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
 
         current = {
-          background: "#dce5ff", 
+          background: "#dce5ff",
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "82px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -63,28 +63,28 @@ export class StackedBars extends React.Component {
 
         current_num = data.overall_views_sb.monthly.current;
         last_num = data.overall_views_sb.monthly.last;
-        best_num = data.overall_views_sb.monthly.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
 
         current = {
-          background: "#dce5ff", 
+          background: "#dce5ff",
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "100px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     }
-    
+
     if(id == "INTERACTIONS"){
       if(title == "DAILY") {
         current_num = data.overall_interactions_sb.daily.current;
         last_num = data.overall_interactions_sb.daily.last;
-        best_num = data.overall_interactions_sb.daily.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
         current = {
           background: "#bcfef3",
           //pull data here and convert to size
@@ -102,7 +102,7 @@ export class StackedBars extends React.Component {
       if(title == "WEEKLY") {
         current_num = data.overall_interactions_sb.weekly.current;
         last_num = data.overall_interactions_sb.weekly.last;
-        best_num = data.overall_interactions_sb.weekly.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
 
         current = {
           background: "#bcfef3",
@@ -120,7 +120,7 @@ export class StackedBars extends React.Component {
       if(title == "MONTHLY") {
         current_num = data.overall_interactions_sb.monthly.current;
         last_num = data.overall_interactions_sb.monthly.last;
-        best_num = data.overall_interactions_sb.monthly.best;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
         current = {
           background: "#bcfef3",
           width: "80px"
