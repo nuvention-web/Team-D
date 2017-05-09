@@ -1,4 +1,4 @@
-const ACCESS_TOKEN = "EAAaZArlfeNZAsBALbZBrpsLOpj8XkTiZAgKJcyQBF8ZBIYFJhE1crBRZCfdJuFkRrYnNt2W7DWFSYFxwUj79fGYzlORWAZAlXNLwBc6LmvKPrhZC9nejTeg53P6cIgnB7rub4wPS9OEzvK0kPw0eAf3baitTAChx7DuYqoUrE34LOwZDZD";
+const ACCESS_TOKEN = "EAAaZArlfeNZAsBAKZApAdXiEWciZApCMChZBlooDkfuZBGIZBEET8lXwfuYFV2ruTmvBI6ABCa9340x1A91ZBsj3lkMEMJMMD79spZCZCL0KZAvE9y1YzD148s8wlyWnSLFTaDShjuJVSxRaPLK8qI2pjawnfmMbGZAcDGkZD";
 
 // Test Video # 1 ID
 //const TEST1 = "10154546043703533";
@@ -7,8 +7,9 @@ const TEST2 = "1446916112038085";
 // Facebook Page Id
 const PAGE = "141553642574345";
 /*  var today = "";
-  var month = d.getMonth() + 1;
+  var month = d.getMonth() ;
   var date = d.getDate();
+   var yesterday = d.getDate() - 1;
 // const PAGE = "141553642574345";
 var year = d.getFullYear()
 today += year + "-" + month + "-" + date;*/
@@ -18,6 +19,8 @@ const params = {
 }
 
 export var facebookAPI = () => {
+
+
 
 
 const pageInsightsPaidPromise = (res) =>{
@@ -32,24 +35,35 @@ const pageInsightsPaidPromise = (res) =>{
         function (response) {
           if (response && !response.error) {
              console.log("Test video #1 response: ", response);
-            /* handle the result */
-            // console.log("Test video #1 response: ", response);
-           // if(videos.paging.cursors.after != videos.paging.cursors.before){
-           // console.log("Next returns ", response.videos.paging.next);
-          //}
-/*           var request = $.ajax({
-              type: "GET",
-              url: response.videos.paging.next,
-              dataType:"json"
-            });
-            request.done(function(msg){
-              console.log("ajax response:" ,msg);
-            });*/
-            /*request.fail(function(jqXHR, textStatus) {
-              console.log( "Request failed: " + textStatus );
-              });*/
+                let month = {
+            current: {
+              views: 0,
+              interactions: 0
+            },
+            last: {
+              views: 0,
+              interactions: 0
+            }
+          }
 
-             resolve(response);
+          console.log("first again", response)
+               /*for (var i = response.data.length - 1 ; i >= 0; i--) {
+                console.log(response.data[i]);
+              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
+                    if (response.data[i].values[j].end_time == today){
+                           month.current.views = response.data[i].values[j].value  
+                            month.current.interactions = response.data[i].values[j].value + 23 
+
+                    }
+                    if(response.data[i].values[j].end_time == yesterday){
+                        month.last.views = response.data[i].values[j].value 
+                         month.current.interactions = response.data[i].values[j].value + 20
+                    }
+                     
+              }
+             }*/
+             console.log("first: ", month)
+             resolve({paid: month});
 
           } else {
             console.error("error loading facebook video");
@@ -70,24 +84,33 @@ return new Promise((resolve, reject) => {
         function (response) {
           if (response && !response.error) {
              console.log("Test video #2 response: ", response);
-            /* handle the result */
-            // console.log("Test video #1 response: ", response);
-           // if(videos.paging.cursors.after != videos.paging.cursors.before){
-           // console.log("Next returns ", response.videos.paging.next);
-          //}
-/*           var request = $.ajax({
-              type: "GET",
-              url: response.videos.paging.next,
-              dataType:"json"
-            });
-            request.done(function(msg){
-              console.log("ajax response:" ,msg);
-            });*/
-            /*request.fail(function(jqXHR, textStatus) {
-              console.log( "Request failed: " + textStatus );
-              });*/
+       
+               let month = {
+            current: {
+              views: 0,
+              interactions: 0
+            },
+            last: {
+              views: 0,
+              interactions: 0
+            }
+          }
+            /* for (var i = response.data.length - 1; i >= 0; i--) {
+              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
+                    if (response.data[i].values[j].end_time.slice(0,9) == today){
+                           month.current.views = response.data[i].values[j].value   
+                           month.current.interactions = response.data[i].values[j].value + 31
 
-             resolve(response);
+                    }
+                    if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
+                        month.last.views = response.data[i].values[j].value 
+                        month.current.interactions = response.data[i].values[j].value + 43 
+                    }
+                     
+              }
+             }*/
+             console.log("second: ", month)
+             resolve(Object.assign(res, organic: month));
 
           } else {
             console.error("error loading facebook video");
@@ -106,7 +129,7 @@ return new Promise((resolve, reject) => {
           if (response && !response.error) {
             /* handle the result */
             console.log("Test video #3 response: ", response);
-      /*      let day = {
+             let month = {
             current: {
               views: 0,
               interactions: 0
@@ -116,14 +139,7 @@ return new Promise((resolve, reject) => {
               interactions: 0
             }
           }
-          const rows = response.rows;
-          const last = rows[0];
-          const current = rows[rows.length - 1];
-           day.last.views = last[1];
-           day.last.interactions = last[2] + last[3] + last[4];
-           day.current.views = current[1];
-           day.current.interactions = current[2] + current[3] + current[4];
-            let week = {
+           let week = {
             current: {
               views: 0,
               interactions: 0
@@ -133,14 +149,7 @@ return new Promise((resolve, reject) => {
               interactions: 0
             }
           }
-          const rows = response.rows;
-          const last = rows[0];
-          const current = rows[rows.length - 1];
-          week.last.views = last[1];
-          week.last.interactions = last[2] + last[3] + last[4];
-          week.current.views = current[1];
-          week.current.interactions = current[2] + current[3] + current[4];
-           let month = {
+           let day = {
             current: {
               views: 0,
               interactions: 0
@@ -150,16 +159,60 @@ return new Promise((resolve, reject) => {
               interactions: 0
             }
           }
-          const rows = response.rows;
-          const last = rows[0];
-          const current = rows[rows.length - 1];
-          month.last.views = last[1];
-          month.last.interactions = last[2] + last[3] + last[4];
-          month.current.views = current[1];
-          month.current.interactions = current[2] + current[3] + current[4];*/
 
+         /* for (var i = response.data.length - 1; i >= 0; i--) {
+              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
+                    if (response.data[i].values[j].end_time.slice(0,9) == today){
+                           month.current.views = response.data[i].values[j].value 
+                           month.current.interactions = response.data[i].values[j].value  + 6 
 
-            resolve(response);
+                    }
+                    if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
+                        month.last.views = response.data[i].values[j].value 
+                        month.current.interactions = response.data[i].values[j].value + 43 
+                    }
+                     
+              }
+             }
+
+               for (var i = response.data.length - 1; i >= 0; i--) {
+              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
+                    if (response.data[i].values[j].end_time.slice(0,9) == today){
+                           week.current.views = response.data[i].values[j].value
+                           week.current.interactions = response.data[i].values[j].value  + 39 
+
+                    }
+                    if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
+                        week.last.views = response.data[i].values[j].value 
+                        week.last.interactions= response.data[i].values[j].value + 16
+                    }
+                     
+              }
+             }
+
+               for (var i = response.data.length - 1; i >= 0; i--) {
+              for (var j =response.data[i].values[j].length - 1; j >= 0; j--) {
+                    if (response.data[i].values[j].end_time.slice(0,9) == today){
+                           day.current.views = response.data[i].values[j].value   
+                            day.current.interactions = response.data[i].values[j].value + 14
+
+                    }
+                    if(response.data[i].values[j].end_time.slice(0,9) == yesterday){
+                        day.last.views = response.data[i].values[j].value
+                        day.current.interactions = response.data[i].values[j].value  + 12
+                    }
+                     
+              }
+             }
+           */
+         
+         
+
+            resolve(Object.assign(res, {
+              monthly: month,
+              weekly: week,
+              daily: day
+            }));
 
           } else {
             console.error("error loading facebook video");
@@ -171,7 +224,7 @@ return new Promise((resolve, reject) => {
   )
   }
     return new Promise((resolve, reject) => {
-      pageInsightsPaidPromise()
+         pageInsightsPaidPromise()
         .then(pageInsightsOrganicPromise)
         .then(videointeractions_promise)
         .then((res) => {
