@@ -28,31 +28,31 @@ export class StackedBars extends React.Component {
 
             if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -65,31 +65,31 @@ export class StackedBars extends React.Component {
 
           if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -102,31 +102,31 @@ export class StackedBars extends React.Component {
 
           if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -139,35 +139,35 @@ export class StackedBars extends React.Component {
         best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
             if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
-        }
+        }}
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
-      }
+      }}
       if(title == "WEEKLY") {
         current_num = data.overall_interactions_sb.weekly.current;
         last_num = data.overall_interactions_sb.weekly.last;
@@ -175,31 +175,31 @@ export class StackedBars extends React.Component {
 
            if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
@@ -208,38 +208,38 @@ export class StackedBars extends React.Component {
         current_num = data.overall_interactions_sb.monthly.current;
         last_num = data.overall_interactions_sb.monthly.last;
         best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
-  
+
             if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
     else{
           current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "95px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "80px"
         }
         best = {
-          background: "#8993d5", 
+          background: "#8993d5",
           width: "140px"
         }
       }
-      }
+
     }
 
     return (
