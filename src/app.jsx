@@ -250,13 +250,13 @@ export default class App extends React.Component {
         }
 
         // Prithvi
-         overall_paid_organic.paid = this.state.dataChunk.FB.paid.views
-         overall_paid_organic.organic = this.state.dataChunk.FB.organic.views
-         overall_devices.devices_web = this.state.dataChunk.YT.desktop
-         overall_devices.devices_mobile = this.state.dataChunk.YT.mobile
-         overall_views.facebook = this.state.dataChunk.FB.monthly.views
-         overall_views.youtube = this.state.dataChunk.YT.monthly.views
-         overall_views.onsite = this.setState.dataChunk.Ooyala.weekly.views
+         all_data_object.overall_paid_organic.paid = this.state.dataChunk.FB.paid.current.views;
+         all_data_object.overall_paid_organic.organic = this.state.dataChunk.FB.organic.current.views;
+         all_data_object.overall_devices.devices_web = this.state.dataChunk.YT.device.desktop;
+         all_data_object.overall_devices.devices_mobile = this.state.dataChunk.YT.device.mobile;
+         all_data_object.overall_views.facebook = this.state.dataChunk.FB.monthly.current.views;
+         all_data_object.overall_views.youtube = this.state.dataChunk.YT.monthly.current.views;
+         all_data_object.overall_views.onsite = this.state.dataChunk.Ooyala.weekly.current.views;
 
       }
     }
