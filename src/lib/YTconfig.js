@@ -105,7 +105,24 @@ export const YTpromised = (gapi) => {
         month_req.execute(function(response) {
           // console.log("youtube month!");
           // console.log("month: ", response);
-          resolve({monthly: response});
+          let month = {
+            current: {
+              views: 0,
+              interactions: 0
+            },
+            last: {
+              views: 0,
+              interactions: 0
+            }
+          }
+          const rows = response.rows;
+          const last = rows[0];
+          const current = rows[rows.length - 1];
+          month.last.views = last[1];
+          month.last.interactions = last[2] + last[3] + last[4];
+          month.current.views = current[1];
+          month.current.interactions = current[2] + current[3] + current[4];
+          resolve({monthly: month});
         });
       });
     }
@@ -114,7 +131,24 @@ export const YTpromised = (gapi) => {
         week_req.execute(function(response) {
           // console.log("youtube week!");
           // console.log("week: ", response);
-          resolve(Object.assign(res, {weekly: response}));
+          let week = {
+            current: {
+              views: 0,
+              interactions: 0
+            },
+            last: {
+              views: 0,
+              interactions: 0
+            }
+          }
+          const rows = response.rows;
+          const last = rows[0];
+          const current = rows[rows.length - 1];
+          week.last.views = last[1];
+          week.last.interactions = last[2] + last[3] + last[4];
+          week.current.views = current[1];
+          week.current.interactions = current[2] + current[3] + current[4];
+          resolve(Object.assign(res, {weekly: week}));
         });
       });
     }
@@ -123,7 +157,24 @@ export const YTpromised = (gapi) => {
         day_req.execute(function(response) {
           // console.log("youtube day!");
           // console.log("day: ", response);
-          resolve(Object.assign(res, {daily: response}));
+          let day = {
+            current: {
+              views: 0,
+              interactions: 0
+            },
+            last: {
+              views: 0,
+              interactions: 0
+            }
+          }
+          const rows = response.rows;
+          const last = rows[0];
+          const current = rows[rows.length - 1];
+          day.last.views = last[1];
+          day.last.interactions = last[2] + last[3] + last[4];
+          day.current.views = current[1];
+          day.current.interactions = current[2] + current[3] + current[4];
+          resolve(Object.assign(res, {daily: day}));
         });
       });
     }
