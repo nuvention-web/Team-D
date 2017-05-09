@@ -49,7 +49,7 @@ height: 100%;
   width: 100%;
   display: inline;
   #title{
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 100;
     color: $light-font;
     margin: 0 0.25rem 0;
@@ -69,21 +69,23 @@ height: 100%;
   width: 100%;
 }
 .top_performers{
-  width: 50%;
+  width: 60%;
   float: left;
 }
 .paid_vs_organic{
-  width: 25%;
+  padding-left: 4%;
+  width: 20%;
   float: left;
 }
 .devices{
-  width: 25%;
+  padding-left: 4%;
+  width: 20%;
   float: left;
 }
 .views{
   display: block;
   width: 100%;
-  padding-bottom: 12%;
+  padding-bottom: 15%;
 }
 .interactions{
   display: block;
@@ -95,6 +97,20 @@ height: 100%;
 .divider{
   height: 2px;
   background: $light-font;
+}
+
+//TOP PERFORMERS CHART CSS
+.react-grid-Container{
+  color: black;
+  margin: 2%;
+  .react-grid-HeaderCell{
+    background-color: $background;
+    color: $light-font;
+  }
+  .react-grid-Cell{
+    color: $light-font;
+    background-color: $background;
+  }
 }
 
 // DONUT CSS
@@ -111,7 +127,7 @@ height: 100%;
 // STACKED BARS COMPONENT
 .stacked_bars{
   margin-left: 25%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 .stacked_bars > div {
   float: left;
@@ -121,7 +137,7 @@ height: 100%;
 }
 .bar_chart{
   margin-left: 5%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 .bar_label{
   width: 25%;

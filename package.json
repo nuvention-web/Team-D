@@ -30,6 +30,7 @@
     "react": "^15.4.2",
     "react-chartjs": "^0.8.0",
     "react-chartjs-2": "^2.0.5",
+    "react-data-grid": "^2.0.35",
     "react-dom": "^15.4.2",
     "react-progress-label": "^1.2.1",
     "react-shapes": "^0.1.0",

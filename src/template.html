@@ -59,6 +59,26 @@
           revokeAccess();
         });
 
+        // using Lenny's Youtube Channel
+        var lenny_params = {
+          "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
+          "start-date": "2017-04-15",
+          "end-date": "2017-04-17",
+          "metrics": "views,estimatedMinutesWatched",
+          "dimensions": "day",
+          "filters": "video==2V68FkClADc"
+        }
+
+        var request = gapi.client.request({
+          'method': 'GET',
+          'path': '/youtube/analytics/v1/reports',
+          'params': lenny_params
+        });
+        // Execute the API request.
+        request.execute(function(response) {
+          console.log("Please work. I need to write another essay!!!");
+          console.log(response);
+        });
       });
     }
 

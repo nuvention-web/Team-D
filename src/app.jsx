@@ -14,23 +14,6 @@ export default class App extends React.Component {
   constructor(props) {
 
     super(props);
-
-    this.state = {
-      isFB: false,
-      isInsta: false,
-      isFBMetrics:"",
-      isInstaMetrics:"",
-      sidebarOpen: true
-    };
-
-    this.handleFBChange = this.handleFBChange.bind(this);
-    this.handleInstaChange = this.handleInstaChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleReadMoreFB = this.handleReadMoreFB.bind(this);
-    this.handleReadMoreInsta = this.handleReadMoreInsta.bind(this);
-    this.handleFetchedData = this.handleFetchedData.bind(this);
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-
   }
 
   componentDidMount() {
@@ -99,21 +82,89 @@ export default class App extends React.Component {
   handleReadMoreInsta(e) {
     if(e.target.checked){
       this.setState({
-        isInstaMetrics:""
-
-      })
-    } else {
-      this.setState({
-      isInstaMetrics:"ShowMoreInstametrics"
-      })
+        isInstaMetrics:""}
+        )
     }
   }
 
-  onSetSidebarOpen(open) {
-     this.setState({sidebarOpen: open});
-   }
-
   render() {
+
+    var all_data_object = {
+    // in Section.js
+      top_performers_data: {
+          1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+      }, //array of 10 videos, platform, date, views, interactions
+
+      overall_paid_organic: {
+        paid: 100,
+        organic: 300
+      },
+
+      overall_devices:  {
+        web: 500,
+        mobile: 150
+      },
+
+      overall_views: {
+        facebook: 1000,
+        youtube: 1500,
+        onsite: 3000
+      },
+
+      overall_interactions: {
+        facebook: 5000,
+        youtube: 100,
+        onsite: 250
+      },
+
+    // in StackedBars.js
+      overall_views_sb: {
+        daily: {
+          current: 5,
+          last: 10,
+          best: 15
+        },
+        weekly: {
+          current: 20,
+          last: 25,
+          best: 30
+        },
+        monthly: {
+          current: 35,
+          last: 40,
+          best: 45
+        }
+      },
+
+      overall_interactions_sb: {
+        daily: {
+          current: 6,
+          last: 12,
+          best: 18
+        },
+        weekly: {
+          current: 24,
+          last: 30,
+          best: 36
+        },
+        monthly: {
+          current: 42,
+          last: 48,
+          best: 54
+        }
+      }
+    }
+
+
     var sidebarContent = <b>Sidebar content</b>;
 
     return (
@@ -126,12 +177,12 @@ export default class App extends React.Component {
         </Sidebar>*/}
         <Header />
         <div className="top">
-          <Section title="TOP PERFORMERS"/>
-          <Section title="PAID vs. ORGANIC"/>
-          <Section title="DEVICES"/>
+          <Section title="TOP PERFORMERS" data={all_data_object.top_performers_data}/>
+          <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
+          <Section title="DEVICES" data={all_data_object.overall_devices}/>
         </div>
-        <Section title="VIEWS" />
-        <Section title="INTERACTIONS"/>
+        <Section title="VIEWS" data={all_data_object} />
+        <Section title="INTERACTIONS" data={all_data_object}/>
       </section>
     )
   }
