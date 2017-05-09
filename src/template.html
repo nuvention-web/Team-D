@@ -58,27 +58,6 @@
         $('#revoke-access-button').click(function() {
           revokeAccess();
         });
-
-        // using Lenny's Youtube Channel
-        var lenny_params = {
-          "ids": 'channel==UCJrPkSKF_XsgV7rVaz6iXIA',
-          "start-date": "2017-04-15",
-          "end-date": "2017-04-17",
-          "metrics": "views,estimatedMinutesWatched",
-          "dimensions": "day",
-          "filters": "video==2V68FkClADc"
-        }
-
-        var request = gapi.client.request({
-          'method': 'GET',
-          'path': '/youtube/analytics/v1/reports',
-          'params': lenny_params
-        });
-        // Execute the API request.
-        request.execute(function(response) {
-          console.log("Please work. I need to write another essay!!!");
-          console.log(response);
-        });
       });
     }
 
@@ -133,8 +112,8 @@
   <!-- Facebook API Setup -->
   <script>
     FB.init({
-      appId      : 1088733461254279,
-      // appId: 145634995501895,
+      appId      : 1088733461254279, // Lenny's
+      // appId: 145634995501895, // NYM
       xfbml      : true,
       version    : 'v2.8'
     });
