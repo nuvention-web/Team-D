@@ -26,7 +26,7 @@ export class StackedBars extends React.Component {
         last_num = data.overall_views_sb.daily.last;
         best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
 
-            if (current_num < last_num){
+      if (current_num < last_num){
         current = {
           background: "#dce5ff",
           //convert num to size
@@ -138,8 +138,7 @@ export class StackedBars extends React.Component {
         current_num = data.overall_interactions_sb.daily.current;
         last_num = data.overall_interactions_sb.daily.last;
         best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
-            if (current_num < last_num){
-
+      if (current_num < last_num){
         current = {
           background: "#dce5ff",
 

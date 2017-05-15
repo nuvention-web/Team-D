@@ -6,6 +6,8 @@ import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
+import {push as Menu } from 'react-burger-menu';
+//import {TreeMenu, TreeNode} from 'react-tree-menu';
 
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
@@ -268,22 +270,26 @@ export default class App extends React.Component {
     var sidebarContent = <b>Sidebar content</b>;
 
     return (
+      <div id="outer-container">
       <section className="container">
-        {/*<Sidebar sidebar={sidebarContent}
-                 open={this.state.sidebarOpen}
-                 onSetOpen={this.onSetSidebarOpen}>
-                 docked={true}
-          <b>Main content</b>
-        </Sidebar>*/}
-        <Header />
-        <div className="top">
-          <Section title="TOP PERFORMERS" data={all_data_object.top_performers_data}/>
-          <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
-          <Section title="DEVICES" data={all_data_object.overall_devices}/>
-        </div>
-        <Section title="VIEWS" data={all_data_object} />
-        <Section title="INTERACTIONS" data={all_data_object}/>
+        <Menu className="menu" pageWrapId={ "page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
+          <h1 id="platforms" className="platforms-menu">Platforms</h1>
+            <input type="checkbox" label={"Facebook"} checked={true}/>
+            <input type="checkbox" label={"Facebook"} checked={true}/>
+            <input type="checkbox" label={"Facebook"} checked={true}/>
+        </Menu>
+        <main id="page-wrap">
+          <Header />
+          <div className="top">
+            <Section title="TOP PERFORMERS" data={all_data_object.top_performers_data}/>
+            <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
+            <Section title="DEVICES" data={all_data_object.overall_devices}/>
+          </div>
+          <Section title="VIEWS" data={all_data_object} />
+          <Section title="INTERACTIONS" data={all_data_object}/>
+        </main>      
       </section>
+      </div>
     )
   }
 }

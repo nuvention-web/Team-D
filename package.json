@@ -28,6 +28,7 @@
     "node-sass": "^4.3.0",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
+    "react-burger-menu": "^2.0.2",
     "react-chartjs": "^0.8.0",
     "react-chartjs-2": "^2.0.5",
     "react-data-grid": "^2.0.35",
@@ -36,6 +37,7 @@
     "react-shapes": "^0.1.0",
     "react-sidebar": "^2.3.2",
     "react-tooltip": "^3.2.7",
+    "react-tree-menu": "^1.5.0",
     "recharts": "^0.22.4",
     "sass-loader": "^4.0.2"
   },

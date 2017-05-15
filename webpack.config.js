@@ -15,6 +15,14 @@ loaders.push({
 	exclude: ['node_modules']
 });
 
+// loaders.push({
+// 	test: /\.(js|jsx)$/,
+// 	loader: 'babel-loader',
+// 	query: {
+// 		presets: ['es2015', 'react']
+// 	}
+// })
+
 module.exports = {
 	entry: [
 		'react-hot-loader/patch',
