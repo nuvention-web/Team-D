@@ -78,6 +78,20 @@ height: 100%;
 .menu:active{
   padding-right: 20%;
 }
+.bm-cross {
+  height: 75px;
+  width: 75px;
+  background: black;
+}
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+.bm-burger-button {
+  position: fixed;
+  width: 75px;
+  height: 75px;
+}
 
 //SECTION COMPONENT
 .top{
@@ -175,102 +189,3 @@ height: 100%;
     padding: 3%;
 
 }
-
-// 
-// #img {
-//   width: 100%;
-//   height: 400px;
-//   overflow: auto;
-// }
-
-// #image1 {
-//   object-fit: cover;
-// }
-
-// Infographics
-// #labels {
-//   height: 500px;
-//   width: 100%
-// }
-
-// #labels svg {
-//   position: absolute;
-//   width: 150px;
-//   left: 25%;
-//   margin-left: -200px;
-//   margin-top: 5%;
-// }
-
-// #labels svg:nth-child(2) {
-//   transform: translate(0, 30px);
-// }
-
-// text:nth-child(2) {
-// }
-
-// Infographics
-// #labels {
-//   height: 200px;
-//   width: 100%
-// }
-
-// #labels svg {
-//   position: absolute;
-//   //width: 400px;
-//   left: 25%;
-//   margin-left: -200px;
-//   margin-top: 5%;
-// }
-
-// #labels svg:nth-child(2) {
-//   transform: translate(0, 30px);
-// }
-
-// iframe {
-//   left: 50%;
-//   margin-left: -175px;
-//   position: relative;
-//   width: 350px;
-//   height: 200px;
-// }
-
-// section {
-//   width: 100%;
-// }
-
-// article {
-//   position: relative;
-//   top: 50%;
-//   left: 50%;
-//   padding: 1rem;
-//   // text-align: center;
-//   transform: translate(-50%, 0%);
-// }
-
-// /* Pattern styles */
-// #left-half {
-//   float: left;
-//   width: 50%;
-// }
-// #right-half {
-//   float: left;
-//   width: 50%;
-// }
-
-// /* Metrics List */
-// #content1, #content2 {
-//   position: relative;
-//   left: 150px;
-// }
-
-// path {
-//   stroke-dasharray: 1000;
-//   stroke-dashoffset: 1000;
-//   animation: dash 2s ease forwards;
-// }
-
-// @keyframes dash {
-//   to {
-//     stroke-dashoffset: 0;
-//   }
-// }

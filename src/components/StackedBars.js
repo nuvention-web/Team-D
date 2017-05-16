@@ -24,232 +24,127 @@ export class StackedBars extends React.Component {
 
         current_num = data.overall_views_sb.daily.current;
         last_num = data.overall_views_sb.daily.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+        best_num = (current_num> last_num) ? current_num + 34 : last_num + 40;
 
-      if (current_num < last_num){
         current = {
           background: "#dce5ff",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
           background: "#b2bbff",
-          width: "90px"
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
           background: "#8993d5",
-          width: "140px"
+          width: "70%"
         }
-      }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: "95px"
-        }
-        last = {
-          background: "#b2bbff",
-          width: "80px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-      }
       }
     }
       if(title == "WEEKLY") {
 
         current_num = data.overall_views_sb.weekly.current;
         last_num = data.overall_views_sb.weekly.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 30;
 
-          if (current_num < last_num){
         current = {
           background: "#dce5ff",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
           background: "#b2bbff",
-          width: "90px"
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
           background: "#8993d5",
-          width: "140px"
+          width: "70%"
         }
-      }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: "95px"
-        }
-        last = {
-          background: "#b2bbff",
-          width: "80px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-      }
       }
       if(title == "MONTHLY") {
 
         current_num = data.overall_views_sb.monthly.current;
         last_num = data.overall_views_sb.monthly.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 40;
 
-          if (current_num < last_num){
         current = {
           background: "#dce5ff",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
           background: "#b2bbff",
-          width: "90px"
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
           background: "#8993d5",
-          width: "140px"
+          width: "70%"
         }
-      }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: "95px"
-        }
-        last = {
-          background: "#b2bbff",
-          width: "80px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-      }
     }
 
     if(id == "INTERACTIONS"){
       if(title == "DAILY") {
         current_num = data.overall_interactions_sb.daily.current;
         last_num = data.overall_interactions_sb.daily.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
-      if (current_num < last_num){
-        current = {
-          background: "#dce5ff",
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 50;
 
+
+        current = {
+          background: "#bcfef3",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
-          background: "#b2bbff",
-          width: "90px"
+          background: "#92d3c8",
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
-          background: "#8993d5",
-          width: "140px"
+          background: "#6aa99f",
+          width: "70%"
         }
       }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-
-          width: "90px"
-        }
-
-        last = {
-          background: "#b2bbff",
-          width: "70px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-
-
-      }}
-    }
-
-
 
       if(title == "WEEKLY") {
         current_num = data.overall_interactions_sb.weekly.current;
         last_num = data.overall_interactions_sb.weekly.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
-
-           if (current_num < last_num){
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 10;
+        
         current = {
-          background: "#dce5ff",
+          background: "#bcfef3",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
-          background: "#b2bbff",
-          width: "90px"
+          background: "#92d3c8",
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
-          background: "#8993d5",
-          width: "140px"
+          background: "#6aa99f",
+          width: "70%"
         }
       }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: "95px"
-        }
-        last = {
-          background: "#b2bbff",
-          width: "80px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-      }
-      }
+
+
       if(title == "MONTHLY") {
+
         current_num = data.overall_interactions_sb.monthly.current;
         last_num = data.overall_interactions_sb.monthly.last;
-        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 45;
 
-            if (current_num < last_num){
         current = {
-          background: "#dce5ff",
+          background: "#bcfef3",
           //convert num to size
-          width: "80px"
+          width: ((current_num/best_num)*70)+ "%"
         }
         last = {
-          background: "#b2bbff",
-          width: "90px"
+          background: "#92d3c8",
+          width: ((last_num/best_num)*70) + "%"
         }
         best = {
-          background: "#8993d5",
-          width: "140px"
+          background: "#6aa99f",
+          width: "70%"
         }
       }
-    else{
-          current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: "95px"
-        }
-        last = {
-          background: "#b2bbff",
-          width: "80px"
-        }
-        best = {
-          background: "#8993d5",
-          width: "140px"
-        }
-      }
-
-
     }
 
 
