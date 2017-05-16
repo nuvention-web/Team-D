@@ -15,118 +15,247 @@ export class StackedBars extends React.Component {
   let last_num;
   let best_num;
 
-    if(this.props.id == "VIEWS"){
-      if(this.props.title == "DAILY") {
-        // pull # views here
-        current_num = "111"
-        last_num = "222"
-        best_num = "333"
+  let title = this.props.title;
+  let data = this.props.data;
+  let id = this.props.id;
 
+    if(id == "VIEWS"){
+      if(title == "DAILY") {
+
+        current_num = data.overall_views_sb.daily.current;
+        last_num = data.overall_views_sb.daily.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+
+            if (current_num < last_num){
         current = {
-          background: "#dce5ff",          
+          background: "#dce5ff",
           //convert num to size
           width: "80px"
         }
         last = {
-          background: "#b2bbff", 
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#8993d5", 
-          width: "100px"
+          background: "#8993d5",
+          width: "140px"
         }
       }
-      if(this.props.title == "WEEKLY") {
-        current_num = "112"
-        last_num = "223"
-        best_num = "334"
-        current = {
-          background: "#dce5ff", 
-          width: "80px"
-        }
-        last = {
-          background: "#b2bbff", 
-          width: "82px"
-        }
-        best = {
-          background: "#8993d5", 
-          width: "84px"
-        }
-      }
-      if(this.props.title == "MONTHLY") {
-        current_num = "113"
-        last_num = "224"
-        best_num = "335"
-        current = {
-          background: "#dce5ff", 
-          width: "80px"
-        }
-        last = {
-          background: "#b2bbff", 
-          width: "100px"
-        }
-        best = {
-          background: "#8993d5", 
-          width: "120px"
-        }
-      }
-    }
-    
-    if(this.props.id == "INTERACTIONS"){
-      if(this.props.title == "DAILY") {
-        current_num = "121"
-        last_num = "232"
-        best_num = "343"
-        current = {
-          background: "#bcfef3",
-          //pull data here and convert to size
-          width: "10px"
-        }
-        last = {
-          background: "#92d3c8",
-          width: "20px"
-        }
-        best = {
-          background: "#6aa99f",
-          width: "30px"
-        }
-      }
-      if(this.props.title == "WEEKLY") {
-        current_num = "3149580"
-        last_num = "2390938"
-        best_num = "239408901"
-
-        current = {
-          background: "#bcfef3",
-          width: "70px"
-        }
-        last = {
-          background: "#92d3c8",
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
           width: "95px"
         }
+        last = {
+          background: "#b2bbff",
+          width: "80px"
+        }
         best = {
-          background: "#6aa99f",
-          width: "105px"
+          background: "#8993d5",
+          width: "140px"
         }
       }
-      if(this.props.title == "MONTHLY") {
-        current_num = "99999"
-        last_num = "8888"
-        best_num = "77777"
+      }
+    }
+      if(title == "WEEKLY") {
+
+        current_num = data.overall_views_sb.weekly.current;
+        last_num = data.overall_views_sb.weekly.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+
+          if (current_num < last_num){
         current = {
-          background: "#bcfef3",
+          background: "#dce5ff",
+          //convert num to size
           width: "80px"
         }
         last = {
-          background: "#92d3c8",
+          background: "#b2bbff",
           width: "90px"
         }
         best = {
-          background: "#6aa99f",
-          width: "100px"
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "95px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "80px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+      }
+      if(title == "MONTHLY") {
+
+        current_num = data.overall_views_sb.monthly.current;
+        last_num = data.overall_views_sb.monthly.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+
+          if (current_num < last_num){
+        current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "80px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "90px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "95px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "80px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
         }
       }
     }
+
+    if(id == "INTERACTIONS"){
+      if(title == "DAILY") {
+        current_num = data.overall_interactions_sb.daily.current;
+        last_num = data.overall_interactions_sb.daily.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+            if (current_num < last_num){
+
+        current = {
+          background: "#dce5ff",
+
+          //convert num to size
+          width: "80px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "90px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
+
+          width: "90px"
+        }
+
+        last = {
+          background: "#b2bbff",
+          width: "70px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+
+
+      }}
+    }
+
+
+
+      if(title == "WEEKLY") {
+        current_num = data.overall_interactions_sb.weekly.current;
+        last_num = data.overall_interactions_sb.weekly.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+
+           if (current_num < last_num){
+        current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "80px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "90px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "95px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "80px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+      }
+      if(title == "MONTHLY") {
+        current_num = data.overall_interactions_sb.monthly.current;
+        last_num = data.overall_interactions_sb.monthly.last;
+        best_num = (current_num > last_num) ? current_num + 34 : last_num + 85;
+
+            if (current_num < last_num){
+        current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "80px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "90px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+    else{
+          current = {
+          background: "#dce5ff",
+          //convert num to size
+          width: "95px"
+        }
+        last = {
+          background: "#b2bbff",
+          width: "80px"
+        }
+        best = {
+          background: "#8993d5",
+          width: "140px"
+        }
+      }
+
+
+    }
+
+
+
+
 
     return (
       <div>

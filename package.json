@@ -24,16 +24,19 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "express": "^4.15.2",
+    "google-client-api": "^1.0.4",
     "node-sass": "^4.3.0",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-chartjs": "^0.8.0",
     "react-chartjs-2": "^2.0.5",
+    "react-data-grid": "^2.0.35",
     "react-dom": "^15.4.2",
     "react-progress-label": "^1.2.1",
     "react-shapes": "^0.1.0",
     "react-sidebar": "^2.3.2",
     "react-tooltip": "^3.2.7",
+    "recharts": "^0.22.4",
     "sass-loader": "^4.0.2"
   },
   "devDependencies": {

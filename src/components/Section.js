@@ -2,71 +2,152 @@ import React from 'react';
 import {Title} from './Title';
 import {StackedBars} from './StackedBars';
 import {Doughnut} from 'react-chartjs-2';
-
+import {PieChart, Pie, Legend, Tooltip, Sector, Cell} from 'recharts';
+import ReactDataGrid from 'react-data-grid';
 
 export class Section extends React.Component {
   constructor(props) {
     super(props);
   }
 
-
   render() {
+
+    const data = this.props.data;
     const title = this.props.title;
-    let data = {};
-    let paid_or_organic = {
-        labels: [
-            "Paid",
-            "Organic",
-        ],
-        datasets: [
-            {
-                data: [100, 50],
-                backgroundColor: [
-                    "#96d8ff",
-                    "#368bbb",
-                ],
-                hoverBackgroundColor: [
-                    "#96d8ff",
-                    "#368bbb",
-                ]
-            }]
-    };
+    const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
+
+    let top_performers_columns;
+    let top_performers_data;
+    const rowGetter = rowNumber => top_performers_data[rowNumber];
+
+    if (title == "TOP PERFORMERS"){
+      top_performers_columns = [
+          { key: 'video', name: 'VIDEO' },
+          { key: 'platform', name: 'PLATFORM' },
+          { key: 'publish_date', name: 'DATE' },
+          { key: 'views', name: 'VIEWS' },
+          { key: 'interactions', name: 'INTERACTIONS' }]
+
+      top_performers_data = [
+        { video: data[1].video, platform: data[1].platform, publish_date: data[1].publish_date, views: data[1].views, interactions: data[1].interactions},
+        { video: data[2].video, platform: data[2].platform, publish_date: data[2].publish_date, views: data[2].views, interactions: data[2].interactions},
+        { video: data[3].video, platform: data[3].platform, publish_date: data[3].publish_date, views: data[3].views, interactions: data[3].interactions},
+        { video: data[4].video, platform: data[4].platform, publish_date: data[4].publish_date, views: data[4].views, interactions: data[4].interactions},
+        { video: data[5].video, platform: data[5].platform, publish_date: data[5].publish_date, views: data[5].views, interactions: data[5].interactions},
+        { video: data[6].video, platform: data[6].platform, publish_date: data[6].publish_date, views: data[6].views, interactions: data[6].interactions},
+        { video: data[7].video, platform: data[7].platform, publish_date: data[7].publish_date, views: data[7].views, interactions: data[7].interactions},
+        { video: data[8].video, platform: data[8].platform, publish_date: data[8].publish_date, views: data[8].views, interactions: data[8].interactions},
+        { video: data[9].video, platform: data[9].platform, publish_date: data[9].publish_date, views: data[9].views, interactions: data[9].interactions},
+        { video: data[10].video, platform: data[10].platform, publish_date: data[10].publish_date, views: data[10].views, interactions: data[10].interactions}
+        ];
+    }
+
+
+    let paid_organic;
+    if (title == "PAID vs. ORGANIC")
+    {
+      paid_organic = [{name: 'Paid', value: data.paid}, 
+                      {name: 'Organic', value: data.organic}];
+    }
+
+    let devices;
+    if(title == "DEVICES"){
+      devices = [{name: 'Web', value: data.web}, 
+                 {name: 'Mobile', value: data.mobile}];
+    } 
+
+
+    let views;
+    if(title == "VIEWS"){
+      views = [{name: 'Facebook', value: data.overall_views.facebook}, 
+               {name: 'Youtube', value: data.overall_views.youtube},
+              {name: 'On-site', value: data.overall_views.onsite}];
+    }
+
+    let interactions;
+    if(title == "INTERACTIONS"){
+      interactions = [{name: 'Facebook', value: data.overall_interactions.facebook}, 
+               {name: 'Youtube', value: data.overall_interactions.youtube},
+              {name: 'On-site', value: data.overall_interactions.onsite}];
+    }
 
 
     if (this.props.title == "TOP PERFORMERS") {
       return (
         <div className="top_performers">
           <Title title={title} />
+          <ReactDataGrid id="top_performers_chart"
+            columns={top_performers_columns}
+            rowGetter={rowGetter}
+            rowsCount={top_performers_data.length}
+            minHeight={200} />
         </div>
       );
     } else if (this.props.title == "PAID vs. ORGANIC") {
       return (
         <div className = "paid_vs_organic">
           <Title title={title} />
-          <Doughnut data={paid_or_organic} />
+          <PieChart width={200} height={200} >
+            <Pie data={paid_organic} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
+            {paid_organic.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            </Pie>
+            <Tooltip/>
+          </PieChart>
         </div>
       );
     } else if (this.props.title == "DEVICES") {
       return (
         <div className = "devices">
           <Title title={title} />
-          <Doughnut data={paid_or_organic} />
+          <PieChart width={200} height={200} >
+            <Pie data={devices} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
+            {devices.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            </Pie>
+            <Tooltip/>
+          </PieChart>
+        </div>
+      );
+    }else if (this.props.title == "VIEWS") {
+      return (
+        <div className = "views">
+          <div className = "divider"></div>
+          <Title title={title} />
+          <div className="views_interactions_content">
+            <div className="donut">
+          <PieChart width={125} height={125} >
+            <Pie data={views} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+            {views.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            </Pie>
+            <Tooltip/>
+          </PieChart>
+            </div>      
+            <div className="stacked_bars">
+              <StackedBars title="DAILY" id={title} data={data} />
+              <StackedBars title="WEEKLY" id={title} data={data} />
+              <StackedBars title="MONTHLY" id={title} data={data} />
+            </div>
+          </div>
         </div>
       );
     }
     else {
       return (
-        <div className = "views_interactions">
+        <div className = "interactions">
           <div className = "divider"></div>
           <Title title={title} />
           <div className="views_interactions_content">
             <div className="donut">
-              <Doughnut data={paid_or_organic} />  
+          <PieChart width={125} height={125} >
+            <Pie data={interactions} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
+            {interactions.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+            </Pie>
+            <Tooltip/>
+          </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} />
-              <StackedBars title="WEEKLY" id={title} />
-              <StackedBars title="MONTHLY" id={title} />
+              <StackedBars title="DAILY" id={title} data={data} />
+              <StackedBars title="WEEKLY" id={title} data={data}/>
+              <StackedBars title="MONTHLY" id={title} data={data}/>
             </div>
           </div>
         </div>

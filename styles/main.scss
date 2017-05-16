@@ -19,7 +19,7 @@ html, body, section, div {
 body {
   color: $light-font;
   font-family: $dosis;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 100;
   line-height: 150%;
   margin: 0px;
@@ -28,10 +28,11 @@ body {
   width: 100%;
 }
 h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin: 0%;
 }
 h2{
-  font-size: 1rem
+  font-size: 0.5rem
 }
 
 .Landing{
@@ -39,14 +40,16 @@ h2{
 width: 100%;
 height: 100%;
 }
-
+.container{
+  padding-left: 2%;
+}
 // TOP SECTION
 #top{
   //padding-left: 20px;
   width: 100%;
   display: inline;
   #title{
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 100;
     color: $light-font;
     margin: 0 0.25rem 0;
@@ -66,21 +69,27 @@ height: 100%;
   width: 100%;
 }
 .top_performers{
-  width: 50%;
+  width: 60%;
   float: left;
 }
 .paid_vs_organic{
-  width: 25%;
+  padding-left: 4%;
+  width: 20%;
   float: left;
 }
 .devices{
-  width: 25%;
+  padding-left: 4%;
+  width: 20%;
   float: left;
 }
-.views_interactions{
+.views{
   display: block;
   width: 100%;
-  margin-bottom: 15%;
+  padding-bottom: 12%;
+}
+.interactions{
+  display: block;
+  width: 100%;
 }
 .views_interactions_content{
   display: inline;
@@ -88,6 +97,20 @@ height: 100%;
 .divider{
   height: 2px;
   background: $light-font;
+}
+
+//TOP PERFORMERS CHART CSS
+.react-grid-Container{
+  color: black;
+  margin: 2%;
+  .react-grid-HeaderCell{
+    background-color: $background;
+    color: $light-font;
+  }
+  .react-grid-Cell{
+    color: $light-font;
+    background-color: $background;
+  }
 }
 
 // DONUT CSS
@@ -104,7 +127,7 @@ height: 100%;
 // STACKED BARS COMPONENT
 .stacked_bars{
   margin-left: 25%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 .stacked_bars > div {
   float: left;
@@ -114,6 +137,7 @@ height: 100%;
 }
 .bar_chart{
   margin-left: 5%;
+  margin-top: 2%;
 }
 .bar_label{
   width: 25%;
@@ -125,110 +149,110 @@ height: 100%;
 .bar{
     height: 1rem;
     margin-left: 2%;
-    margin-top: 2%;
+    margin-top: 5%;
     display:inline-block;
     font-size: 1rem;
     color: black;
     text-align: right;
-    padding: 2%;
+    padding: 3%;
 
 }
 
 // 
-#img {
-  width: 100%;
-  height: 400px;
-  overflow: auto;
-}
+// #img {
+//   width: 100%;
+//   height: 400px;
+//   overflow: auto;
+// }
 
-#image1 {
-  object-fit: cover;
-}
-
-// Infographics
-#labels {
-  height: 500px;
-  width: 100%
-}
-
-#labels svg {
-  position: absolute;
-  width: 150px;
-  left: 25%;
-  margin-left: -200px;
-  margin-top: 5%;
-}
-
-#labels svg:nth-child(2) {
-  transform: translate(0, 30px);
-}
-
-text:nth-child(2) {
-}
+// #image1 {
+//   object-fit: cover;
+// }
 
 // Infographics
-#labels {
-  height: 200px;
-  width: 100%
-}
+// #labels {
+//   height: 500px;
+//   width: 100%
+// }
 
-#labels svg {
-  position: absolute;
-  //width: 400px;
-  left: 25%;
-  margin-left: -200px;
-  margin-top: 5%;
-}
+// #labels svg {
+//   position: absolute;
+//   width: 150px;
+//   left: 25%;
+//   margin-left: -200px;
+//   margin-top: 5%;
+// }
 
-#labels svg:nth-child(2) {
-  transform: translate(0, 30px);
-}
+// #labels svg:nth-child(2) {
+//   transform: translate(0, 30px);
+// }
 
-iframe {
-  left: 50%;
-  margin-left: -175px;
-  position: relative;
-  width: 350px;
-  height: 200px;
-}
+// text:nth-child(2) {
+// }
 
-section {
-  width: 100%;
-}
+// Infographics
+// #labels {
+//   height: 200px;
+//   width: 100%
+// }
 
-article {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  padding: 1rem;
-  // text-align: center;
-  transform: translate(-50%, 0%);
-}
+// #labels svg {
+//   position: absolute;
+//   //width: 400px;
+//   left: 25%;
+//   margin-left: -200px;
+//   margin-top: 5%;
+// }
 
-/* Pattern styles */
-#left-half {
-  float: left;
-  width: 50%;
-}
-#right-half {
-  float: left;
-  width: 50%;
-}
+// #labels svg:nth-child(2) {
+//   transform: translate(0, 30px);
+// }
 
-/* Metrics List */
-#content1, #content2 {
-  position: relative;
-  left: 150px;
-}
+// iframe {
+//   left: 50%;
+//   margin-left: -175px;
+//   position: relative;
+//   width: 350px;
+//   height: 200px;
+// }
 
-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 2s ease forwards;
-}
+// section {
+//   width: 100%;
+// }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+// article {
+//   position: relative;
+//   top: 50%;
+//   left: 50%;
+//   padding: 1rem;
+//   // text-align: center;
+//   transform: translate(-50%, 0%);
+// }
+
+// /* Pattern styles */
+// #left-half {
+//   float: left;
+//   width: 50%;
+// }
+// #right-half {
+//   float: left;
+//   width: 50%;
+// }
+
+// /* Metrics List */
+// #content1, #content2 {
+//   position: relative;
+//   left: 150px;
+// }
+
+// path {
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+//   animation: dash 2s ease forwards;
+// }
+
+// @keyframes dash {
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
