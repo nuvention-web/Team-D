@@ -8,6 +8,7 @@ import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
 import {push as Menu } from 'react-burger-menu';
 //import {TreeMenu, TreeNode} from 'react-tree-menu';
+// test comment!!! 
 
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
