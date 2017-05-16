@@ -20,9 +20,37 @@ const Pages = {
 const params = {
     access_token: Tokens.DC
 }
+
+const paramsVideoMetrics = {
+    fields:"videos{likes.limit(0).summary(true),reactions.limit(0).summary(true),comments.limit(0).summary(true),sharedposts.limit(0).summary(true)}",
+    access_token: Tokens.DC
+}
+
+
 const PAGE = Pages.DC;
 
 export var facebookAPI = () => {
+
+const videoInteractionsPromise = (res) =>{
+      return new Promise((resolve, reject) => {
+         
+          FB.api(
+              "/"  + PAGE,
+              paramsVideoMetrics,
+              function (response) {
+                if (response && !response.error) {
+                 
+                  console.log("video like shares and comments and reactions ", response);
+                   resolve(response);
+
+                } else {
+                  console.error("error loading facebook video");
+                  reject(response);
+                }
+              }
+            );
+          }
+ ) }
 
 const pageInsightsPaidPromise = () =>{
 
