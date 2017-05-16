@@ -16,12 +16,13 @@ loaders.push({
 });
 
 // loaders.push({
-// 	test: /\.(js|jsx)$/,
-// 	loader: 'babel-loader',
-// 	query: {
-// 		presets: ['es2015', 'react']
-// 	}
-// })
+//  	test: /\.(js|jsx)$/,
+//  	loader: 'babel-loader',
+//  	query: {
+//  		presets: ['es2015', 'stage-0', 'react'],
+//  		plugins: ['transform-runtime']
+//  	},
+//  })
 
 module.exports = {
 	entry: [

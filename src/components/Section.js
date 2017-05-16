@@ -71,7 +71,7 @@ export class Section extends React.Component {
               {name: 'On-site', value: data.overall_interactions.onsite}];
     }
 
-
+    
     if (this.props.title == "TOP PERFORMERS") {
       return (
         <div className="top_performers">
