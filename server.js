@@ -9,6 +9,12 @@ const app = express()
 const indexPath = path.join(__dirname, './src/template.html')
 
 /* Middle Ware */
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(express.static('public'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +31,9 @@ app.get('/api/brightcove', (req, res) => {
   oauthApi.getAccessToken((first, second) => {
     const access_token = second["access_token"];
     console.log("access token: ", access_token);
-    res.send(access_token);
+    console.log("request: ", req);
+    console.log("response: ", res);
+    res.status(200).send(access_token);
   });
 });
 

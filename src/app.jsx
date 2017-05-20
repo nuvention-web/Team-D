@@ -22,50 +22,70 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/brightcove').then(res => {
-      console.log("asdfjasdfl;kjsad");
+    axios.get('http://localhost:8080/api/brightcove').then(res => {
       console.log("inside APP accesstoken: ", res);
     });
 
+    // require('google-client-api')().then((gapi) => {
+    //   YTpromised(gapi).then(res => {
+    //     console.log("Youtube in App: ", res);
+    //     const bigQuery = BigQuery[0];
+    //     let dataChunk = {};
+    //     Object.assign(dataChunk, {
+    //       YT: res
+    //       Ooyala: {
+    //         weekly: {
+    //           current: {
+    //             views: +bigQuery.results_data_metrics_uniq_plays_requested,
+    //             interactions: +bigQuery.results_data_metrics_embeds_copied +
+    //                           +bigQuery.results_data_metrics_emails_sent,
+    //           }, last: {
+    //             views: +bigQuery.results_data_metrics_uniq_plays_requested - 110,
+    //             interactions: +bigQuery.results_data_metrics_embeds_copied +
+    //                           +bigQuery.results_data_metrics_emails_sent
+    //           }
+    //         },
+    //         popular: {
+    //           id: {
+    //             interactions: +bigQuery.results_data_metrics_embeds_copied +
+    //                           +bigQuery.results_data_metrics_emails_sent,
+    //             platform: "Ooyala",
+    //             publishDate: bigQuery.results_end_date.slice(0,9),
+    //             title: bigQuery.results_data_group_name,
+    //             views: +bigQuery.results_data_metrics_uniq_plays_requested
+    //           }
+    //         }
+    //       }
+    //     });
+    //     var FBpromised = facebookAPI();
+    //     FBpromised.then(res => {
+    //       Object.assign(dataChunk, {FB: res});
+    //       this.setState({dataChunk: dataChunk});
+    //       console.log("state final: ", this.state);
+    //     }).catch((err) => {
+    //       console.log("facebook error: ", err);
+    //     });
+    //   })
+    // });
+
+    /* Only Youtube */
     require('google-client-api')().then((gapi) => {
       YTpromised(gapi).then(res => {
         console.log("Youtube in App: ", res);
-        const bigQuery = BigQuery[0];
+
         let dataChunk = {};
         Object.assign(dataChunk, {
           YT: res
-          // Ooyala: {
-          //   weekly: {
-          //     current: {
-          //       views: +bigQuery.results_data_metrics_uniq_plays_requested,
-          //       interactions: +bigQuery.results_data_metrics_embeds_copied +
-          //                     +bigQuery.results_data_metrics_emails_sent,
-          //     }, last: {
-          //       views: +bigQuery.results_data_metrics_uniq_plays_requested - 110,
-          //       interactions: +bigQuery.results_data_metrics_embeds_copied +
-          //                     +bigQuery.results_data_metrics_emails_sent
-          //     }
-          //   },
-          //   popular: {
-          //     id: {
-          //       interactions: +bigQuery.results_data_metrics_embeds_copied +
-          //                     +bigQuery.results_data_metrics_emails_sent,
-          //       platform: "Ooyala",
-          //       publishDate: bigQuery.results_end_date.slice(0,9),
-          //       title: bigQuery.results_data_group_name,
-          //       views: +bigQuery.results_data_metrics_uniq_plays_requested
-          //     }
-          //   }
-          // }
         });
-        var FBpromised = facebookAPI();
-        FBpromised.then(res => {
-          Object.assign(dataChunk, {FB: res});
-          this.setState({dataChunk: dataChunk});
-          console.log("state final: ", this.state);
-        }).catch((err) => {
-          console.log("facebook error: ", err);
-        });
+        this.setState({dataChunk: dataChunk});
+        // var FBpromised = facebookAPI();
+        // FBpromised.then(res => {
+        //   Object.assign(dataChunk, {FB: res});
+        //   this.setState({dataChunk: dataChunk});
+        //   console.log("state final: ", this.state);
+        // }).catch((err) => {
+        //   console.log("facebook error: ", err);
+        // });
       })
     });
 
