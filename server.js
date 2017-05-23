@@ -2,7 +2,8 @@ const path = require('path')
 const express = require('express')
 const Server = require('./server.js')
 const bodyParser = require('body-parser');
-const  brightcove = require('brightcove');
+const brightcove = require('brightcove');
+const axios = require('axios');
 
 const port = (process.env.PORT || 8080)
 const app = express()
@@ -30,10 +31,67 @@ app.get('/api/brightcove', (req, res) => {
   const oauthApi = new brightcove.OAuthApi(a, b + "-" + c + "-" + d);
   oauthApi.getAccessToken((first, second) => {
     const access_token = second["access_token"];
-    console.log("access token: ", access_token);
-    console.log("request: ", req);
-    console.log("response: ", res);
-    res.status(200).send(access_token);
+    const account_id = "1155968404";
+    const dimensions = ["video","device_type","device_os"];
+    const fields =["video_view"];
+    let from = {
+      daily: {
+        current: (new Date).getTime(),
+        last: "-2d"
+      },
+      weekly: {
+        current: "-7d",
+        last: "-14d"
+      },
+      monthly: {
+        current: "-28d",
+        last: "-56d"
+      }
+    };
+    let to = {
+      daily: {
+        current: (new Date).getTime(),
+        last: "-1d"
+      },
+      weekly: {
+        current: (new Date).getTime(),
+        last: "-7d"
+      },
+      monthly: {
+        current: (new Date).getTime(),
+        last: "-28d"
+      }
+    };
+
+    // axios.defaults.baseURL = 'https://api.example.com';
+    const config = {
+        headers: {
+          'Authorization': 'Bearer ' + access_token
+        }
+      }
+
+    // axios.get("https://analytics.api.brightcove.com/v1/data?accounts="
+    //           + account_id
+    //           + "&dimensions="
+    //           + dimensions.join(",")
+    //           + "&from=" + from.daily.last
+    //           + "&to=" + to.daily.last
+    //           + "&fields=" + fields.join(","))
+    //   .then(res => {
+    //     console.log("brightcove res:", res);
+    //   })
+    //   .catch(err => {
+    //     console.log("brightcove error:", err);
+    //   })
+    axios.get("https://analytics.api.brightcove.com/v1/data?accounts=1752604059001&dimensions=video&fields=video_impression,video_view,video.name", config)
+         .then(res => {
+            console.log("brightcove res:", res);
+         })
+         .catch(err => {
+            console.log("brightcove error:", err);
+         })
+
+    // res.status(200).send(access_token);
   });
 });
 
