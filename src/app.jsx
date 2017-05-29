@@ -7,6 +7,7 @@ import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
 import {push as Menu } from 'react-burger-menu';
+//import Checkbox from 'react-checkbox';
 //import {TreeMenu, TreeNode} from 'react-tree-menu';
 // test comment!!! 
 
@@ -82,43 +83,56 @@ export default class App extends React.Component {
     }
   }
 
-  handleInstaChange(e) {
+  handleYTChange(e) {
     if(e.target.checked){
       this.setState({
-        isInsta: true
+        isYT: true
 
       })
     } else{
       this.setState({
-        isInsta: false
+        isYT: false
       })
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-  }
-
-  handleReadMoreFB(e) {
+  handleOnSiteChange(e) {
     if(e.target.checked){
       this.setState({
-        isFBMetrics:"ShowMoreFBmetrics"
+        isOnSite: true
 
       })
-    } else {
+    } else{
       this.setState({
-        isFBMetrics:""
+        isOnSite: false
       })
     }
   }
 
-  handleReadMoreInsta(e) {
-    if(e.target.checked){
-      this.setState({
-        isInstaMetrics:""}
-        )
-    }
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault()
+  // }
+
+  // handleReadMoreFB(e) {
+  //   if(e.target.checked){
+  //     this.setState({
+  //       isFBMetrics:"ShowMoreFBmetrics"
+
+  //     })
+  //   } else {
+  //     this.setState({
+  //       isFBMetrics:""
+  //     })
+  //   }
+  // }
+
+  // handleReadMoreInsta(e) {
+  //   if(e.target.checked){
+  //     this.setState({
+  //       isInstaMetrics:""}
+  //       )
+  //   }
+  // }
 
   render() {
     var all_data_object = {
@@ -266,18 +280,16 @@ export default class App extends React.Component {
 
 
 
-
-
-    var sidebarContent = <b>Sidebar content</b>;
+    //var sidebarContent = <b>Sidebar content</b>;
 
     return (
       <div id="outer-container">
       <section className="container">
         <Menu className="menu" pageWrapId={ "page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
           <h1 id="platforms" className="platforms-menu">Platforms</h1>
-            <input type="checkbox" label={"Facebook"} checked={true}/>
-            <input type="checkbox" label={"Facebook"} checked={true}/>
-            <input type="checkbox" label={"Facebook"} checked={true}/>
+            <label id = "ld_label"><input type="checkbox" id="cb" label={"Facebook"} checked={this.isFB} onChange={this.handleFBChange}/>Facebook</label>
+            <label id = "ld_label"><input type="checkbox" id="cb" label={"Youtube"} checked={this.isYT} onChange={this.handleYTChange}/>Youtube</label>
+            <label id = "ld_label"><input type="checkbox" id="cb" label={"On-Site"} checked={this.isOnSite}onChange={this.handleOnSiteChange}/>On-Site</label>
         </Menu>
         <main id="page-wrap">
           <Header />
