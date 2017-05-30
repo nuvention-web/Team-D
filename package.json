@@ -22,6 +22,7 @@
   "license": "MIT",
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
+    "axios": "^0.16.1",
     "chart.js": "^2.5.0",
     "express": "^4.15.2",
     "google-client-api": "^1.0.4",
@@ -52,6 +53,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-runtime": "^6.22.0",
+    "body-parser": "^1.17.2",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "0.9.0",
