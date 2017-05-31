@@ -12,10 +12,10 @@ export const YTpromised = (gapi) => {
   today += year + "-" + month + "-" + date;
 
   const month_before = (month - 1 < 10) ? year + "-" + "0" + (month - 1) + "-" + date : year + "-" + (month - 1) + "-" + date;
-  const week_before = "2017-05-13" // should be done dynamically
-  const yesterday = "2017-05-15"
+  const week_before = "2017-05-23" // should be done dynamically
+  const yesterday = "2017-05-29"
 
-  // console.log(month_before, today);
+  console.log(month_before, today);
 
   let youtube_month = {
     // "ids": 'channel==UCGME_LjZasuldi_EOz7GdBg', // Dance
@@ -243,8 +243,10 @@ export const YTpromised = (gapi) => {
         }
 
     return new Promise((resolve, reject) => {
-      month_promise()
-        .then(week_promise)
+      // month_promise()
+        // .then(week_promise)
+
+        week_promise()
         .then(day_promise)
         .then(device_promise)
         .then(popular_promise)

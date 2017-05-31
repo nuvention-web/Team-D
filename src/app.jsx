@@ -18,8 +18,55 @@ import {Header, Section, Title, StackedBars} from './components';
 
 export default class App extends React.Component {
   constructor(props) {
-
     super(props);
+    this.state = {
+      data: {
+        most_viewed_videos: {
+          1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+          10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+        },
+        paid_organic: {
+          paid: 100,
+          organic: 300
+        },
+        devices: {
+          web: 500,
+          mobile: 150
+        },
+        total_views: {
+          facebook: {
+            current: 5,
+            last: 10,
+            best: 15
+          },
+          brightcove: {
+            current: 5,
+            last: 10,
+            best: 15
+          }
+        },
+        total_interactions: {
+          facebook: {
+            current: 5,
+            last: 10,
+            best: 15
+          },
+          brightcove: {
+            current: 5,
+            last: 10,
+            best: 15
+          }
+        }
+      }
+    }
   }
 
   componentDidMount() {
@@ -300,18 +347,13 @@ export default class App extends React.Component {
          all_data_object.overall_views.facebook = this.state.dataChunk.FB.monthly.current.views;
          all_data_object.overall_views.youtube = this.state.dataChunk.YT.monthly.current.views;
          all_data_object.overall_views.onsite = this.state.dataChunk.Ooyala.weekly.current.views;
-
       }
     }
-
-
-
-    //var sidebarContent = <b>Sidebar content</b>;
 
     return (
       <div id="outer-container">
       <section className="container">
-        <Menu className="menu" pageWrapId={ "page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
+        <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
           <h1 id="platforms" className="platforms-menu">Platforms</h1>
             <label id = "ld_label"><input type="checkbox" id="cb" label={"Facebook"} checked={this.isFB} onChange={this.handleFBChange}/>Facebook</label>
             <label id = "ld_label"><input type="checkbox" id="cb" label={"Youtube"} checked={this.isYT} onChange={this.handleYTChange}/>Youtube</label>
