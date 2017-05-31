@@ -22,47 +22,101 @@ export default class App extends React.Component {
     this.state = {
       data: {
         most_viewed_videos: {
-          1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
-          10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+          daily: {
+            1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+          },
+          weekly: {
+            1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+          }
         },
         paid_organic: {
-          paid: 100,
-          organic: 300
+          daily: {
+            paid: 100,
+            organic: 300
+          },
+          weekly: {
+            paid: 100,
+            organic: 300
+          }
         },
         devices: {
-          web: 500,
-          mobile: 150
+          daily: {
+            web: 500,
+            mobile: 150
+          },
+          weekly: {
+            web: 500,
+            mobile: 150
+          }
         },
         total_views: {
-          facebook: {
-            current: 5,
-            last: 10,
-            best: 15
+          daily: {
+            facebook: {
+              current: 5,
+              last: 10,
+              best: 15
+            },
+            brightcove: {
+              current: 5,
+              last: 10,
+              best: 15
+            }
           },
-          brightcove: {
-            current: 5,
-            last: 10,
-            best: 15
+          weekly: {
+            facebook: {
+              current: 5,
+              last: 10,
+              best: 15
+            },
+            brightcove: {
+              current: 5,
+              last: 10,
+              best: 15
+            }
           }
         },
         total_interactions: {
-          facebook: {
-            current: 5,
-            last: 10,
-            best: 15
+          daily: {
+            facebook: {
+              current: 5,
+              last: 10,
+              best: 15
+            },
+            brightcove: {
+              current: 5,
+              last: 10,
+              best: 15
+            }
           },
-          brightcove: {
-            current: 5,
-            last: 10,
-            best: 15
+          weekly: {
+            facebook: {
+              current: 5,
+              last: 10,
+              best: 15
+            },
+            brightcove: {
+              current: 5,
+              last: 10,
+              best: 15
+            }
           }
         }
       }
