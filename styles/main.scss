@@ -81,6 +81,21 @@ height: 100%;
       }
     }
   }
+  #timeframes{
+    font-size: 1.75rem;
+    padding-top: 10%;
+    #ld_label{
+      font-size: 1.25rem;
+      padding-top: 5%;
+      #cb{
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Wrapper for item list */
