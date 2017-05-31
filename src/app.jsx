@@ -14,7 +14,7 @@ import {push as Menu } from 'react-burger-menu';
 
 // Add components inside curly brackets
 // import {Platform, VisualCue, Title, VideoDisplay} from './components';
-import {Header, Section, Title, StackedBars} from './components';
+import {Header, Section, Title, StackedBars, CheckBox} from './components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -354,10 +354,7 @@ export default class App extends React.Component {
       <div id="outer-container">
       <section className="container">
         <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
-          <h1 id="platforms" className="platforms-menu">Platforms</h1>
-            <label id = "ld_label"><input type="checkbox" id="cb" label={"Facebook"} checked={this.isFB} onChange={this.handleFBChange}/>Facebook</label>
-            <label id = "ld_label"><input type="checkbox" id="cb" label={"Youtube"} checked={this.isYT} onChange={this.handleYTChange}/>Youtube</label>
-            <label id = "ld_label"><input type="checkbox" id="cb" label={"On-Site"} checked={this.isOnSite}onChange={this.handleOnSiteChange}/>On-Site</label>
+          <CheckBox />
         </Menu>
         <main id="page-wrap">
           <Header />

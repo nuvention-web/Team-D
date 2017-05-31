@@ -7,3 +7,4 @@ export {Header} from './Header';
 export {Section} from './Section';
 export {Title} from './Title';
 export {StackedBars} from './StackedBars';
+export {CheckBox} from './CheckBox';
