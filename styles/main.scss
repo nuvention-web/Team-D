@@ -64,9 +64,11 @@ height: 100%;
 }
 
 //MENU
-.menu{
+.bm-menu {
+  background-color:#a8b7b8;
+}
+.bm-menu{
   //width: 100px;
-  background-color: #a8b7b8;
   color: black;
   font-size: 1.5rem;
   #platforms{
@@ -97,6 +99,9 @@ height: 100%;
     font-size: 1.5rem;
   }
 }
+.bm-morph-shape {
+  fill: #a8b7b8;
+}
 
 /* Wrapper for item list */
 .bm-item-list {
@@ -104,21 +109,20 @@ height: 100%;
   padding: 0.8em;
 }
 
-/*
-.menu:active{
-  padding-right: 20%;
+// .menu:active{
+// }
+#page-wrap{
+  margin-left: 15%;
 }
-*/
-
-.bm-cross {
-  height: 75px;
-  width: 75px;
-  background: black;
-}
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
+// .bm-cross {
+//   height: 75px;
+//   width: 75px;
+//   background: black;
+// }
+// .bm-cross-button {
+//   height: 24px;
+//   width: 24px;
+// }
 .bm-burger-button {
   position: fixed;
   width: 75px;
@@ -147,7 +151,7 @@ height: 100%;
 .views{
   display: block;
   width: 100%;
-  padding-bottom: 12%;
+  padding-bottom: 15%;
 }
 .interactions{
   display: block;
@@ -181,7 +185,7 @@ height: 100%;
   display: inline;
   float: left;
   padding-left: 4%;
-  padding-top: 2%;
+  //padding-top: 2%;
 }
 .views_interactions_content > canvas{
   display: inline;
@@ -190,18 +194,18 @@ height: 100%;
 
 // STACKED BARS COMPONENT
 .stacked_bars{
-  margin-left: 25%;
-  margin-top: 2%;
+  margin-left: 20%;
+  //margin-top: 2%;
 }
 .stacked_bars > div {
   float: left;
-  width: 33%;
+  width: 75%;
   text-align: left;
-  line-height: 25%;
+  line-height: 2%;
 }
 .bar_chart{
-  margin-left: 5%;
-  margin-top: 2%;
+  //margin-left: 5%;
+  //margin-top: 2%;
 }
 .bar_label{
   width: 25%;
@@ -211,13 +215,13 @@ height: 100%;
   text-align: right;
 }
 .bar{
-    height: 1rem;
+    height: 0.5rem;
     margin-left: 2%;
-    margin-top: 5%;
+    margin-top: 3%;
     display:inline-block;
     font-size: 1rem;
     color: black;
     text-align: right;
-    padding: 3%;
+    padding: 1%;
 
 }

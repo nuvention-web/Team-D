@@ -14,6 +14,7 @@ export class Section extends React.Component {
 
     const data = this.props.data;
     const title = this.props.title;
+    //const timeframe = this.timeframe;
     const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
 
     let top_performers_columns;
@@ -40,7 +41,7 @@ export class Section extends React.Component {
         { video: data[9].video, platform: data[9].platform, publish_date: data[9].publish_date, views: data[9].views, interactions: data[9].interactions},
         { video: data[10].video, platform: data[10].platform, publish_date: data[10].publish_date, views: data[10].views, interactions: data[10].interactions}
         ];
-    }
+      }
 
 
     let paid_organic;
@@ -57,18 +58,17 @@ export class Section extends React.Component {
     } 
 
 
+    console.log("data", data)
     let views;
     if(title == "VIEWS"){
-      views = [{name: 'Facebook', value: data.overall_views.facebook}, 
-               {name: 'Youtube', value: data.overall_views.youtube},
-              {name: 'On-site', value: data.overall_views.onsite}];
+      views = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+                {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     let interactions;
     if(title == "INTERACTIONS"){
-      interactions = [{name: 'Facebook', value: data.overall_interactions.facebook}, 
-               {name: 'Youtube', value: data.overall_interactions.youtube},
-              {name: 'On-site', value: data.overall_interactions.onsite}];
+      interactions = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+                      {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     
@@ -122,9 +122,7 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} data={data} />
-              <StackedBars title="WEEKLY" id={title} data={data} />
-              <StackedBars title="MONTHLY" id={title} data={data} />
+              <StackedBars id={title} data={data} />
             </div>
           </div>
         </div>
@@ -145,9 +143,7 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} data={data} />
-              <StackedBars title="WEEKLY" id={title} data={data}/>
-              <StackedBars title="MONTHLY" id={title} data={data}/>
+              <StackedBars id={title} data={data} />
             </div>
           </div>
         </div>

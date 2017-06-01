@@ -7,7 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
-import {push as Menu } from 'react-burger-menu';
+import {bubble as Menu } from 'react-burger-menu';
 //import Checkbox from 'react-checkbox';
 //import {TreeMenu, TreeNode} from 'react-tree-menu';
 // test comment!!!
@@ -412,21 +412,23 @@ export default class App extends React.Component {
       }
     }
 
+    // console.log(this.state.data.total_views[this.state.timeframe]);
+    // console.log(this.state.data.total_interactions[this.state.timeframe]);
     return (
       <div id="outer-container">
       <section className="container">
-        <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
+        <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={"15%"} isOpen={true} noOverlay>
           <CheckBox onChange={this.handleCheckBox} />
         </Menu>
         <main id="page-wrap">
           <Header />
           <div className="top">
-            <Section title="TOP PERFORMERS" data={all_data_object.top_performers_data}/>
-            <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
-            <Section title="DEVICES" data={all_data_object.overall_devices}/>
+            <Section title="TOP PERFORMERS" data={this.state.data.most_viewed_videos[this.state.timeframe]}/>
+            <Section title="PAID vs. ORGANIC" data={this.state.data.paid_organic[this.state.timeframe]}/>
+            <Section title="DEVICES" data={this.state.data.devices[this.state.timeframe]}/>
           </div>
-          <Section title="VIEWS" data={all_data_object} />
-          <Section title="INTERACTIONS" data={all_data_object}/>
+          <Section title="VIEWS" data={this.state.data.total_views[this.state.timeframe]} />
+          <Section title="INTERACTIONS" data={this.state.data.total_interactions[this.state.timeframe]}/>
         </main>
       </section>
       </div>
