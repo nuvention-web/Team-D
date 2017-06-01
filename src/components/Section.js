@@ -14,6 +14,7 @@ export class Section extends React.Component {
 
     const data = this.props.data;
     const title = this.props.title;
+    //const timeframe = this.timeframe;
     const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
 
     let top_performers_columns;
@@ -40,7 +41,7 @@ export class Section extends React.Component {
         { video: data[9].video, platform: data[9].platform, publish_date: data[9].publish_date, views: data[9].views, interactions: data[9].interactions},
         { video: data[10].video, platform: data[10].platform, publish_date: data[10].publish_date, views: data[10].views, interactions: data[10].interactions}
         ];
-    }
+      }
 
 
     let paid_organic;

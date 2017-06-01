@@ -7,7 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
-import {push as Menu } from 'react-burger-menu';
+import {bubble as Menu } from 'react-burger-menu';
 //import Checkbox from 'react-checkbox';
 //import {TreeMenu, TreeNode} from 'react-tree-menu';
 // test comment!!!
@@ -20,6 +20,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      timeframe: "daily",
       data: {
         most_viewed_videos: {
           daily: {
@@ -404,16 +405,25 @@ export default class App extends React.Component {
       }
     }
 
+    let top_performers
+    if (this.state.timeframe == "daily")
+    {
+      top_performers = this.state.data.most_viewed_videos.daily;
+    }
+    else {
+      top_performers = this.state.most_viewed_videos.weekly;
+    }
+
     return (
       <div id="outer-container">
       <section className="container">
-        <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
+        <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={"15%"} isOpen={true} noOverlay>
           <CheckBox />
         </Menu>
         <main id="page-wrap">
           <Header />
           <div className="top">
-            <Section title="TOP PERFORMERS" data={all_data_object.top_performers_data}/>
+            <Section title="TOP PERFORMERS" data={top_performers}/>
             <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
             <Section title="DEVICES" data={all_data_object.overall_devices}/>
           </div>
