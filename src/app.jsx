@@ -405,15 +405,8 @@ export default class App extends React.Component {
       }
     }
 
-    let top_performers
-    if (this.state.timeframe == "daily")
-    {
-      top_performers = this.state.data.most_viewed_videos.daily;
-    }
-    else {
-      top_performers = this.state.most_viewed_videos.weekly;
-    }
-
+    // console.log(this.state.data.total_views[this.state.timeframe]);
+    // console.log(this.state.data.total_interactions[this.state.timeframe]);
     return (
       <div id="outer-container">
       <section className="container">
@@ -423,12 +416,12 @@ export default class App extends React.Component {
         <main id="page-wrap">
           <Header />
           <div className="top">
-            <Section title="TOP PERFORMERS" data={top_performers}/>
-            <Section title="PAID vs. ORGANIC" data={all_data_object.overall_paid_organic}/>
-            <Section title="DEVICES" data={all_data_object.overall_devices}/>
+            <Section title="TOP PERFORMERS" data={this.state.data.most_viewed_videos[this.state.timeframe]}/>
+            <Section title="PAID vs. ORGANIC" data={this.state.data.paid_organic[this.state.timeframe]}/>
+            <Section title="DEVICES" data={this.state.data.devices[this.state.timeframe]}/>
           </div>
-          <Section title="VIEWS" data={all_data_object} />
-          <Section title="INTERACTIONS" data={all_data_object}/>
+          <Section title="VIEWS" data={this.state.data.total_views[this.state.timeframe]} />
+          <Section title="INTERACTIONS" data={this.state.data.total_interactions[this.state.timeframe]}/>
         </main>
       </section>
       </div>

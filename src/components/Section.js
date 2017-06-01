@@ -58,18 +58,17 @@ export class Section extends React.Component {
     } 
 
 
+    console.log("data", data)
     let views;
     if(title == "VIEWS"){
-      views = [{name: 'Facebook', value: data.overall_views.facebook}, 
-               {name: 'Youtube', value: data.overall_views.youtube},
-              {name: 'On-site', value: data.overall_views.onsite}];
+      views = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+                {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     let interactions;
     if(title == "INTERACTIONS"){
-      interactions = [{name: 'Facebook', value: data.overall_interactions.facebook}, 
-               {name: 'Youtube', value: data.overall_interactions.youtube},
-              {name: 'On-site', value: data.overall_interactions.onsite}];
+      interactions = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+                      {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     
@@ -123,9 +122,7 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} data={data} />
-              <StackedBars title="WEEKLY" id={title} data={data} />
-              <StackedBars title="MONTHLY" id={title} data={data} />
+              <StackedBars id={title} data={data} />
             </div>
           </div>
         </div>
@@ -146,9 +143,7 @@ export class Section extends React.Component {
           </PieChart>
             </div>      
             <div className="stacked_bars">
-              <StackedBars title="DAILY" id={title} data={data} />
-              <StackedBars title="WEEKLY" id={title} data={data}/>
-              <StackedBars title="MONTHLY" id={title} data={data}/>
+              <StackedBars id={title} data={data} />
             </div>
           </div>
         </div>
