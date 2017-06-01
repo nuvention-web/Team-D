@@ -1,4 +1,5 @@
-
+import {database} from './firebaseConfig.js';
+console.log("asdfjadsklfjasd;kfjadsl;kfjaklds", database);
 
 const Tokens = {
   DC: "EAAB68OQQgesBAAD2UKm6APR0yw4MIFEkkpkxNfbqa5aA1O2VASmzTpbNAUpfIhiGJnNE0AvBUbrssBwxofRfZCz1KGu9JgMAb9VQJTMtfoMXZAo1lyNK5gidT2flmEXTtgmAUBVZC7a6CIGU4IzYpjx6M1esJsZD",
@@ -33,13 +34,13 @@ export var facebookAPI = () => {
 
 const videoInteractionsPromise = (res) =>{
       return new Promise((resolve, reject) => {
-         
+
           FB.api(
               "/"  + PAGE,
               paramsVideoMetrics,
               function (response) {
                 if (response && !response.error) {
-                 
+
                   console.log("video like shares and comments and reactions ", response);
                    resolve(response);
 

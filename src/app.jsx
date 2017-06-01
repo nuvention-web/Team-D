@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-// import './lib/firebaseConfig.js';
+import './lib/firebaseConfig.js';
 import {facebookAPI} from './lib/apiConfig.js';
 import {YTpromised} from './lib/YTconfig.js';
 import ReactTooltip from 'react-tooltip';
