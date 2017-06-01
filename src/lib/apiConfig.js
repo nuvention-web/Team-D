@@ -22,14 +22,76 @@ const params = {
 }
 
 const paramsVideoMetrics = {
-    fields:"videos{likes.limit(0).summary(true),reactions.limit(0).summary(true),comments.limit(0).summary(true),sharedposts.limit(0).summary(true)}",
+    fields:"videos{likes.limit(0).summary(true),reactions.limit(0).summary(true),comments.limit(0).summary(true)}",
     access_token: Tokens.DC
 }
 
-
+const paramsFBtotal_video {
+  fields : "videos",
+ access_token: Tokens.DC
+}
 const PAGE = Pages.DC;
 
 export var facebookAPI = () => {
+
+const  pagevideoIDPromise = (res) =>{
+      
+      return new Promise((resolve, reject) => {
+         
+          FB.api(
+              paramsFBtotal_video_views,
+              function (response) {
+                if (response && !response.error) {
+                    let totalvideoID = []
+                    let i=0
+                    while(response.videos.paging.cursors.after != response.videos.paging.cursors.before){
+                         totalvideoID.push(response.data[i].id)                    
+                         i++;
+                     }          
+
+                    var request = $.ajax({
+                        type: "GET",
+                        url: response.videos.paging.next,
+                        dataType:"json"
+                });
+               request.done(function(msg){
+              console.log("ajax response:" ,msg);
+            });
+                   console.log("videos ", response);
+                   resolve(response);
+                } else {
+                  console.error("error loading facebook video");
+                  reject(response);
+                }
+              }
+            );
+          }
+ ) }
+
+
+
+const  totalVideoViewsPromise = (res) =>{
+      
+      return new Promise((resolve, reject) => {
+         
+          FB.api(
+              "/"  + videoID+ "video_insights?metric=total_video_views",
+              params,
+              function (response) {
+                if (response && !response.error) {
+                
+                console.log("video  ", response);
+                   resolve(response);
+
+                } else {
+                  console.error("error loading facebook video");
+                  reject(response);
+                }
+              }
+            );
+          }
+ ) }
+
 
 const videoInteractionsPromise = (res) =>{
       return new Promise((resolve, reject) => {
@@ -269,7 +331,8 @@ const videointeractions_promise = (res) =>{
   )
   }
     return new Promise((resolve, reject) => {
-         pageInsightsPaidPromise()
+         videoInteractionsPromise()
+         .then(pageInsightsPaidPromise)
         .then(pageInsightsOrganicPromise)
         .then(videointeractions_promise)
         .then((res) => {
