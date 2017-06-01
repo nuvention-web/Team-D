@@ -12,12 +12,20 @@ var config = {
 firebase.initializeApp(config);
 console.log("Firebase Initialized");
 
-const database = firebase.database();
+export let database = firebase.database();
 
 // Store dummy data to firebase
-database.ref('test/').set(
+database.ref('test/').update(
   {
-    name: "Lenny"
+    name: "Lenny",
+    job: "student"
+  }
+);
+
+database.ref('test/').update(
+  {
+    name: "Prithvi",
+    job: "rapper"
   }
 );
 
@@ -30,4 +38,4 @@ database.ref('test/').on("value", function(snapshot) {
 });
 
 // Get a reference to the database service
-// export const database = firebase.database();
+
