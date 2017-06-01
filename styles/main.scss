@@ -20,7 +20,7 @@ body {
   color: $light-font;
   font-family: $dosis;
   font-size: 1rem;
-  font-weight: 100;
+  font-weight: 200;
   line-height: 150%;
   margin: 0px;
   padding: 0px;
@@ -30,6 +30,7 @@ body {
 h1 {
   font-size: 1rem;
   margin: 0%;
+  font-weight: 200;
 }
 h2{
   font-size: 0.5rem
@@ -151,7 +152,7 @@ height: 100%;
 .views{
   display: block;
   width: 100%;
-  padding-bottom: 15%;
+  padding-bottom: 13%;
 }
 .interactions{
   display: block;
@@ -169,6 +170,7 @@ height: 100%;
 .react-grid-Container{
   color: black;
   margin: 2%;
+  margin-top: 2%;
   .react-grid-HeaderCell{
     background-color: $background;
     color: $light-font;
@@ -192,6 +194,14 @@ height: 100%;
   float: left;
 }
 
+#text{
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 2.5%;
+    width: 5%;
+    height: 1rem;
+    z-index: 100;
+}
 // STACKED BARS COMPONENT
 .stacked_bars{
   margin-left: 20%;
@@ -199,7 +209,7 @@ height: 100%;
 }
 .stacked_bars > div {
   float: left;
-  width: 75%;
+  width: 85%;
   text-align: left;
   line-height: 2%;
 }
@@ -208,7 +218,7 @@ height: 100%;
   //margin-top: 2%;
 }
 .bar_label{
-  width: 25%;
+  width: 5%;
   font-size: 1rem;
   font-weight: 100;
   display: inline-block;

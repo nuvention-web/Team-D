@@ -427,8 +427,8 @@ export default class App extends React.Component {
             <Section title="PAID vs. ORGANIC" data={this.state.data.paid_organic[this.state.timeframe]}/>
             <Section title="DEVICES" data={this.state.data.devices[this.state.timeframe]}/>
           </div>
-          <Section title="VIEWS" data={this.state.data.total_views[this.state.timeframe]} />
-          <Section title="INTERACTIONS" data={this.state.data.total_interactions[this.state.timeframe]}/>
+          <Section title="TOTAL VIEWS" data={this.state.data.total_views[this.state.timeframe]} />
+          <Section title="TOTAL INTERACTIONS" data={this.state.data.total_interactions[this.state.timeframe]}/>
         </main>
       </section>
       </div>
