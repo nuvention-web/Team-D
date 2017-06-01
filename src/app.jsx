@@ -122,6 +122,8 @@ export default class App extends React.Component {
         }
       }
     }
+
+    this.handleCheckBox = this.handleCheckBox.bind(this);
   }
 
   componentDidMount() {
@@ -192,6 +194,11 @@ export default class App extends React.Component {
       })
     });
 
+
+  }
+
+  handleCheckBox(selected) {
+    this.setState({timeframe: selected});
   }
 
   handleFetchedData(res) {
@@ -409,7 +416,7 @@ export default class App extends React.Component {
       <div id="outer-container">
       <section className="container">
         <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={'20%'} noOverlay>
-          <CheckBox />
+          <CheckBox onChange={this.handleCheckBox} />
         </Menu>
         <main id="page-wrap">
           <Header />
