@@ -128,7 +128,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios.get('http://localhost:8080/api/brightcove').then(res => {
-      console.log("inside APP accesstoken: ", res);
+      console.log("yoyoyoyoyo: ", res);
     });
 
     // require('google-client-api')().then((gapi) => {

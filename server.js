@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /* Routing */
 app.get('/', function (_, res) { res.sendFile(indexPath) });
-app.get('/api/brightcove', (req, res) => {
+app.get('/api/brightcove', (req, origianl_response) => {
   let a = "f5103281-757e-422e-8969-3744606da550";
   let b = "D7W6AsYioOBZqiML9qjA";
   let c = "1uVCSm0WysLQSey2409qiwZpsdtlEv4gzCvTgkNa";
@@ -40,11 +40,10 @@ app.get('/api/brightcove', (req, res) => {
   axios.post("https://oauth.brightcove.com/v4/access_token?grant_type=client_credentials", {}, config)
        .then(res => {
           const access_token = res.data.access_token;
-          console.log("access token: ", access_token);
           const account_id = "1155968404";
-          const dimensions = ["video","device_type","device_os"];
-          const fields =["video_view"];
-          let from = {
+          const dimensions = ["video","device_type"];
+          const fields =["video_view","video_name","video_impression"];
+          let time_from = {
             daily: {
               current: (new Date).getTime(),
               last: "-2d"
@@ -58,7 +57,7 @@ app.get('/api/brightcove', (req, res) => {
               last: "-56d"
             }
           };
-          let to = {
+          let time_to = {
             daily: {
               current: (new Date).getTime(),
               last: "-1d"
@@ -73,16 +72,88 @@ app.get('/api/brightcove', (req, res) => {
             }
           };
 
+          data = {
+            daily: null,
+            weekly: {}
+          };
+
           axios.get("https://analytics.api.brightcove.com/v1/data?accounts="
                         + account_id
                         + "&access_token=" + access_token
                         + "&dimensions="
                         + dimensions.join(",")
-                        + "&from=" + from.daily.last
-                        + "&to=" + to.daily.last
+                        + "&from=" + time_from.daily.last
+                        + "&to=" + time_to.daily.last
                         + "&fields=" + fields.join(","))
                 .then(res => {
-                  console.log("brightcove res:", res);
+                  Object.assign(data, {
+                    daily: {
+                      last: res.data
+                    }
+                  });
+                  return data;
+                })
+                .then(response => {
+                  console.log("--------------moving onto daily current");
+                  // console.dir(response, {depth: null}); // to expand [object Object] in terminal
+                  axios.get("https://analytics.api.brightcove.com/v1/data?accounts="
+                                + account_id
+                                + "&access_token=" + access_token
+                                + "&dimensions="
+                                + dimensions.join(",")
+                                + "&from=" + time_from.daily.current
+                                + "&to=" + time_to.daily.current
+                                + "&fields=" + fields.join(","))
+                  .then(res => {
+                    Object.assign(response.daily, {
+                      current: res.data
+                    });
+                    return response;
+                  })
+                  .then(response => {
+                    // working on weekly
+                    console.log("--------------moving onto weekly last");
+                    axios.get("https://analytics.api.brightcove.com/v1/data?accounts="
+                                  + account_id
+                                  + "&access_token=" + access_token
+                                  + "&dimensions="
+                                  + dimensions.join(",")
+                                  + "&from=" + time_from.weekly.last
+                                  + "&to=" + time_to.weekly.last
+                                  + "&fields=" + fields.join(","))
+                    .then(res => {
+                      Object.assign(data.weekly, {
+                        last: res.data
+                      });
+                      console.log("data: ", data);
+                      return data;
+
+                    })
+                    .then(response => {
+                      console.log("--------------moving onto weekly current");
+                      axios.get("https://analytics.api.brightcove.com/v1/data?accounts="
+                                    + account_id
+                                    + "&access_token=" + access_token
+                                    + "&dimensions="
+                                    + dimensions.join(",")
+                                    + "&from=" + time_from.weekly.current
+                                    + "&to=" + time_to.weekly.current
+                                    + "&fields=" + fields.join(","))
+                      .then(res => {
+                        Object.assign(response.weekly, {
+                          current: res.data
+                        });
+                        console.log("Brightcove final: \n", response);
+                        origianl_response.send(response)
+                      })
+                      .catch(err => {
+                        console.error("brightcove error:", err);
+                      })
+                    })
+                  })
+                  .catch(err => {
+                    console.error("brightcove error:", err);
+                  })
                 })
                 .catch(err => {
                   console.log("brightcove error:", err);
@@ -102,5 +173,5 @@ app.get('/api/brightcove', (req, res) => {
 
 
 
-app.listen(port)
-console.log(`Listening at http://localhost:${port}`)
+app.listen(port);
+console.log(`Listening at http://localhost:${port}`);
