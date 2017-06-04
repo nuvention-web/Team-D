@@ -9,8 +9,10 @@ var config = {
   storageBucket: "gender-bias-detector.appspot.com",
   messagingSenderId: "444524432821"
 };
-firebase.initializeApp(config);
-console.log("Firebase Initialized");
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 
 export let database = firebase.database();
 
