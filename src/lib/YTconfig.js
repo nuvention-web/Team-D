@@ -15,7 +15,7 @@ export const YTpromised = (gapi) => {
   const week_before = "2017-05-23" // should be done dynamically
   const yesterday = "2017-05-29"
 
-  console.log(month_before, today);
+  // console.log(month_before, today);
 
   let youtube_month = {
     // "ids": 'channel==UCGME_LjZasuldi_EOz7GdBg', // Dance

@@ -45,7 +45,7 @@ app.get('/api/brightcove', (req, origianl_response) => {
           const fields =["video_view","video_name","video_impression"];
           let time_from = {
             daily: {
-              current: (new Date).getTime(),
+              current: "-1d",
               last: "-2d"
             },
             weekly: {
@@ -103,7 +103,9 @@ app.get('/api/brightcove', (req, origianl_response) => {
                                 + dimensions.join(",")
                                 + "&from=" + time_from.daily.current
                                 + "&to=" + time_to.daily.current
-                                + "&fields=" + fields.join(","))
+                                + "&fields=" + fields.join(",")
+                                + "&sort=-video_view&limit=10")
+
                   .then(res => {
                     Object.assign(response.daily, {
                       current: res.data
@@ -138,7 +140,9 @@ app.get('/api/brightcove', (req, origianl_response) => {
                                     + dimensions.join(",")
                                     + "&from=" + time_from.weekly.current
                                     + "&to=" + time_to.weekly.current
-                                    + "&fields=" + fields.join(","))
+                                    + "&fields=" + fields.join(",")
+                                    + "&sort=-video_view&limit=10")
+
                       .then(res => {
                         Object.assign(response.weekly, {
                           current: res.data

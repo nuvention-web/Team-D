@@ -31,10 +31,10 @@ database.ref('test/').update(
 
 // Print fetched data from firebase
 database.ref('test/').on("value", function(snapshot) {
-  console.log("Fetch data from Firebase");
-  console.log(snapshot.val());
+  // console.log("Fetch data from Firebase");
+  // console.log(snapshot.val());
 }, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
+  // console.log("The read failed: " + errorObject.code);
 });
 
 // Get a reference to the database service

@@ -47,31 +47,31 @@ export class Section extends React.Component {
     let paid_organic;
     if (title == "PAID vs. ORGANIC")
     {
-      paid_organic = [{name: 'Paid', value: data.paid}, 
+      paid_organic = [{name: 'Paid', value: data.paid},
                       {name: 'Organic', value: data.organic}];
     }
 
     let devices;
     if(title == "DEVICES"){
-      devices = [{name: 'Web', value: data.web}, 
+      devices = [{name: 'Web', value: data.web},
                  {name: 'Mobile', value: data.mobile}];
-    } 
+    }
 
 
-    console.log("data", data)
+    // console.log("data", data)
     let views;
     if(title == "VIEWS"){
-      views = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+      views = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last},
                 {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     let interactions;
     if(title == "INTERACTIONS"){
-      interactions = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last}, 
+      interactions = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last},
                       {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
-    
+
     if (this.props.title == "TOP PERFORMERS") {
       return (
         <div className="top_performers">
@@ -120,7 +120,7 @@ export class Section extends React.Component {
             </Pie>
             <Tooltip/>
           </PieChart>
-            </div>      
+            </div>
             <div className="stacked_bars">
               <StackedBars id={title} data={data} />
             </div>
@@ -141,7 +141,7 @@ export class Section extends React.Component {
             </Pie>
             <Tooltip/>
           </PieChart>
-            </div>      
+            </div>
             <div className="stacked_bars">
               <StackedBars id={title} data={data} />
             </div>
