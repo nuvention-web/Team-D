@@ -173,7 +173,15 @@ export default class App extends React.Component {
     //   })
     // });
 
-    /* Only Youtube */
+    const FBpromised = facebookAPI();
+    console.log("FBpromised: ", FBpromised);
+    FBpromised().then(res => {
+      console.log("facebook: ", res);
+    }).catch(err => {
+      console.error("facebook data fetch error! :(");
+    })
+
+    /* Only Youtube
     require('google-client-api')().then((gapi) => {
       YTpromised(gapi).then(res => {
         console.log("Youtube in App: ", res);
@@ -193,7 +201,7 @@ export default class App extends React.Component {
         // });
       })
     });
-
+    */
 
   }
 
