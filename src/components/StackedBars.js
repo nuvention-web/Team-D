@@ -18,7 +18,7 @@ export class StackedBars extends React.Component {
   let data = this.props.data;
   let id = this.props.id;
 
-    if(id == "VIEWS"){
+    if(id == "TOTAL VIEWS"){
 
         current_num = data.facebook.current + data.brightcove.current;
         last_num = data.facebook.last + data.brightcove.last;
@@ -39,7 +39,7 @@ export class StackedBars extends React.Component {
         }
     }
 
-    if(id == "INTERACTIONS"){
+    if(id == "TOTAL INTERACTIONS"){
         current_num = data.facebook.current + data.brightcove.current;
         last_num = data.facebook.last + data.brightcove.last;
         best_num =data.facebook.best + data.brightcove.best;

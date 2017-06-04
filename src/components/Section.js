@@ -15,7 +15,9 @@ export class Section extends React.Component {
     const data = this.props.data;
     const title = this.props.title;
     //const timeframe = this.timeframe;
-    const COLORS = ['#96d8ff', '#368bbb', '#59a7d3'];
+    const COLORS = ['#96d8ff', '#59a7d3', '#368bbb'];
+    const VIEW_COLORS = ['#8993d5', '#dce5ff', '#b2bbff'];
+    const INTER_COLORS = ['#6aa99f', '#bcfef3', '#92d3c8'];
 
     let top_performers_columns;
     let top_performers_data;
@@ -60,15 +62,15 @@ export class Section extends React.Component {
 
     // console.log("data", data)
     let views;
-    if(title == "VIEWS"){
+    if(title == "TOTAL VIEWS"){
       views = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last},
-                {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
+                {name: 'Brightcove', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
     let interactions;
-    if(title == "INTERACTIONS"){
+    if(title == "TOTAL INTERACTIONS"){
       interactions = [{name: 'Facebook', value: data.facebook.current + data.facebook.best + data.facebook.last},
-                      {name: 'On-site', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
+                      {name: 'Brightcove', value: data.brightcove.current + data.brightcove.best + data.brightcove.last}];
     }
 
 
@@ -87,8 +89,8 @@ export class Section extends React.Component {
       return (
         <div className = "paid_vs_organic">
           <Title title={title} />
-          <PieChart width={200} height={200} >
-            <Pie data={paid_organic} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
+          <PieChart width={225} height={200} >
+            <Pie data={paid_organic} cx={70} cy={90} innerRadius={55} outerRadius={70} fill="black">
             {paid_organic.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
@@ -99,24 +101,25 @@ export class Section extends React.Component {
       return (
         <div className = "devices">
           <Title title={title} />
-          <PieChart width={200} height={200} >
-            <Pie data={devices} cx={65} cy={85} innerRadius={40} outerRadius={60} fill="black">
+          <PieChart width={225} height={200} >
+            <Pie data={devices} cx={70} cy={90} innerRadius={55} outerRadius={70} fill="black">
             {devices.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
           </PieChart>
         </div>
       );
-    }else if (this.props.title == "VIEWS") {
+    }else if (this.props.title == "TOTAL VIEWS") {
       return (
         <div className = "views">
           <div className = "divider"></div>
           <Title title={title} />
           <div className="views_interactions_content">
-            <div className="donut">
-          <PieChart width={125} height={125} >
-            <Pie data={views} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
-            {views.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+          <div className="donut">
+          <div id="text">Breakdown by Platform</div>
+          <PieChart width={150} height={150} >
+            <Pie data={views} cx={70} cy={70} innerRadius={50} outerRadius={65} fill="black">
+            {views.map((entry, index) => <Cell fill={VIEW_COLORS[index % VIEW_COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
           </PieChart>
@@ -135,9 +138,10 @@ export class Section extends React.Component {
           <Title title={title} />
           <div className="views_interactions_content">
             <div className="donut">
-          <PieChart width={125} height={125} >
-            <Pie data={interactions} cx={65} cy={65} innerRadius={40} outerRadius={60} fill="black">
-            {interactions.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+          <div id="text">Breakdown by Platform</div>
+          <PieChart width={150} height={150} >
+            <Pie data={interactions} cx={70} cy={70} innerRadius={50} outerRadius={65} fill="black">
+            {interactions.map((entry, index) => <Cell fill={INTER_COLORS[index % INTER_COLORS.length]}/>)}
             </Pie>
             <Tooltip/>
           </PieChart>
