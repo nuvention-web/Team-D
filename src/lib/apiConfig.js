@@ -1,7 +1,7 @@
 import {database} from './firebaseConfig.js';
 
 const Tokens = {
-  DC: "EAAB68OQQgesBAAD2UKm6APR0yw4MIFEkkpkxNfbqa5aA1O2VASmzTpbNAUpfIhiGJnNE0AvBUbrssBwxofRfZCz1KGu9JgMAb9VQJTMtfoMXZAo1lyNK5gidT2flmEXTtgmAUBVZC7a6CIGU4IzYpjx6M1esJsZD",
+  DC: "EAAB68OQQgesBAHv9cmep0AR4WVmXpxIOBmw2EQvQHz5wVhAdccKjihaxTeOUeohMZAMZA3maZCmZBDyyBeAKL2XUUxfatuv4ivHvFHClAaHgvlrrsszBZCBgt1TfbKdzgYcR1AnZCbrdMk7gssbbvTfmd9AUzqijbf75CttAEgoGvckReZCZAWxYDTpXe49oZA3AZD",
   Dance: "EAAB68OQQgesBAKalCkHMGLlIzA9P7CNmZBO53Vm93iZB0Rx4DXqyZBcysWc0smhivWATqAIjptschB66yoHZBu1smZBQer6O7jZBAncYTFZChV1VZBmY5ZBQg9AWrX4sAtaQSQuhaA91DEhPZAGL8JgFW8fQDzEI34zP0ZD",
   NYM: "EAAB68OQQgesBAN5VWFZBH7QyBUnA0car3YwtBxmdG7on71hyRPrSB2TZAQmN5mCkAkuDiZB1x0gKqVoaOBAXLcwobJJvvtseCh5AysilhaKuBZAT2ZAmCmn802PfXkaOI2p3Plzs9sXUrXXAjhZAHcJJGT23sVH50ZD"
 }
@@ -12,10 +12,6 @@ const Pages = {
   NYM: "14516439825",
   Dance: "8947243532"
 }
-
-// const PAGE = "141553642574345";
-// const PAGENYM = "14516439825";
-// const PAGEGD = "8947243532";
 
 const params = {
     access_token: Tokens.DC
