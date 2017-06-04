@@ -23,10 +23,17 @@ var today = new Date((new Date()).valueOf()).valueOf();
 today = Math.floor(today / 1000);
 var yesterday = new Date((new Date()).valueOf() - 1000*60*60*24).valueOf();
 yesterday = Math.floor(yesterday / 1000);
-var twoDaysAgo = new Date((new Date()).valueOf() - 1000*60*60*24*2).valueOf();
-twoDaysAgo = Math.floor(twoDaysAgo / 1000);
+var last_week = new Date((new Date()).valueOf()).valueOf();
+last_week = Math.floor(today / 1000);
+var week_before_last = new Date((new Date()).valueOf()).valueOf();
+week_before_last = Math.floor(today / 1000);
 
 export var facebookAPI = () => {
+  var data = {
+    daily: {},
+    weekly: {}
+  }
+
   const daily_views_interactions_promise = res => {
     return new Promise((resolve, reject) => {
       FB.api(
@@ -35,11 +42,17 @@ export var facebookAPI = () => {
         params,
         res => {
           if (res && !res.error) {
+            Object.assign(data.daily, {
+              last: res
+            });
             let next = res.paging.next;
+            console.log("next: ", next);
             $.get(next, res => {
-
+              Object.assign(data.daily, {
+                current: res
+              })
             })
-            resolve(res);
+            resolve(data);
           } else {
             console.error("error loading facebook views & interactions");
             reject(res);
@@ -52,7 +65,8 @@ export var facebookAPI = () => {
   const weekly_views_interactions_promise = res => {
     return new Promise((resolve, reject) => {
       FB.api(
-        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique',
+        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique'
+        + '&since=' + week_before_last + '&until=' + last_week,
         params,
         res => {
           if (res && !res.error) {
