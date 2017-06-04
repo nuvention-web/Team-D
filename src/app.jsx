@@ -174,8 +174,7 @@ export default class App extends React.Component {
     // });
 
     const FBpromised = facebookAPI();
-    console.log("FBpromised: ", FBpromised);
-    FBpromised().then(res => {
+    FBpromised.then(res => {
       console.log("facebook: ", res);
     }).catch(err => {
       console.error("facebook data fetch error! :(");

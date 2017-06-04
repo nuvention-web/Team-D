@@ -1,4 +1,4 @@
-console.log("brightcove");
+// console.log("brightcove");
 
 $.ajax({
   url: "https://oauth.brightcove.com/v3/access_token?grant_type=client_credentials",

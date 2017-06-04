@@ -1,7 +1,7 @@
 import {database} from './firebaseConfig.js';
 
 const Tokens = {
-  DC: "EAAB68OQQgesBAHv9cmep0AR4WVmXpxIOBmw2EQvQHz5wVhAdccKjihaxTeOUeohMZAMZA3maZCmZBDyyBeAKL2XUUxfatuv4ivHvFHClAaHgvlrrsszBZCBgt1TfbKdzgYcR1AnZCbrdMk7gssbbvTfmd9AUzqijbf75CttAEgoGvckReZCZAWxYDTpXe49oZA3AZD",
+  DC: "EAAB68OQQgesBAF855CmL6KBZCqTWyO1ZBUfPIH5MCfmTNozFrXmcd0iDZAnGNxlfj9hhJPuVT2IrZB38krKOSBARc0F2EIjZA0hmERgFV9haNvbBrGryGx34QAZBY3gyyVi0WBe67ig5TlO0dPBkACogEsbwSynoUZD",
   Dance: "EAAB68OQQgesBAKalCkHMGLlIzA9P7CNmZBO53Vm93iZB0Rx4DXqyZBcysWc0smhivWATqAIjptschB66yoHZBu1smZBQer6O7jZBAncYTFZChV1VZBmY5ZBQg9AWrX4sAtaQSQuhaA91DEhPZAGL8JgFW8fQDzEI34zP0ZD",
   NYM: "EAAB68OQQgesBAN5VWFZBH7QyBUnA0car3YwtBxmdG7on71hyRPrSB2TZAQmN5mCkAkuDiZB1x0gKqVoaOBAXLcwobJJvvtseCh5AysilhaKuBZAT2ZAmCmn802PfXkaOI2p3Plzs9sXUrXXAjhZAHcJJGT23sVH50ZD"
 }
@@ -19,20 +19,26 @@ const params = {
 }
 
 const PAGE = Pages.DC;
-let yesterday = new Date();
-let day_before_yesterday = new Date();
-yesterday = yesterday.setDate(yesterday.getDate() - 1);
-day_before_yesterday = day_before_yesterday.setDate(day_before_yesterday.getDate() - 1);
+var today = new Date((new Date()).valueOf()).valueOf();
+today = Math.floor(today / 1000);
+var yesterday = new Date((new Date()).valueOf() - 1000*60*60*24).valueOf();
+yesterday = Math.floor(yesterday / 1000);
+var twoDaysAgo = new Date((new Date()).valueOf() - 1000*60*60*24*2).valueOf();
+twoDaysAgo = Math.floor(twoDaysAgo / 1000);
 
 export var facebookAPI = () => {
-  const current_views_interactions_promise = res => {
+  const daily_views_interactions_promise = res => {
     return new Promise((resolve, reject) => {
       FB.api(
-        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique',
+        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique'
+        + '&since=' + yesterday + '&until=' + today,
         params,
         res => {
           if (res && !res.error) {
-            console.log("----------views_interactions_promise:\n");
+            let next = res.paging.next;
+            $.get(next, res => {
+
+            })
             resolve(res);
           } else {
             console.error("error loading facebook views & interactions");
@@ -43,14 +49,13 @@ export var facebookAPI = () => {
     })
   }
 
-  const last_views_interactions_promise = res => {
+  const weekly_views_interactions_promise = res => {
     return new Promise((resolve, reject) => {
       FB.api(
         '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique',
         params,
         res => {
           if (res && !res.error) {
-            console.log("----------views_interactions_promise:\n");
             resolve(res);
           } else {
             console.error("error loading facebook views & interactions");
@@ -62,7 +67,7 @@ export var facebookAPI = () => {
   }
 
   return new Promise((resolve, reject) => {
-     current_views_interactions_promise()
+     daily_views_interactions_promise()
      /*
         Add more promises here
      */
