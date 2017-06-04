@@ -19,12 +19,34 @@ const params = {
 }
 
 const PAGE = Pages.DC;
+let yesterday = new Date();
+let day_before_yesterday = new Date();
+yesterday = yesterday.setDate(yesterday.getDate() - 1);
+day_before_yesterday = day_before_yesterday.setDate(day_before_yesterday.getDate() - 1);
 
 export var facebookAPI = () => {
-  const views_interactions_promise = res => {
+  const current_views_interactions_promise = res => {
     return new Promise((resolve, reject) => {
       FB.api(
-        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique',
+        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique',
+        params,
+        res => {
+          if (res && !res.error) {
+            console.log("----------views_interactions_promise:\n");
+            resolve(res);
+          } else {
+            console.error("error loading facebook views & interactions");
+            reject(res);
+          }
+        }
+      );
+    })
+  }
+
+  const last_views_interactions_promise = res => {
+    return new Promise((resolve, reject) => {
+      FB.api(
+        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique',
         params,
         res => {
           if (res && !res.error) {
@@ -40,12 +62,11 @@ export var facebookAPI = () => {
   }
 
   return new Promise((resolve, reject) => {
-     views_interactions_promise()
+     current_views_interactions_promise()
      /*
         Add more promises here
      */
     .then((res) => {
-      console.log("fb load complete", res);
       resolve(res);
     });
   });
