@@ -164,14 +164,9 @@ export default class App extends React.Component {
 
   }
 
-  handleCheckBox(selected) {
-    this.setState({timeframe: selected});
+  handleCheckBox(name, selected) {
+    this.setState({name: selected});
   }
-
-  handleFetchedData(res) {
-    this.setState({res});
-  }
-
 
   render() {
     return (
