@@ -23,15 +23,13 @@ export default class Landing extends React.Component {
 	render(){
 	if (!this.state.isValid)
 	return (
-
-
-		<div className = "Landing"><a href = "#" onClick = {this.handleStats.bind(this)}>Video Stats</a></div>
+		<a href = "#" onClick = {this.handleStats.bind(this)}><img src={require("../images/logo2.png")} id = "logo_img55"/></a>
 		)
 		else{
 			return (
-				<div className = 'Landing' >
+
 				<App />
-				</div>
+
 				)
 		}
 	}

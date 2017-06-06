@@ -246,5 +246,21 @@ height: 100%;
     padding: 1%;
 }
 
+#logo_img55 {
+  position: absolute;
+  width: 500px;
+  height: 580px;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -290px;
+  opacity: 0.3;
+  transition: all 1s;
+}
+
+#logo_img55:hover {
+  opacity: 1;
+}
+
 
 
