@@ -4,9 +4,9 @@ export class CheckBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      brightcove: true,
-      facebook: true,
-      youtube: true
+      brightcove: this.props.data.brightcove,
+      facebook: this.props.data.facebook,
+      youtube: this.props.data.youtube
     }
 
   }
@@ -20,14 +20,16 @@ export class CheckBox extends React.Component {
 
   handleRadioButton(e) {
     let value = e.target.value;
-    this.props.onChange(name, value);
+    this.props.handleRadioButton(value);
   }
 
   handleCheckBox1(e) {
     let name = e.target.name;
+    this.props.handleBrightcove(!this.state[name]);
     this.setState({
       brightcove: !this.state[name]
     });
+
   }
 
   handleCheckBox2(e) {
@@ -35,6 +37,7 @@ export class CheckBox extends React.Component {
     this.setState({
       facebook: !this.state[name]
     });
+    this.props.handleFacebook(this.state[name]);
   }
 
   handleCheckBox3(e) {
@@ -42,11 +45,10 @@ export class CheckBox extends React.Component {
     this.setState({
       youtube: !this.state[name]
     });
+    this.props.handleYoutube(this.state[name]);
   }
 
   render() {
-
-
     return (
       <section>
         <h1 id="platforms" className="platforms-menu">Platforms</h1>

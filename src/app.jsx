@@ -21,6 +21,9 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       timeframe: "daily",
+      brightcove: true,
+      facebook: true,
+      youtube: false,
       data: {
         most_viewed_videos: {
           daily: {
@@ -123,7 +126,10 @@ export default class App extends React.Component {
       }
     }
 
-    this.handleCheckBox = this.handleCheckBox.bind(this);
+    this.handleRadioButton = this.handleRadioButton.bind(this);
+    this.handleBrightcove = this.handleBrightcove.bind(this);
+    this.handleFacebook = this.handleFacebook.bind(this);
+    this.handleYoutube = this.handleYoutube.bind(this);
   }
 
   componentDidMount() {
@@ -164,16 +170,36 @@ export default class App extends React.Component {
 
   }
 
-  handleCheckBox(name, selected) {
-    this.setState({name: selected});
+  handleRadioButton(selected) {
+    this.setState({timeframe: selected});
+  }
+
+  handleBrightcove(selected) {
+    this.setState({brightcove: !this.state.brightcove});
+  }
+
+  handleFacebook(selected) {
+    this.setState({facebook: !this.state.facebook});
+  }
+
+  handleYoutube(selected) {
+    this.setState({youtube: !this.state.youtube});
   }
 
   render() {
+    let brightcove = this.state.brightcove;
+    let facebook = this.state.facebook;
+    let youtube = this.state.youtube;
+
+    let data = {
+      brightcove, facebook, youtube
+    }
+
     return (
       <div id="outer-container">
       <section className="container">
         <Menu className="menu" pageWrapId={"page-wrap"} outerContainerId={ "outer-container"} width={"15%"} isOpen={true} noOverlay>
-          <CheckBox onChange={this.handleCheckBox} />
+          <CheckBox handleRadioButton={this.handleRadioButton} handleBrightcove={this.handleBrightcove} handleFacebook={this.handleFacebook} handleYoutube={this.handleYoutube} data={data}/>
         </Menu>
         <main id="page-wrap">
           <Header />
