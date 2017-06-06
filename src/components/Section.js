@@ -125,7 +125,7 @@ export class Section extends React.Component {
           </PieChart>
             </div>
             <div className="stacked_bars">
-              <StackedBars id={title} data={data} />
+              <StackedBars className="hoho" id={title} data={data} />
             </div>
           </div>
         </div>

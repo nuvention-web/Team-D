@@ -207,6 +207,17 @@ height: 100%;
   margin-left: 20%;
   //margin-top: 2%;
 }
+
+.hoho {
+  animation-name: example;
+  animation-duration: 2s;
+}
+
+@keyframes example {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+
 .stacked_bars > div {
   float: left;
   width: 85%;
@@ -233,5 +244,7 @@ height: 100%;
     color: black;
     text-align: right;
     padding: 1%;
-
 }
+
+
+

@@ -24,18 +24,34 @@ export class StackedBars extends React.Component {
         last_num = data.facebook.last + data.brightcove.last;
         best_num =data.facebook.best + data.brightcove.best;
 
-        current = {
-          background: "#dce5ff",
-          //convert num to size
-          width: ((current_num/best_num)*70)+ "%"
-        }
-        last = {
-          background: "#b2bbff",
-          width: ((last_num/best_num)*70) + "%"
-        }
-        best = {
-          background: "#8993d5",
-          width: "70%"
+        if (current_num === 0) {
+          current = {
+            background: "#dce5ff",
+            //convert num to size
+            width: 0 + "%"
+          }
+          last = {
+            background: "#b2bbff",
+            width: 0 + "%"
+          }
+          best = {
+            background: "#8993d5",
+            width: "0%"
+          }
+        } else {
+          current = {
+            background: "#dce5ff",
+            //convert num to size
+            width: ((current_num/best_num)*70)+ "%"
+          }
+          last = {
+            background: "#b2bbff",
+            width: ((last_num/best_num)*70) + "%"
+          }
+          best = {
+            background: "#8993d5",
+            width: "70%"
+          }
         }
     }
 
@@ -44,20 +60,37 @@ export class StackedBars extends React.Component {
         last_num = data.facebook.last + data.brightcove.last;
         best_num =data.facebook.best + data.brightcove.best;
 
+        if (current_num === 0) {
+          current = {
+            background: "#bcfef3",
+            //convert num to size
+            width: 0 + "%"
+          }
+          last = {
+            background: "#92d3c8",
+            width: 0 + "%"
+          }
+          best = {
+            background: "#6aa99f",
+            width: "0%"
+          }
+        } else {
+          current = {
+            background: "#bcfef3",
+            //convert num to size
+            width: ((current_num/best_num)*70)+ "%"
+          }
+          last = {
+            background: "#92d3c8",
+            width: ((last_num/best_num)*70) + "%"
+          }
+          best = {
+            background: "#6aa99f",
+            width: "70%"
+          }
+        }
 
-        current = {
-          background: "#bcfef3",
-          //convert num to size
-          width: ((current_num/best_num)*70)+ "%"
-        }
-        last = {
-          background: "#92d3c8",
-          width: ((last_num/best_num)*70) + "%"
-        }
-        best = {
-          background: "#6aa99f",
-          width: "70%"
-        }
+
       }
 
 
