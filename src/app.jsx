@@ -5,7 +5,7 @@ import {facebookAPI} from './lib/apiConfig.js';
 import {YTpromised} from './lib/YTconfig.js';
 import ReactTooltip from 'react-tooltip';
 import ProgressLabel from 'react-progress-label';
-import Sidebar from 'react-sidebar';
+// import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
 import {bubble as Menu } from 'react-burger-menu';
 import {Header, Section, Title, StackedBars, CheckBox} from './components';
