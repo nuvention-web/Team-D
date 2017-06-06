@@ -41,7 +41,7 @@ app.get('/api/brightcove', (req, origianl_response) => {
        .then(res => {
           const access_token = res.data.access_token;
           const account_id = "1155968404";
-          const dimensions = ["video","device_type"];
+          const dimensions = ["video"];
           const fields =["video_view","video_name","video_impression"];
           let time_from = {
             daily: {

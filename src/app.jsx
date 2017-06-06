@@ -15,6 +15,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       // first_load: true,
+      load: 0,
       timeframe: "daily",
       flag_brightcove: false,
       flag_facebook: false,
@@ -189,6 +190,14 @@ export default class App extends React.Component {
         brightcove: data
       });
 
+      this.setState({
+        load: this.state.load + 1
+      })
+
+      if (this.state.load === 1) {
+        alert("load complete");
+      }
+
     }).catch(err => {
       console.error("brightcove data fetch error! :(");
     })
@@ -227,10 +236,11 @@ export default class App extends React.Component {
   }
 
   handleData(uh, platform, keyword) {
+
     let state = Object.assign({}, this.state)
-    console.log("state:", state);
+    // console.log("state:", state);
     let response = this.state[platform];
-    console.log("response:", response);
+    // console.log("response:", response);
     let data = state.data;
 
     if (state && response && this.state) {
@@ -275,14 +285,13 @@ export default class App extends React.Component {
         data.total_interactions.daily[platform].last += response.daily.last.interactions;
         data.total_interactions.weekly[platform].current += response.weekly.current.interactions;
         data.total_interactions.weekly[platform].last += response.weekly.last.interactions;
+
       } else if (keyword === "+") {
         if (platform !== "brightcove") {
           data.paid_organic.daily.organic -= response.daily.current.views;
         } else {
           data.paid_organic.daily.paid -= response.daily.current.views;
-
         }
-
         // devices
         data.devices.daily.mobile -= response.daily.current.devices.mobile;
         data.devices.daily.web -= response.daily.current.devices.web;
@@ -300,6 +309,33 @@ export default class App extends React.Component {
         data.total_interactions.daily[platform].last -= response.daily.last.interactions;
         data.total_interactions.weekly[platform].current -= response.weekly.current.interactions;
         data.total_interactions.weekly[platform].last -= response.weekly.last.interactions;
+
+        state.data.most_viewed_videos = {
+          daily: {
+            1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+          },
+          weekly: {
+            1:{video: "Video 1" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            2:{video: "Video 2" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            3:{video: "Video 3" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            4:{video: "Video 4" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            5:{video: "Video 5" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            6:{video: "Video 6" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            7:{video: "Video 7" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            8:{video: "Video 8" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            9:{video: "Video 9" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"},
+            10:{video: "Video 10" , platform: "test_plat", publish_date: "mm/dd/yy", views: "###", interactions: "###"}
+          }
+        }
       }
       state.first_load = false;
       state.data.total_views.daily.facebook.best = state.data.total_views.daily.facebook.current + state.data.total_views.daily.facebook.last
