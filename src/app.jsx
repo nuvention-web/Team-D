@@ -8,12 +8,6 @@ import ProgressLabel from 'react-progress-label';
 import Sidebar from 'react-sidebar';
 import {BigQuery} from './lib/bigquery.js';
 import {bubble as Menu } from 'react-burger-menu';
-//import Checkbox from 'react-checkbox';
-//import {TreeMenu, TreeNode} from 'react-tree-menu';
-// test comment!!!
-
-// Add components inside curly brackets
-// import {Platform, VisualCue, Title, VideoDisplay} from './components';
 import {Header, Section, Title, StackedBars, CheckBox} from './components';
 
 export default class App extends React.Component {
@@ -21,9 +15,9 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       timeframe: "daily",
-      brightcove: true,
-      facebook: true,
-      youtube: false,
+      flag_brightcove: true,
+      flag_facebook: true,
+      flag_youtube: false,
       data: {
         most_viewed_videos: {
           daily: {
@@ -130,6 +124,7 @@ export default class App extends React.Component {
     this.handleBrightcove = this.handleBrightcove.bind(this);
     this.handleFacebook = this.handleFacebook.bind(this);
     this.handleYoutube = this.handleYoutube.bind(this);
+    this.handleMerge = this.handleMerge.bind(this);
   }
 
   componentDidMount() {
@@ -170,26 +165,30 @@ export default class App extends React.Component {
 
   }
 
+  handleMerge(state, keyword) {
+    return;
+  }
+
   handleRadioButton(selected) {
     this.setState({timeframe: selected});
   }
 
   handleBrightcove(selected) {
-    this.setState({brightcove: !this.state.brightcove});
+    this.setState({flag_brightcove: !this.state.flag_brightcove});
   }
 
   handleFacebook(selected) {
-    this.setState({facebook: !this.state.facebook});
+    this.setState({flag_facebook: !this.state.flag_facebook});
   }
 
   handleYoutube(selected) {
-    this.setState({youtube: !this.state.youtube});
+    this.setState({flag_youtube: !this.state.flag_youtube});
   }
 
   render() {
-    let brightcove = this.state.brightcove;
-    let facebook = this.state.facebook;
-    let youtube = this.state.youtube;
+    let brightcove = this.state.flag_brightcove;
+    let facebook = this.state.flag_facebook;
+    let youtube = this.state.flag_youtube;
 
     let data = {
       brightcove, facebook, youtube
