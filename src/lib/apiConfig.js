@@ -20,20 +20,63 @@ const params = {
   access_token: Tokens.POLITICO
 }
 
-const PAGE = Pages.DC;
+const PAGE = Pages.POLITICO;
 var today = new Date((new Date()).valueOf()).valueOf();
 today = Math.floor(today / 1000);
 var yesterday = new Date((new Date()).valueOf() - 1000*60*60*24).valueOf();
 yesterday = Math.floor(yesterday / 1000);
-var last_week = new Date((new Date()).valueOf()).valueOf();
-last_week = Math.floor(today / 1000);
-var week_before_last = new Date((new Date()).valueOf()).valueOf();
-week_before_last = Math.floor(today / 1000);
+var last_week = new Date((new Date()).valueOf() - 1000*60*60*24*7).valueOf();
+last_week = Math.floor(last_week / 1000);
+var week_before_last = new Date((new Date()).valueOf() - 1000*60*60*24*14).valueOf();
+week_before_last = Math.floor(week_before_last / 1000);
+var last_month = new Date((new Date()).valueOf() - 1000*60*60*24*30).valueOf();
+last_month = Math.floor(last_month / 1000);
+var month_before_last = new Date((new Date()).valueOf() - 1000*60*60*24*60).valueOf();
+month_before_last = Math.floor(month_before_last / 1000);
+
+const interactions_helper = object => {
+  return object.comment + object.like;
+}
+
+const devices_helper = object => {
+  return {
+    web: object.WWW,
+    mobile: object.MOBILE
+  }
+}
+
+const fetch_data_helper = (res, string) => {
+  let data = res.data; // Array of 9 elements
+  let output;
+  if (string === "daily") {
+    output = {
+      interactions: interactions_helper(data[0].values[0].value),
+      views: data[3].values[0].value,
+      devices: devices_helper(data[6].values[0].value)
+    }
+  } else if (string === "weekly") {
+    output = {
+      interactions: interactions_helper(data[1].values[0].value),
+      views: data[4].values[0].value,
+      devices: devices_helper(data[7].values[0].value)
+    }
+  } else {
+    output = {
+      interactions: interactions_helper(data[2].values[0].value),
+      views: data[5].values[0].value,
+      devices: devices_helper(data[8].values[0].value)
+    }
+  }
+
+  return output;
+
+}
 
 export var facebookAPI = () => {
   var data = {
     daily: {},
-    weekly: {}
+    weekly: {},
+    monthly: {}
   }
 
   const daily_views_interactions_promise = res => {
@@ -45,13 +88,13 @@ export var facebookAPI = () => {
         res => {
           if (res && !res.error) {
             Object.assign(data.daily, {
-              last: res
+              last: fetch_data_helper(res, "daily")
             });
+
             let next = res.paging.next;
-            console.log("next: ", next);
             $.get(next, res => {
               Object.assign(data.daily, {
-                current: res
+                current: fetch_data_helper(res, "daily")
               })
             })
             resolve(data);
@@ -72,7 +115,44 @@ export var facebookAPI = () => {
         params,
         res => {
           if (res && !res.error) {
-            resolve(res);
+            Object.assign(data.weekly, {
+              last: fetch_data_helper(res, "weekly")
+            });
+            let next = res.paging.next;
+            $.get(next, res => {
+              Object.assign(data.weekly, {
+                current: fetch_data_helper(res, "weekly")
+              })
+            })
+            resolve(data);
+          } else {
+            console.error("error loading facebook views & interactions");
+            reject(res);
+          }
+        }
+      );
+    })
+  }
+
+  const monthly_views_interactions_promise = res => {
+    return new Promise((resolve, reject) => {
+      FB.api(
+        '/' + PAGE + '/insights?metric=page_video_views_unique,page_positive_feedback_by_type_unique,page_views_by_site_logged_in_unique'
+        + '&since=' + month_before_last + '&until=' + last_month,
+        params,
+        res => {
+          if (res && !res.error) {
+            Object.assign(data.monthly, {
+              last: fetch_data_helper(res, "monthly")
+            });
+
+            let next = res.paging.next;
+            $.get(next, res => {
+              Object.assign(data.monthly, {
+                current: fetch_data_helper(res, "monthly")
+              })
+            })
+            resolve(data);
           } else {
             console.error("error loading facebook views & interactions");
             reject(res);
@@ -84,9 +164,8 @@ export var facebookAPI = () => {
 
   return new Promise((resolve, reject) => {
      daily_views_interactions_promise()
-     /*
-        Add more promises here
-     */
+    .then(weekly_views_interactions_promise)
+    .then(monthly_views_interactions_promise)
     .then((res) => {
       resolve(res);
     });
