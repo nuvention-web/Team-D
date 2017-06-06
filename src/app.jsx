@@ -48,22 +48,22 @@ export default class App extends React.Component {
         },
         paid_organic: {
           daily: {
-            paid: 0,
-            organic: 0
+            paid: 50,
+            organic: 50
           },
           weekly: {
-            paid: 0,
-            organic: 0
+            paid: 50,
+            organic: 50
           }
         },
         devices: {
           daily: {
-            web: 0,
-            mobile: 0
+            web: 50,
+            mobile: 50
           },
           weekly: {
-            web: 0,
-            mobile: 0
+            web: 50,
+            mobile: 50
           }
         },
         total_views: {
@@ -71,24 +71,24 @@ export default class App extends React.Component {
             facebook: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             }
           },
           weekly: {
             facebook: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             }
           }
         },
@@ -97,24 +97,24 @@ export default class App extends React.Component {
             facebook: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             }
           },
           weekly: {
             facebook: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 1000000
+              best: 0
             }
           }
         }
@@ -131,9 +131,59 @@ export default class App extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:8080/api/brightcove').then(res => {
       console.log("brightcove: ", res);
+      let data = {
+        daily: {
+          current: {
+            devices: {
+              mobile: 0,
+              web: 0
+            },
+            interactions: 0,
+            views: 0
+          },
+          last: {
+            devices: {
+              mobile: 0,
+              web: 0
+            },
+            interactions: 0,
+            views: 0
+          }
+        },
+        weekly: {
+          current: {
+            devices: {
+              mobile: 0,
+              web: 0
+            },
+            interactions: 0,
+            views: 0
+          },
+          last: {
+            devices: {
+              mobile: 0,
+              web: 0
+            },
+            interactions: 0,
+            views: 0
+          }
+        }
+      };
+
+      data.daily.current.interactions = res.data.daily.current.summary.video_impression;
+      data.daily.current.views = res.data.daily.current.summary.video_view;
+      data.daily.last.interactions = res.data.daily.last.summary.video_impression;
+      data.daily.last.views = res.data.daily.last.summary.video_view;
+
+      data.weekly.current.interactions = res.data.weekly.current.summary.video_impression;
+      data.weekly.current.views = res.data.weekly.current.summary.video_view;
+      data.weekly.last.interactions = res.data.weekly.last.summary.video_impression;
+      data.weekly.last.views = res.data.weekly.last.summary.video_view;
+
       this.setState({
-        brightcove: res
+        brightcove: data
       });
+
     }).catch(err => {
       console.error("brightcove data fetch error! :(");
     })
@@ -231,6 +281,15 @@ export default class App extends React.Component {
         data.total_interactions.weekly[platform].last -= response.weekly.last.interactions;
       }
       state.first_load = false;
+      state.data.total_views.daily.facebook.best = state.data.total_views.daily.facebook.current + state.data.total_views.daily.facebook.last
+      state.data.total_views.daily.brightcove.best = state.data.total_views.daily.brightcove.current + state.data.total_views.daily.brightcove.last
+      state.data.total_views.weekly.facebook.best = state.data.total_views.weekly.facebook.current + state.data.total_views.weekly.facebook.last
+      state.data.total_views.weekly.brightcove.best = state.data.total_views.weekly.brightcove.current + state.data.total_views.weekly.brightcove.last
+      state.data.total_interactions.daily.facebook.best = state.data.total_interactions.daily.facebook.current + state.data.total_views.daily.facebook.last
+      state.data.total_interactions.daily.brightcove.best = state.data.total_interactions.daily.brightcove.current + state.data.total_views.daily.brightcove.last
+      state.data.total_interactions.weekly.facebook.best = state.data.total_interactions.weekly.facebook.current + state.data.total_views.weekly.facebook.last
+      state.data.total_interactions.weekly.brightcove.best = state.data.total_interactions.weekly.brightcove.current + state.data.total_interactions.weekly.brightcove.last
+
       this.setState({
         state
       });
