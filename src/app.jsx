@@ -14,9 +14,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // first_load: true,
       timeframe: "daily",
-      flag_brightcove: true,
-      flag_facebook: true,
+      flag_brightcove: false,
+      flag_facebook: false,
       flag_youtube: false,
       data: {
         most_viewed_videos: {
@@ -143,7 +144,6 @@ export default class App extends React.Component {
       this.setState({
         facebook: res
       });
-      this.handleData(this.state, "facebook", "+")
     }).catch(err => {
       console.error("facebook data fetch error! :(");
     })
@@ -169,7 +169,6 @@ export default class App extends React.Component {
       })
     });
     */
-
   }
 
   handleData(uh, platform, keyword) {
@@ -180,7 +179,8 @@ export default class App extends React.Component {
     let data = state.data;
 
     if (state && response && this.state) {
-      if (keyword === "+") {
+
+      if (keyword === "-") {
         // paid_organic
         if (platform !== "brightcove") {
           data.paid_organic.daily.organic += response.daily.current.views;
@@ -205,32 +205,32 @@ export default class App extends React.Component {
         data.total_interactions.daily[platform].last += response.daily.last.interactions;
         data.total_interactions.weekly[platform].current += response.weekly.current.interactions;
         data.total_interactions.weekly[platform].last += response.weekly.last.interactions;
-      } else if (keyword === "-") {
+      } else if (keyword === "+") {
         if (platform !== "brightcove") {
-          data.paid_organic.daily.organic -= 2 * response.daily.current.views;
+          data.paid_organic.daily.organic -= response.daily.current.views;
         } else {
-          data.paid_organic.daily.paid -= 2 * response.daily.current.views;
+          data.paid_organic.daily.paid -= response.daily.current.views;
         }
 
         // devices
-        data.devices.daily.mobile -= 2 * response.daily.current.devices.mobile;
-        data.devices.daily.web -= 2 * response.daily.current.devices.web;
-        data.devices.weekly.mobile -= 2 * response.weekly.current.devices.mobile;
-        data.devices.weekly.web -= 2 * response.weekly.current.devices.web;
+        data.devices.daily.mobile -= response.daily.current.devices.mobile;
+        data.devices.daily.web -= response.daily.current.devices.web;
+        data.devices.weekly.mobile -= response.weekly.current.devices.mobile;
+        data.devices.weekly.web -= response.weekly.current.devices.web;
 
         // views
-        data.total_views.daily[platform].current -= 2 * response.daily.current.views;
-        data.total_views.daily[platform].last -= 2 * response.daily.last.views;
-        data.total_views.weekly[platform].current -= 2 * response.weekly.current.views;
-        data.total_views.weekly[platform].last -= 2 * response.weekly.last.views;
+        data.total_views.daily[platform].current -= response.daily.current.views;
+        data.total_views.daily[platform].last -= response.daily.last.views;
+        data.total_views.weekly[platform].current -= response.weekly.current.views;
+        data.total_views.weekly[platform].last -= response.weekly.last.views;
 
         // interactions
-        data.total_interactions.daily[platform].current -= 2 * response.daily.current.interactions;
-        data.total_interactions.daily[platform].last -= 2 * response.daily.last.interactions;
-        data.total_interactions.weekly[platform].current -= 2 * response.weekly.current.interactions;
-        data.total_interactions.weekly[platform].last -= 2 * response.weekly.last.interactions;
+        data.total_interactions.daily[platform].current -= response.daily.current.interactions;
+        data.total_interactions.daily[platform].last -= response.daily.last.interactions;
+        data.total_interactions.weekly[platform].current -= response.weekly.current.interactions;
+        data.total_interactions.weekly[platform].last -= response.weekly.last.interactions;
       }
-
+      state.first_load = false;
       this.setState({
         state
       });
