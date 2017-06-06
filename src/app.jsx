@@ -70,24 +70,24 @@ export default class App extends React.Component {
             facebook: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             }
           },
           weekly: {
             facebook: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             }
           }
         },
@@ -96,24 +96,24 @@ export default class App extends React.Component {
             facebook: {
               current: 0,
               last: 0,
-              best: 15
+              best: 1000000
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             }
           },
           weekly: {
             facebook: {
               current: 0,
               last: 0,
-              best: 15
+              best: 1000000
             },
             brightcove: {
               current: 0,
               last: 0,
-              best: 0
+              best: 1000000
             }
           }
         }
@@ -124,12 +124,15 @@ export default class App extends React.Component {
     this.handleBrightcove = this.handleBrightcove.bind(this);
     this.handleFacebook = this.handleFacebook.bind(this);
     this.handleYoutube = this.handleYoutube.bind(this);
-    this.handleMerge = this.handleMerge.bind(this);
+    this.handleData = this.handleData.bind(this);
   }
 
   componentDidMount() {
     axios.get('http://localhost:8080/api/brightcove').then(res => {
       console.log("brightcove: ", res);
+      this.setState({
+        brightcove: res
+      });
     }).catch(err => {
       console.error("brightcove data fetch error! :(");
     })
@@ -137,6 +140,10 @@ export default class App extends React.Component {
     const FBpromised = facebookAPI();
     FBpromised.then(res => {
       console.log("facebook: ", res);
+      this.setState({
+        facebook: res
+      });
+      this.handleData(this.state, "facebook", "+")
     }).catch(err => {
       console.error("facebook data fetch error! :(");
     })
@@ -165,8 +172,70 @@ export default class App extends React.Component {
 
   }
 
-  handleMerge(state, keyword) {
-    return;
+  handleData(uh, platform, keyword) {
+    let state = Object.assign({}, this.state)
+    console.log("state:", state);
+    let response = this.state[platform];
+    console.log("response:", response);
+    let data = state.data;
+
+    if (state && response && this.state) {
+      if (keyword === "+") {
+        // paid_organic
+        if (platform !== "brightcove") {
+          data.paid_organic.daily.organic += response.daily.current.views;
+        } else {
+          data.paid_organic.daily.paid += response.daily.current.views;
+        }
+
+        // devices
+        data.devices.daily.mobile += response.daily.current.devices.mobile;
+        data.devices.daily.web += response.daily.current.devices.web;
+        data.devices.weekly.mobile += response.weekly.current.devices.mobile;
+        data.devices.weekly.web += response.weekly.current.devices.web;
+
+        // views
+        data.total_views.daily[platform].current += response.daily.current.views;
+        data.total_views.daily[platform].last += response.daily.last.views;
+        data.total_views.weekly[platform].current += response.weekly.current.views;
+        data.total_views.weekly[platform].last += response.weekly.last.views;
+
+        // interactions
+        data.total_interactions.daily[platform].current += response.daily.current.interactions;
+        data.total_interactions.daily[platform].last += response.daily.last.interactions;
+        data.total_interactions.weekly[platform].current += response.weekly.current.interactions;
+        data.total_interactions.weekly[platform].last += response.weekly.last.interactions;
+      } else if (keyword === "-") {
+        if (platform !== "brightcove") {
+          data.paid_organic.daily.organic -= 2 * response.daily.current.views;
+        } else {
+          data.paid_organic.daily.paid -= 2 * response.daily.current.views;
+        }
+
+        // devices
+        data.devices.daily.mobile -= 2 * response.daily.current.devices.mobile;
+        data.devices.daily.web -= 2 * response.daily.current.devices.web;
+        data.devices.weekly.mobile -= 2 * response.weekly.current.devices.mobile;
+        data.devices.weekly.web -= 2 * response.weekly.current.devices.web;
+
+        // views
+        data.total_views.daily[platform].current -= 2 * response.daily.current.views;
+        data.total_views.daily[platform].last -= 2 * response.daily.last.views;
+        data.total_views.weekly[platform].current -= 2 * response.weekly.current.views;
+        data.total_views.weekly[platform].last -= 2 * response.weekly.last.views;
+
+        // interactions
+        data.total_interactions.daily[platform].current -= 2 * response.daily.current.interactions;
+        data.total_interactions.daily[platform].last -= 2 * response.daily.last.interactions;
+        data.total_interactions.weekly[platform].current -= 2 * response.weekly.current.interactions;
+        data.total_interactions.weekly[platform].last -= 2 * response.weekly.last.interactions;
+      }
+
+      this.setState({
+        state
+      });
+    }
+
   }
 
   handleRadioButton(selected) {
@@ -175,14 +244,32 @@ export default class App extends React.Component {
 
   handleBrightcove(selected) {
     this.setState({flag_brightcove: !this.state.flag_brightcove});
+    let flag = this.state.flag_brightcove;
+    if (flag) {
+      this.handleData(this.state, "brightcove", "+")
+    } else {
+      this.handleData(this.state, "brightcove", "-")
+    }
   }
 
   handleFacebook(selected) {
     this.setState({flag_facebook: !this.state.flag_facebook});
+    let flag = this.state.flag_facebook;
+    if (flag) {
+      this.handleData(this.state, "facebook", "+")
+    } else {
+      this.handleData(this.state, "facebook", "-")
+    }
   }
 
   handleYoutube(selected) {
     this.setState({flag_youtube: !this.state.flag_youtube});
+    let flag = this.state.flag_youtube;
+    if (flag) {
+      this.handleData(this.state, "youtube", "+")
+    } else {
+      this.handleData(this.state, "youtube", "-")
+    }
   }
 
   render() {
