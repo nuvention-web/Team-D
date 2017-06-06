@@ -27,7 +27,7 @@ export class Section extends React.Component {
       top_performers_columns = [
           { key: 'video', name: 'VIDEO' },
           { key: 'platform', name: 'PLATFORM' },
-          { key: 'publish_date', name: 'DATE' },
+          // { key: 'publish_date', name: 'DATE' },
           { key: 'views', name: 'VIEWS' },
           { key: 'interactions', name: 'INTERACTIONS' }]
 

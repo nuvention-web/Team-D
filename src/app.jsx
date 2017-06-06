@@ -139,7 +139,8 @@ export default class App extends React.Component {
               web: 0
             },
             interactions: 0,
-            views: 0
+            views: 0,
+            items: null
           },
           last: {
             devices: {
@@ -157,7 +158,8 @@ export default class App extends React.Component {
               web: 0
             },
             interactions: 0,
-            views: 0
+            views: 0,
+            items: null
           },
           last: {
             devices: {
@@ -179,6 +181,9 @@ export default class App extends React.Component {
       data.weekly.current.views = res.data.weekly.current.summary.video_view;
       data.weekly.last.interactions = res.data.weekly.last.summary.video_impression;
       data.weekly.last.views = res.data.weekly.last.summary.video_view;
+
+      data.daily.current.items = res.data.daily.current.items;
+      data.weekly.current.items = res.data.weekly.current.items;
 
       this.setState({
         brightcove: data
@@ -236,6 +241,21 @@ export default class App extends React.Component {
           data.paid_organic.daily.organic += response.daily.current.views;
         } else {
           data.paid_organic.daily.paid += response.daily.current.views;
+          for (var i = 1; i <= 10; i++) {
+            state.data.most_viewed_videos.daily[i] = {
+              video: response.daily.current.items[i-1].video_name,
+              platform: platform,
+              views: response.daily.current.items[i-1].video_view,
+              interactions: response.daily.current.items[i-1].video_impression
+            }
+
+            state.data.most_viewed_videos.weekly[i] = {
+              video: response.weekly.current.items[i-1].video_name,
+              platform: platform,
+              views: response.weekly.current.items[i-1].video_view,
+              interactions: response.weekly.current.items[i-1].video_impression
+            }
+          }
         }
 
         // devices
@@ -260,6 +280,7 @@ export default class App extends React.Component {
           data.paid_organic.daily.organic -= response.daily.current.views;
         } else {
           data.paid_organic.daily.paid -= response.daily.current.views;
+
         }
 
         // devices
