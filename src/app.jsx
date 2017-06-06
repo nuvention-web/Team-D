@@ -130,7 +130,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://localhost:8080/api/brightcove').then(res => {
+    axios.get('https://arcane-sierra-46569.herokuapp.com:8080/api/brightcove').then(res => {
       console.log("brightcove: ", res);
       let data = {
         daily: {
