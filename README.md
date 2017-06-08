@@ -38,16 +38,20 @@ npm run build
 Lenny Kim
 - heliotherapyy@gmaildotcom
 - 847-730-7299
+
 Megan Colon
 - meganconlon2018@u.northwestern.edu
+
 Prithvi Srinivasan Swachandam
 - ssprithvi313@u.northwestern.edu
 
 ## Product Design/Management & Business Modeling
 Kara Voght
 - karavoght2017@u.northwestern.edu
+
 Nikolas Wright
 - nikolaswright2017@u.northwestern.edu
+
 Ashley Zhang
 - wanruozhang2017@u.northwestern.edu
 
