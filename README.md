@@ -36,7 +36,7 @@ npm run build
 # Contacts
 ## Development
 Lenny Kim
-- heliotherapyy@gmaildotcom
+- lennykim2018@u.northwestern.edu
 - 847-730-7299
 
 Megan Colon
