@@ -22,6 +22,8 @@ node server.js
 ```
 Two commands above will initiate your localhost on 8888 and 8080 respectively. This MVP version of TELEOS will both use front-end and back-ends to call APIs to platforms (Facebook & Brightcove, in this case). The react app will make AJAX calls to 8080 host, and this is why you should run the second command line in your terminal. Otherwise, some of fetch calls will not work. Then open the web browser to `http://localhost:8888/`
 
+In addition, TELEOS makes frequent calls to Facebook and Brightcove (+ Youtube) in order to get video analytics results. This means that you will have to replace the credentials used in template.html (Facebook), apiConfig (Facebook), YTconfig (Youtube) and server.js (for brightcove) for individual purposes.
+
 ### To build the production package
 
 ```
