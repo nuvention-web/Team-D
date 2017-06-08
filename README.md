@@ -1,7 +1,4 @@
-# Theme: Media / Publishing
-
-# Updates
-Node server will be integrated later
+# TELEOS
 
 ### To run
 
@@ -18,19 +15,12 @@ git clone https://github.com/alicoding/react-webpack-babel.git
 npm install
 ```
 
-* Run development server:
-
+* To run TELEOS locally:
 ```
-npm start
+npm run go
+node server.js
 ```
-
-* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
-
-```
-npm run dev
-```
-
-Open the web browser to `http://localhost:8888/`
+Two commands above will initiate your localhost on 8888 and 8080 respectively. This MVP version of TELEOS will both use front-end and back-ends to call APIs to platforms (Facebook & Brightcove, in this case). The react app will make AJAX calls to 8080 host, and this is why you should run the second command line in your terminal. Otherwise, some of fetch calls will not work. Then open the web browser to `http://localhost:8888/`
 
 ### To build the production package
 
@@ -38,12 +28,26 @@ Open the web browser to `http://localhost:8888/`
 npm run build
 ```
 
-
 # Project website
 - Link to project website: https://nuvention-web.github.io/Team-D/
 - Link to project WIKI: https://github.com/nuvention-web/Team-D/wiki
+- Link to heroku page: https://arcane-sierra-46569.herokuapp.com/
 
-# Contact
+# Contacts
+## Development
 Lenny Kim
-- heliotherapyy @ gmail . com
+- heliotherapyy@gmaildotcom
 - 847-730-7299
+Megan Colon
+- meganconlon2018@u.northwestern.edu
+Prithvi Srinivasan Swachandam
+- ssprithvi313@u.northwestern.edu
+
+## Product Design/Management & Business Modeling
+Kara Voght
+- karavoght2017@u.northwestern.edu
+Nikolas Wright
+- nikolaswright2017@u.northwestern.edu
+Ashley Zhang
+- wanruozhang2017@u.northwestern.edu
+
